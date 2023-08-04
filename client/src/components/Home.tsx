@@ -11,7 +11,7 @@ export const Home = () => {
   return (
     <Box>
       <NavBar />
-      {/* <Carousel /> */}
+      <Carousel />
       <Marque />
       <Collection title={'NUEVA COLECCIÓN'} />
       <Categories siP={'si'} />
