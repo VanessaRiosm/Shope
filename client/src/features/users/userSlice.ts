@@ -14,14 +14,13 @@ const initialState = {
   status: 'idle',
 } as UsersState
 
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-  try {
+export const fetchUsers: any = createAsyncThunk(
+  'users/fetchUsers',
+  async () => {
     const response = await axios.get(`${URL}/users`)
     return response.data
-  } catch (err: any) {
-    return err.message
   }
-})
+)
 
 export const userSlice = createSlice({
   name: 'users',
