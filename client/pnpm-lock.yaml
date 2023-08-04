@@ -51,8 +51,8 @@ dependencies:
     specifier: ^11.7.3
     version: 11.7.3
   swiper:
-    specifier: 9.4.1
-    version: 9.4.1
+    specifier: 8.4.4
+    version: 8.4.4
 
 devDependencies:
   '@types/react':
@@ -1124,6 +1124,12 @@ packages:
       csstype: 3.1.2
     dev: false
 
+  /dom7@4.0.6:
+    resolution: {integrity: sha512-emjdpPLhpNubapLFdjNL9tP06Sr+GZkrIHEXLWvOGsytACUrkbeIdjO5g77m00BrHTznnlcNqgmn7pCN192TBA==}
+    dependencies:
+      ssr-window: 4.0.2
+    dev: false
+
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
@@ -1858,10 +1864,12 @@ packages:
     resolution: {integrity: sha512-fUN/fyVSBZNtY4Rr/Qtxn7tNNnlRAbUhQxTQ9uOo0xVMIHBmqq4/9pau5N9dB2pvkB353XL/ywRAycscLoYU3w==}
     dev: false
 
-  /swiper@9.4.1:
-    resolution: {integrity: sha512-1nT2T8EzUpZ0FagEqaN/YAhRj33F2x/lN6cyB0/xoYJDMf8KwTFT3hMOeoB8Tg4o3+P/CKqskP+WX0Df046fqA==}
+  /swiper@8.4.4:
+    resolution: {integrity: sha512-jA/8BfOZwT8PqPSnMX0TENZYitXEhNa7ZSNj1Diqh5LZyUJoBQaZcqAiPQ/PIg1+IPaRn/V8ZYVb0nxHMh51yw==}
     engines: {node: '>= 4.7.0'}
+    requiresBuild: true
     dependencies:
+      dom7: 4.0.6
       ssr-window: 4.0.2
     dev: false
 

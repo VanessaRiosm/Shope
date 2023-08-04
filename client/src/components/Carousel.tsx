@@ -1,4 +1,5 @@
 import {Swiper, SwiperSlide} from 'swiper/react'
+import {Navigation, Pagination, Autoplay} from 'swiper'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -6,14 +7,6 @@ import 'swiper/css/effect-fade'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-// import required modules
-import {
-  EffectFade,
-  Navigation,
-  Pagination,
-  Keyboard,
-  Autoplay,
-} from 'swiper/modules'
 import {Box} from '@mui/material'
 
 export const Carousel = () => {
@@ -23,14 +16,10 @@ export const Carousel = () => {
         navigation={true}
         autoplay={true}
         loop={true}
-        keyboard={{
-          enabled: true,
-          onlyInViewport: false,
-        }}
         pagination={{
           clickable: true,
         }}
-        modules={[EffectFade, Navigation, Pagination, Keyboard, Autoplay]}
+        modules={[Navigation, Pagination, Autoplay]}
         className='mySwiper'
       >
         <SwiperSlide>

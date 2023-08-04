@@ -99,7 +99,7 @@ export const Collection = ({title}: {title: string}) => {
         easing='linear'
       >
         {products.map((product: any) => (
-          <Box>
+          <Box key={product.id}>
             <img
               style={{width: 300, height: 400, margin: '5px'}}
               src={product.image}
