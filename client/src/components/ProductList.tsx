@@ -22,25 +22,13 @@ export const ProductList = () => {
 
       <Grid
         container
-        // gridTemplateColumns='repeat(12, 1fr)'
         columnSpacing={0}
         columns={{xs: 1, sm: 2, md: 3, lg: 4}}
         justifyContent='center'
-        // columns={{xs: 3, md: 4}}
-        // style={{
-        //   display: 'grid',
-        //   gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 0fr))',
-        //   maxWidth: '100%',
-        //   height: 'auto',
-        //   alignItems: 'end',
-        //   gap: '60px',
-        //   padding: '10px',
-        //   // flexWrap: 'wrap',
-        // }}
       >
         {products &&
           products.map((product: Product) => (
-            <Grid xs={1}>
+            <Grid key={product.id} xs={1}>
               <Box display='flex' flexDirection='column' alignItems='center'>
                 <img style={{maxWidth: 500, height: 500}} src={product.image} />
 
