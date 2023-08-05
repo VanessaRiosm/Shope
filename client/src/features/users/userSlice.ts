@@ -7,11 +7,13 @@ const URL = 'http://localhost:3000'
 interface UsersState {
   userList: any[]
   status: string
+  rol: string
 }
 
 const initialState = {
   userList: [],
   status: 'idle',
+  rol: 'admin',
 } as UsersState
 
 export const fetchUsers: any = createAsyncThunk(

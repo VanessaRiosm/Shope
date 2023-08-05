@@ -1,4 +1,6 @@
 import {styled, alpha} from '@mui/material/styles'
+import {useSelector} from 'react-redux'
+import {RootState} from '../redux/store'
 import {AppBar, Box, Menu, MenuItem} from '@mui/material'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
@@ -13,7 +15,6 @@ import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import {Cart} from './Cart'
 
-const rol = 'admin'
 //searchbar
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
@@ -62,6 +63,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 
 export const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const rol = useSelector((state: RootState) => state.user.rol)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -165,7 +167,12 @@ export const NavBar = () => {
           >
             {rol === 'admin' ? (
               <>
-                <MenuItem onClick={handleClose}>Panel de admin</MenuItem>
+                <Link
+                  to={'/admin'}
+                  style={{textDecoration: 'none', color: 'black'}}
+                >
+                  <MenuItem onClick={handleClose}>Panel de admin</MenuItem>
+                </Link>
                 <MenuItem onClick={handleClose}>Perfil</MenuItem>
                 <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
               </>
