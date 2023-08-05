@@ -1,10 +1,7 @@
-import {Box} from '@mui/material'
-import React from 'react'
-
 export const AdminProducts = () => {
   return (
-    <Box bgcolor='green' h='screen'>
+    <div>
       <p>gola este est adming products</p>
-    </Box>
+    </div>
   )
 }
