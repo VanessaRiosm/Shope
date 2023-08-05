@@ -13,6 +13,7 @@ import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import {Cart} from './Cart'
 
+const rol = 'admin'
 //searchbar
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
@@ -162,8 +163,18 @@ export const NavBar = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Iniciar Sesion</MenuItem>
-            <MenuItem onClick={handleClose}>Registrarme</MenuItem>
+            {rol === 'admin' ? (
+              <>
+                <MenuItem onClick={handleClose}>Panel de admin</MenuItem>
+                <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={handleClose}>Iniciar Sesion</MenuItem>
+                <MenuItem onClick={handleClose}>Registrarme</MenuItem>{' '}
+              </>
+            )}
           </Menu>
         </Toolbar>
       </AppBar>
