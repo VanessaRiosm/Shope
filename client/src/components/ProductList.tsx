@@ -10,7 +10,7 @@ import {AppDispatch} from '../redux/store'
 
 export const ProductList = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const getUsers = useSelector((state: RootState) => state.user.userList)
+  // const getUsers = useSelector((state: RootState) => state.user.userList)
   const getStatus = useSelector((state: RootState) => state.user.status)
 
   useEffect(() => {
