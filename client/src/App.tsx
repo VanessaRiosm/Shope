@@ -4,6 +4,7 @@ import {Home} from './components/Home'
 import {ProductDetails} from './components/ProductDetails'
 import {ProductList} from './components/ProductList'
 import {Profile} from './components/Profile'
+import {Login} from './components/Login'
 // import {AdminHome} from './components/admin/AdminHome'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path='/productdetails' Component={ProductDetails} />
         <Route path='/productlist' Component={ProductList} />
         <Route path='/profile' Component={Profile} />
+        <Route path='/login' Component={Login} />
         {/* <Route path='/admin' Component={AdminHome} /> */}
       </Routes>
     </div>

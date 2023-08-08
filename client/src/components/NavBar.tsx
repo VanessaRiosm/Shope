@@ -166,7 +166,7 @@ export const NavBar = () => {
             onClose={handleClose}
           >
             {rol === 'admin' ? (
-              <>
+              <div>
                 <Link
                   to={'/admin'}
                   style={{textDecoration: 'none', color: 'black'}}
@@ -175,12 +175,12 @@ export const NavBar = () => {
                 </Link>
                 <MenuItem onClick={handleClose}>Perfil</MenuItem>
                 <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
-              </>
+              </div>
             ) : (
-              <>
+              <div>
                 <MenuItem onClick={handleClose}>Iniciar Sesion</MenuItem>
                 <MenuItem onClick={handleClose}>Registrarme</MenuItem>{' '}
-              </>
+              </div>
             )}
           </Menu>
         </Toolbar>
