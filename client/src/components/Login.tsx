@@ -12,20 +12,24 @@ import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Link} from 'react-router-dom'
 import {AiOutlineUser} from 'react-icons/ai'
+import {useDispatch} from 'react-redux'
+import {fetchLogin} from '../features/users/userSlice'
 
 const formSchema = Yup.object().shape({
-  Email: Yup.string()
+  email: Yup.string()
     .required('campo requerido')
     .email('correo electronico invalido')
     .max(25, 'maximo 25 caracteres'),
 
-  Password: Yup.string()
+  password: Yup.string()
     .required('campo requerido')
-    .min(5, 'minimo 5 caracteres')
+    .min(3, 'minimo 3 caracteres')
     .max(15, 'maximo 15 caracteres'),
 })
 
 export const Login = () => {
+  const dispatch = useDispatch()
+
   return (
     <Container component='main' maxWidth='lg'>
       <Box
@@ -80,21 +84,21 @@ export const Login = () => {
               <Box mt='20px' width='100%'>
                 <Formik
                   initialValues={{
-                    Email: '',
-                    Password: '',
+                    email: '',
+                    password: '',
                   }}
                   validationSchema={formSchema}
-                  onSubmit={(values: any) => console.log(values)}
+                  onSubmit={(values: any) => dispatch(fetchLogin(values))}
                 >
                   <Form>
                     <FormGroup>
-                      <label htmlFor='Email' id='Email'>
+                      <label htmlFor='email' id='email'>
                         {' '}
                         Correo Electronico:
                       </label>
 
                       <Field
-                        name='Email'
+                        name='email'
                         placeholder='Ejemplo@gmail.com'
                         type='email'
                         style={{
@@ -106,21 +110,21 @@ export const Login = () => {
                       />
 
                       <Typography color='red'>
-                        <ErrorMessage name='Email' component='Box' />
+                        <ErrorMessage name='email' />
                       </Typography>
                     </FormGroup>
 
                     <FormGroup>
                       <label
-                        htmlFor='Password'
-                        id='Password'
+                        htmlFor='password'
+                        id='password'
                         style={{marginTop: '10px'}}
                       >
                         {' '}
                         Contraseña:
                       </label>
                       <Field
-                        name='Password'
+                        name='password'
                         placeholder='Contraseña *'
                         type='password'
                         style={{
@@ -131,7 +135,7 @@ export const Login = () => {
                         }}
                       />
                       <Typography color='red'>
-                        <ErrorMessage name='Password' component='Box' />
+                        <ErrorMessage name='password' />
                       </Typography>
                     </FormGroup>
 

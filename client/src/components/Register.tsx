@@ -14,17 +14,17 @@ import {Link} from 'react-router-dom'
 import {AiOutlineUser} from 'react-icons/ai'
 
 const formSchema = Yup.object().shape({
-  Username: Yup.string()
+  username: Yup.string()
     .required('Campo Requerido')
     .min(5, 'minimo 5 caracteres')
     .max(25, 'maximo 25 caracteres'),
 
-  Email: Yup.string()
+  email: Yup.string()
     .required('Campo Requerido')
     .email('correo electronico invalido')
     .max(25, 'maximo 25 caracteres'),
 
-  Password: Yup.string()
+  password: Yup.string()
     .required('Campo Requerido')
     .min(5, 'minimo 5 caracteres')
     .max(15, 'maximo 15 caracteres'),
@@ -89,10 +89,10 @@ export const Register = () => {
               <Box mt='20px' width='100%'>
                 <Formik
                   initialValues={{
-                    Username: '',
-                    Email: '',
-                    Password: '',
-                    ConfirmPassword: '',
+                    username: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
                   }}
                   validationSchema={formSchema}
                   onSubmit={(values: any) => console.log(values)}
@@ -100,8 +100,8 @@ export const Register = () => {
                   <Form>
                     <FormGroup>
                       <label
-                        htmlFor='Username'
-                        id='Username'
+                        htmlFor='username'
+                        id='username'
                         style={{marginTop: '10px'}}
                       >
                         {' '}
@@ -109,7 +109,7 @@ export const Register = () => {
                       </label>
 
                       <Field
-                        name='Username'
+                        name='username'
                         placeholder='Yourname123'
                         type='user'
                         style={{
@@ -121,14 +121,14 @@ export const Register = () => {
                       />
 
                       <Typography color='red'>
-                        <ErrorMessage name='Username' component='div' />
+                        <ErrorMessage name='username' component='div' />
                       </Typography>
                     </FormGroup>
 
                     <FormGroup>
                       <label
-                        htmlFor='Email'
-                        id='Email'
+                        htmlFor='email'
+                        id='email'
                         style={{marginTop: '10px'}}
                       >
                         {' '}
@@ -136,7 +136,7 @@ export const Register = () => {
                       </label>
 
                       <Field
-                        name='Email'
+                        name='email'
                         placeholder='Ejemplo@gmail.com'
                         type='email'
                         style={{
@@ -148,21 +148,21 @@ export const Register = () => {
                       />
 
                       <Typography color='red'>
-                        <ErrorMessage name='Email' component='div' />
+                        <ErrorMessage name='email' component='div' />
                       </Typography>
                     </FormGroup>
 
                     <FormGroup>
                       <label
-                        htmlFor='Password'
-                        id='Password'
+                        htmlFor='password'
+                        id='password'
                         style={{marginTop: '10px'}}
                       >
                         {' '}
                         Contraseña:
                       </label>
                       <Field
-                        name='Password'
+                        name='password'
                         placeholder='Contraseña *'
                         type='password'
                         style={{
@@ -173,7 +173,7 @@ export const Register = () => {
                         }}
                       />
                       <Typography color='red'>
-                        <ErrorMessage name='Password' component='div' />
+                        <ErrorMessage name='password' component='div' />
                       </Typography>
                     </FormGroup>
 

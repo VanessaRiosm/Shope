@@ -1,24 +1,9 @@
-import {useSelector, useDispatch} from 'react-redux'
-import {useEffect} from 'react'
-import {fetchUsers} from '../features/users/userSlice'
-import {RootState} from '../redux/store'
 import {Box, Grid, Typography} from '@mui/material'
 import {NavBar} from './NavBar'
 import {products} from '../products'
 import {Product} from '../types/types'
-import {AppDispatch} from '../redux/store'
 
 export const ProductList = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  // const getUsers = useSelector((state: RootState) => state.user.userList)
-  const getStatus = useSelector((state: RootState) => state.user.status)
-
-  useEffect(() => {
-    if (getStatus === 'idle') {
-      dispatch(fetchUsers())
-    }
-  }, [])
-
   return (
     <Box>
       <NavBar />
@@ -53,23 +38,6 @@ export const ProductList = () => {
             </Grid>
           ))}
       </Grid>
-      {/* <Box
-        display='grid'
-        justifyItems='center'
-        marginTop='20px'
-        marginBottom='20px'
-      >
-        {getUsers &&
-          getUsers.map((user: any) => (
-            <Box key={user.name}>
-              <div>
-                <img src={user.picture} />
-                <p>{user.name}</p>
-                <p>{user.email}</p>
-              </div>
-            </Box>
-          ))}
-      </Box> */}
     </Box>
   )
 }

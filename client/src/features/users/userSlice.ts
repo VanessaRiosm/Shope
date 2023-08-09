@@ -5,21 +5,23 @@ const URL = 'http://localhost:3000'
 
 // como se remplaza el any en esta interfaz
 interface UsersState {
-  userList: any[]
+  user: any | null
   status: string
   rol: string
 }
 
 const initialState = {
-  userList: [],
+  user: null,
   status: 'idle',
   rol: 'other',
 } as UsersState
 
-export const fetchUsers: any = createAsyncThunk(
-  'users/fetchUsers',
-  async () => {
-    const response = await axios.get(`${URL}/users`)
+export const fetchLogin: any = createAsyncThunk(
+  'users/fetchLogin',
+  async (data: any) => {
+    console.log(data)
+    const response = await axios.post(`${URL}/auth/login`, data)
+
     return response.data
   }
 )
@@ -31,12 +33,13 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUsers.pending, (state) => {
+      .addCase(fetchLogin.pending, (state) => {
         // Add user to the state array
         state.status = 'loading'
       })
-      .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.userList.push(action.payload)
+      .addCase(fetchLogin.fulfilled, (state, action) => {
+        console.log(action.payload)
+        localStorage.setItem('token', action.payload)
         state.status = 'success'
       })
   },
