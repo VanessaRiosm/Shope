@@ -14,18 +14,27 @@ import {Link} from 'react-router-dom'
 import {AiOutlineUser} from 'react-icons/ai'
 
 const formSchema = Yup.object().shape({
+  Username: Yup.string()
+    .required('Campo Requerido')
+    .min(5, 'minimo 5 caracteres')
+    .max(25, 'maximo 25 caracteres'),
+
   Email: Yup.string()
-    .required('campo requerido')
+    .required('Campo Requerido')
     .email('correo electronico invalido')
     .max(25, 'maximo 25 caracteres'),
 
   Password: Yup.string()
-    .required('campo requerido')
+    .required('Campo Requerido')
     .min(5, 'minimo 5 caracteres')
     .max(15, 'maximo 15 caracteres'),
+
+  ConfirmPassword: Yup.string()
+    .required('Campo Requerido')
+    .oneOf([Yup.ref('Password')], 'la contraseña no coincide'),
 })
 
-export const Login = () => {
+export const Register = () => {
   return (
     <Container component='main' maxWidth='lg'>
       <Box
@@ -74,21 +83,54 @@ export const Login = () => {
             >
               <AiOutlineUser size='35px' />
               <Typography component='h1' variant='h5'>
-                Inicia Sesión
+                Regístrate
               </Typography>
 
               <Box mt='20px' width='100%'>
                 <Formik
                   initialValues={{
+                    Username: '',
                     Email: '',
                     Password: '',
+                    ConfirmPassword: '',
                   }}
                   validationSchema={formSchema}
                   onSubmit={(values: any) => console.log(values)}
                 >
                   <Form>
                     <FormGroup>
-                      <label htmlFor='Email' id='Email'>
+                      <label
+                        htmlFor='Username'
+                        id='Username'
+                        style={{marginTop: '10px'}}
+                      >
+                        {' '}
+                        Nombre de usuario:
+                      </label>
+
+                      <Field
+                        name='Username'
+                        placeholder='Yourname123'
+                        type='user'
+                        style={{
+                          margin: '5px 0px 0px 0px',
+                          padding: '7px',
+                          width: '100%',
+                          height: '45px',
+                        }}
+                      />
+
+                      <Typography color='red'>
+                        <ErrorMessage name='Username' component='div' />
+                      </Typography>
+                    </FormGroup>
+
+                    <FormGroup>
+                      <label
+                        htmlFor='Email'
+                        id='Email'
+                        style={{marginTop: '10px'}}
+                      >
                         {' '}
                         Correo Electronico:
                       </label>
@@ -106,7 +148,7 @@ export const Login = () => {
                       />
 
                       <Typography color='red'>
-                        <ErrorMessage name='Email' component='Box' />
+                        <ErrorMessage name='Email' component='div' />
                       </Typography>
                     </FormGroup>
 
@@ -131,7 +173,32 @@ export const Login = () => {
                         }}
                       />
                       <Typography color='red'>
-                        <ErrorMessage name='Password' component='Box' />
+                        <ErrorMessage name='Password' component='div' />
+                      </Typography>
+                    </FormGroup>
+
+                    <FormGroup>
+                      <label
+                        htmlFor='ConfirmPassword'
+                        id='ConfirmPassword'
+                        style={{marginTop: '10px'}}
+                      >
+                        {' '}
+                        Confirmar Contraseña:
+                      </label>
+                      <Field
+                        name='ConfirmPassword'
+                        placeholder='Confirmar contraseña *'
+                        type='password'
+                        style={{
+                          margin: '10px 0px 0px 0px',
+                          padding: '7px',
+                          width: '100%',
+                          height: '45px',
+                        }}
+                      />
+                      <Typography color='red'>
+                        <ErrorMessage name='ConfirmPassword' component='div' />
                       </Typography>
                     </FormGroup>
 
@@ -147,14 +214,14 @@ export const Login = () => {
                     <Grid container>
                       <Grid>
                         <Link
-                          to={'/Register'}
+                          to={'/login'}
                           style={{
                             textDecoration: 'none',
                             color: '#107acc',
                             margin: '20px 0 10px 0',
                           }}
                         >
-                          {'¿No tienes cuenta? Registrate'}
+                          {'¿Ya tienes cuenta? Inicia Sesión'}
                         </Link>
                       </Grid>
                     </Grid>
