@@ -1,5 +1,6 @@
 import {
   Button,
+  Alert,
   CssBaseline,
   FormGroup,
   Paper,
@@ -10,9 +11,10 @@ import {
 import {Container} from '@mui/material'
 import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {AiOutlineUser} from 'react-icons/ai'
 import {useDispatch} from 'react-redux'
+import {useState} from 'react'
 import {fetchLogin} from '../features/users/userSlice'
 
 const formSchema = Yup.object().shape({
@@ -28,7 +30,10 @@ const formSchema = Yup.object().shape({
 })
 
 export const Login = () => {
+  const history = useNavigate()
   const dispatch = useDispatch()
+
+  const [viewError, setViewError] = useState('noShow')
 
   return (
     <Container component='main' maxWidth='lg'>
@@ -81,6 +86,20 @@ export const Login = () => {
                 Inicia Sesión
               </Typography>
 
+              {viewError === 'show' ? (
+                <div>
+                  <Alert
+                    onClose={() => {
+                      setViewError('noShow')
+                    }}
+                    severity='error'
+                    sx={{mt: '10px', width: '100%'}}
+                  >
+                    Usuario o contraseña incorrecta
+                  </Alert>
+                </div>
+              ) : null}
+
               <Box mt='20px' width='100%'>
                 <Formik
                   initialValues={{
@@ -88,7 +107,20 @@ export const Login = () => {
                     password: '',
                   }}
                   validationSchema={formSchema}
-                  onSubmit={(values: any) => dispatch(fetchLogin(values))}
+                  onSubmit={async (values: any) => {
+                    try {
+                      const resp = await dispatch(fetchLogin(values))
+
+                      console.log(resp)
+                      if (resp.payload.token) {
+                        history('/', {replace: true})
+                      } else if (resp.payload === 'no user found') {
+                        setViewError('show')
+                      } else console.log('ninguno sirve')
+                    } catch (error) {
+                      throw Error
+                    }
+                  }}
                 >
                   <Form>
                     <FormGroup>

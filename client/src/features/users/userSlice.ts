@@ -19,7 +19,6 @@ const initialState = {
 export const fetchLogin: any = createAsyncThunk(
   'users/fetchLogin',
   async (data: any) => {
-    console.log(data)
     const response = await axios.post(`${URL}/auth/login`, data)
 
     return response.data
@@ -38,8 +37,9 @@ export const userSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchLogin.fulfilled, (state, action) => {
-        console.log(action.payload)
-        localStorage.setItem('token', action.payload)
+        if (action.payload.token)
+          localStorage.setItem('token', action.payload.token)
+
         state.status = 'success'
       })
   },
