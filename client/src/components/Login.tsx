@@ -105,14 +105,9 @@ export const Login = () => {
                         }}
                       />
 
-                      <ErrorMessage
-                        name='Email'
-                        component='div'
-                        style={{
-                          color: 'red',
-                          marginBottom: '5px',
-                        }}
-                      />
+                      <Typography color='red'>
+                        <ErrorMessage name='Email' component='Box' />
+                      </Typography>
                     </FormGroup>
 
                     <FormGroup>
@@ -135,14 +130,9 @@ export const Login = () => {
                           height: '45px',
                         }}
                       />
-                      <ErrorMessage
-                        name='Password'
-                        component='div'
-                        style={{
-                          color: 'red',
-                          marginBottom: '5px',
-                        }}
-                      />
+                      <Typography color='red'>
+                        <ErrorMessage name='Password' component='Box' />
+                      </Typography>
                     </FormGroup>
 
                     <Button
