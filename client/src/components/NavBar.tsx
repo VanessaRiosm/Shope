@@ -176,10 +176,25 @@ export const NavBar = () => {
                 <MenuItem onClick={handleClose}>Perfil</MenuItem>
                 <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
               </div>
+            ) : rol === 'user' ? (
+              <div>
+                <MenuItem onClick={handleClose}>Mi perfil</MenuItem>
+                <MenuItem onClick={handleClose}>salir </MenuItem>{' '}
+              </div>
             ) : (
               <div>
-                <MenuItem onClick={handleClose}>Iniciar Sesion</MenuItem>
-                <MenuItem onClick={handleClose}>Registrarme</MenuItem>{' '}
+                <Link
+                  to={'/login'}
+                  style={{textDecoration: 'none', color: 'black'}}
+                >
+                  <MenuItem>Iniciar Sesion</MenuItem>
+                </Link>
+                <Link
+                  to={'/register'}
+                  style={{textDecoration: 'none', color: 'black'}}
+                >
+                  <MenuItem>Registrarme</MenuItem>
+                </Link>
               </div>
             )}
           </Menu>

@@ -13,7 +13,7 @@ interface UsersState {
 const initialState = {
   userList: [],
   status: 'idle',
-  rol: 'admin',
+  rol: 'other',
 } as UsersState
 
 export const fetchUsers: any = createAsyncThunk(
