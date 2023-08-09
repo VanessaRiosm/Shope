@@ -1,10 +1,7 @@
 import {Schema, model} from 'mongoose'
 
 const userSchema = new Schema({
-  name: {
-    type: String,
-  },
-  picture: {
+  username: {
     type: String,
   },
   email: {
@@ -18,7 +15,7 @@ const userSchema = new Schema({
   },
   rol: {
     type: String,
-    default: 'client',
+    default: 'user',
   },
   cart: {
     type: String,

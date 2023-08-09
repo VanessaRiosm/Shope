@@ -7,7 +7,6 @@ export const login = async (req: Request, res: Response) => {
     const {email, password} = req.body
     const findUser = await User.findOne({email: email})
 
-    console.log(email, password)
     if (findUser) {
       if (findUser.password === password) {
         const payload = {

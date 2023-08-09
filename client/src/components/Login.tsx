@@ -20,13 +20,13 @@ import {fetchLogin} from '../features/users/userSlice'
 const formSchema = Yup.object().shape({
   email: Yup.string()
     .required('campo requerido')
-    .email('correo electronico invalido')
-    .max(25, 'maximo 25 caracteres'),
+    .max(50, 'maximo 50 caracteres')
+    .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'correo electronico invalido'),
 
   password: Yup.string()
     .required('campo requerido')
-    .min(3, 'minimo 3 caracteres')
-    .max(15, 'maximo 15 caracteres'),
+    .min(8, 'minimo 8 caracteres')
+    .max(16, 'maximo 15 caracteres'),
 })
 
 export const Login = () => {
@@ -111,7 +111,6 @@ export const Login = () => {
                     try {
                       const resp = await dispatch(fetchLogin(values))
 
-                      console.log(resp)
                       if (resp.payload.token) {
                         history('/', {replace: true})
                       } else if (resp.payload === 'no user found') {

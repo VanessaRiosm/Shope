@@ -25,6 +25,15 @@ export const fetchLogin: any = createAsyncThunk(
   }
 )
 
+export const fetchRegister: any = createAsyncThunk(
+  'users/fetchRegister',
+  async (data: any) => {
+    const response = await axios.post(`${URL}/users/`, data)
+
+    return response.data
+  }
+)
+
 export const userSlice = createSlice({
   name: 'users',
   initialState,
@@ -32,13 +41,24 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      //Login
       .addCase(fetchLogin.pending, (state) => {
-        // Add user to the state array
         state.status = 'loading'
       })
       .addCase(fetchLogin.fulfilled, (state, action) => {
         if (action.payload.token)
           localStorage.setItem('token', action.payload.token)
+
+        state.status = 'success'
+      })
+
+      //Register
+      .addCase(fetchRegister.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchRegister.fulfilled, (state) => {
+        // if (action.payload.token)
+        //   localStorage.setItem('token', action.payload.token)
 
         state.status = 'success'
       })

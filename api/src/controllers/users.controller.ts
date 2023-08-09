@@ -13,12 +13,13 @@ export const getUsers = async (req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const {name, picture, email, password, rol} = req.body
+    const {username, email, password, confirmPassword, rol} = req.body
 
-    if (!name || !email || !password)
+    if (!username || !email || !password)
       return res.status(400).json('incomplete data')
+    if (password !== confirmPassword) return res.status(400).json('bad data')
 
-    const newUser = await User.create({name, picture, email, password, rol})
+    const newUser = await User.create({username, email, password, rol})
 
     res.json(newUser)
   } catch (err) {

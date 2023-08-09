@@ -6,12 +6,16 @@ import {
   Box,
   Grid,
   Typography,
+  Alert,
 } from '@mui/material'
 import {Container} from '@mui/material'
 import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {AiOutlineUser} from 'react-icons/ai'
+import {fetchRegister} from '../features/users/userSlice'
+import {useDispatch} from 'react-redux'
+import {useState} from 'react'
 
 const formSchema = Yup.object().shape({
   username: Yup.string()
@@ -21,20 +25,25 @@ const formSchema = Yup.object().shape({
 
   email: Yup.string()
     .required('Campo Requerido')
-    .email('correo electronico invalido')
-    .max(25, 'maximo 25 caracteres'),
+    .max(50, 'maximo 50 caracteres')
+    .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'correo electronico invalido'),
 
   password: Yup.string()
     .required('Campo Requerido')
-    .min(5, 'minimo 5 caracteres')
+    .min(8, 'minimo 8 caracteres')
     .max(15, 'maximo 15 caracteres'),
 
-  ConfirmPassword: Yup.string()
+  confirmPassword: Yup.string()
     .required('Campo Requerido')
-    .oneOf([Yup.ref('Password')], 'la contraseña no coincide'),
+    .oneOf([Yup.ref('password')], 'la contraseña no coincide'),
 })
 
 export const Register = () => {
+  const history = useNavigate()
+  const dispatch = useDispatch()
+
+  const [viewSuccess, setViewSuccess] = useState('noShow')
+
   return (
     <Container component='main' maxWidth='lg'>
       <Box
@@ -86,6 +95,14 @@ export const Register = () => {
                 Regístrate
               </Typography>
 
+              {viewSuccess === 'show' ? (
+                <div>
+                  <Alert severity='success' sx={{mt: '10px', width: '100%'}}>
+                    Usuario creado existosamente
+                  </Alert>
+                </div>
+              ) : null}
+
               <Box mt='20px' width='100%'>
                 <Formik
                   initialValues={{
@@ -95,7 +112,14 @@ export const Register = () => {
                     confirmPassword: '',
                   }}
                   validationSchema={formSchema}
-                  onSubmit={(values: any) => console.log(values)}
+                  onSubmit={async (values: any, {resetForm}) => {
+                    resetForm()
+                    dispatch(fetchRegister(values))
+                    setViewSuccess('show')
+                    setTimeout(() => {
+                      history('/login', {replace: true})
+                    }, 1500)
+                  }}
                 >
                   <Form>
                     <FormGroup>
@@ -121,7 +145,7 @@ export const Register = () => {
                       />
 
                       <Typography color='red'>
-                        <ErrorMessage name='username' component='div' />
+                        <ErrorMessage name='username' />
                       </Typography>
                     </FormGroup>
 
@@ -148,7 +172,7 @@ export const Register = () => {
                       />
 
                       <Typography color='red'>
-                        <ErrorMessage name='email' component='div' />
+                        <ErrorMessage name='email' />
                       </Typography>
                     </FormGroup>
 
@@ -173,21 +197,21 @@ export const Register = () => {
                         }}
                       />
                       <Typography color='red'>
-                        <ErrorMessage name='password' component='div' />
+                        <ErrorMessage name='password' />
                       </Typography>
                     </FormGroup>
 
                     <FormGroup>
                       <label
-                        htmlFor='ConfirmPassword'
-                        id='ConfirmPassword'
+                        htmlFor='confirmPassword'
+                        id='confirmPassword'
                         style={{marginTop: '10px'}}
                       >
                         {' '}
                         Confirmar Contraseña:
                       </label>
                       <Field
-                        name='ConfirmPassword'
+                        name='confirmPassword'
                         placeholder='Confirmar contraseña *'
                         type='password'
                         style={{
@@ -198,7 +222,7 @@ export const Register = () => {
                         }}
                       />
                       <Typography color='red'>
-                        <ErrorMessage name='ConfirmPassword' component='div' />
+                        <ErrorMessage name='confirmPassword' />
                       </Typography>
                     </FormGroup>
 
