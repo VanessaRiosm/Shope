@@ -84,7 +84,7 @@ export const Login = () => {
                     Password: '',
                   }}
                   validationSchema={formSchema}
-                  onSubmit={(values) => console.log(values)}
+                  onSubmit={(values: any) => console.log(values)}
                 >
                   <Form>
                     <FormGroup>
@@ -107,7 +107,7 @@ export const Login = () => {
 
                       <ErrorMessage
                         name='Email'
-                        component='label'
+                        component='div'
                         style={{
                           color: 'red',
                           marginBottom: '5px',
@@ -137,7 +137,7 @@ export const Login = () => {
                       />
                       <ErrorMessage
                         name='Password'
-                        component='label'
+                        component='div'
                         style={{
                           color: 'red',
                           marginBottom: '5px',
