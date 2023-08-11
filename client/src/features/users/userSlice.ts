@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const URL = process.env.URL2
+const URL = process.env.URL
 
 // como se remplaza el any en esta interfaz
 interface UsersState {
