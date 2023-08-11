@@ -39,7 +39,7 @@ export const fetchLogin: any = createAsyncThunk(
       })
 
       // console.log(await response.json())
-      return await response.json()
+      return await response.text()
     } catch (err: any) {
       return err.message
     }
