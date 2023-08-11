@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 
-const URL = process.env.URL
+const URL = import.meta.env.VITE_APP_URL
 
 // como se remplaza el any en esta interfaz
 interface UsersState {
@@ -16,12 +16,27 @@ const initialState = {
   rol: 'other',
 } as UsersState
 
+// export const fetchLogin: any = createAsyncThunk(
+//   'users/fetchLogin',
+//   async (data: any) => {
+//     const response = await axios.post(`${URL}/auth/login`, data)
+
+//     return response.data
+//   }
+// )
+
 export const fetchLogin: any = createAsyncThunk(
   'users/fetchLogin',
   async (data: any) => {
-    const response = await axios.post(`${URL}/auth/login`, data)
+    const response = await fetch(`${URL}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
 
-    return response.data
+    return await response.json()
   }
 )
 
