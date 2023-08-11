@@ -31,7 +31,7 @@ export const fetchLogin: any = createAsyncThunk(
     try {
       const response = await fetch(`${URL}/auth/login`, {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
         },
