@@ -14,7 +14,6 @@ export const login = async (req: Request, res: Response) => {
           email: email,
         }
 
-        console.log('findUser:', findUser)
         const token = jwt.sign(payload, process.env.JWT_SW || '')
         console.log('token:', token)
         console.log('respuesta:', res.json({token}))
