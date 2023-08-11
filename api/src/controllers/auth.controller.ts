@@ -7,7 +7,6 @@ export const login = async (req: Request, res: Response) => {
     const {email, password} = req.body
 
     const findUser = await User.findOne({email: email})
-    console.log(findUser)
     if (findUser) {
       if (findUser.password === password) {
         const payload = {
@@ -15,7 +14,10 @@ export const login = async (req: Request, res: Response) => {
           email: email,
         }
 
+        console.log('findUser:', findUser)
         const token = jwt.sign(payload, process.env.JWT_SW || '')
+        console.log('token:', token)
+        console.log('respuesta:', res.json({token}))
         return res.json({token})
       }
     }

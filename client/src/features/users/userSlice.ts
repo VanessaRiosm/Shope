@@ -38,6 +38,7 @@ export const fetchLogin: any = createAsyncThunk(
         body: JSON.stringify(data),
       })
 
+      // console.log(await response.json())
       return await response.json()
     } catch (err: any) {
       return err.message
