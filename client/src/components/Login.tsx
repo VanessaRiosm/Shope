@@ -110,7 +110,7 @@ export const Login = () => {
                   onSubmit={async (values: any) => {
                     try {
                       const resp = await dispatch(fetchLogin(values))
-                      // console.log(resp.payload)
+                      console.log('el consolellog', resp.payload)
                       if (resp.payload.token) {
                         history('/', {replace: true})
                       } else if (resp.payload === 'no user found') {
