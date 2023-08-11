@@ -5,9 +5,9 @@ import {User} from '../models/userSchema'
 export const login = async (req: Request, res: Response) => {
   try {
     const {email, password} = req.body
-    console.log(email, password)
-    const findUser = await User.findOne({email: email})
 
+    const findUser = await User.findOne({email: email})
+    console.log(findUser)
     if (findUser) {
       if (findUser.password === password) {
         const payload = {
