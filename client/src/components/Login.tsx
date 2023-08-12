@@ -110,7 +110,7 @@ export const Login = () => {
                   onSubmit={async (values: any) => {
                     try {
                       const resp = await dispatch(fetchLogin(values))
-                      console.log('el consolel log', resp.payload)
+
                       if (resp.payload.token) {
                         history('/', {replace: true})
                       } else if (resp.payload === 'no user found') {
@@ -174,6 +174,9 @@ export const Login = () => {
                       type='submit'
                       fullWidth
                       variant='contained'
+                      style={{
+                        backgroundColor: '#4518D9',
+                      }}
                       sx={{mt: 3, mb: 2}}
                     >
                       {' '}
@@ -185,7 +188,7 @@ export const Login = () => {
                           to={'/Register'}
                           style={{
                             textDecoration: 'none',
-                            color: '#107acc',
+                            color: '#4518D9',
                             margin: '20px 0 10px 0',
                           }}
                         >

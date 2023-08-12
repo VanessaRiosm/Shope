@@ -17,23 +17,28 @@ export const Footerr = () => {
         margin='60px 70px 50px 70px'
         padding='30px'
         justifyContent='space-around'
+        alignItems='center'
         display={{xs: 'grid', sm: 'flex'}}
-        bgcolor={{
-          xs: 'red',
-          sm: 'green',
-          md: 'blue',
-          lg: 'pink',
-          xl: 'purple',
-        }}
       >
         <Box>
-          <p>Regístrate y obtén un 25% de descuento</p>
-          <p style={{fontWeight: 'bold', fontSize: '25px'}}>
-            EN TU PRIMERA COMPRA
-          </p>
+          <Box>
+            <p>Regístrate y obtén un 25% de descuento</p>
+            <p style={{fontWeight: 'bold', fontSize: '25px'}}>
+              EN TU PRIMERA COMPRA
+            </p>
+          </Box>
         </Box>
 
-        <Button>REGISTRARSE</Button>
+        <Box>
+          <Button
+            variant='contained'
+            style={{
+              backgroundColor: '#4518D9 ',
+            }}
+          >
+            REGISTRARSE
+          </Button>
+        </Box>
       </Box>
 
       <Box

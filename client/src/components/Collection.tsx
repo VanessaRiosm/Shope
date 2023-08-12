@@ -19,7 +19,7 @@ const Hr = styled('hr')(({title}: {title: string}) => ({
 
   '&:before': {
     content: '""',
-    background: 'linear-gradient(to right, transparent, #000, transparent)',
+    background: 'linear-gradient(to right, transparent, #4518D9, transparent)',
     position: 'absolute',
     left: '0',
     top: '50%',

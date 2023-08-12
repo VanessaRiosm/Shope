@@ -230,10 +230,13 @@ export const Register = () => {
                       type='submit'
                       fullWidth
                       variant='contained'
+                      style={{
+                        backgroundColor: '#4518D9',
+                      }}
                       sx={{mt: 3, mb: 2}}
                     >
                       {' '}
-                      Entrar
+                      Registrarme
                     </Button>
                     <Grid container>
                       <Grid>
@@ -241,7 +244,7 @@ export const Register = () => {
                           to={'/login'}
                           style={{
                             textDecoration: 'none',
-                            color: '#107acc',
+                            color: '#4518D9',
                             margin: '20px 0 10px 0',
                           }}
                         >

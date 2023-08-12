@@ -15,8 +15,7 @@ export const login = async (req: Request, res: Response) => {
         }
 
         const token = jwt.sign(payload, process.env.JWT_SW || '')
-        console.log('token:', token)
-        console.log('respuesta:', res.json({token}))
+
         return res.json({token})
       }
     }
