@@ -90,7 +90,12 @@ export const Register = () => {
                 alignItems: 'center',
               }}
             >
-              <AiOutlineUser size='35px' />
+              <Link to={'/'}>
+                <img
+                  src='https://static.vecteezy.com/system/resources/previews/003/275/730/original/shopping-bag-store-logo-online-shopping-logo-design-free-vector.jpg'
+                  style={{width: '100px', height: '100px'}}
+                />
+              </Link>
               <Typography component='h1' variant='h5'>
                 Regístrate
               </Typography>
