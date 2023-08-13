@@ -4,7 +4,7 @@ const category = [
   {
     title: 'vestidos',
     image:
-      'https://images.hola.com/mx/imagenes/moda/2023041147401/blusas-tops-romanticos-tendencia-primavera-verano-2023-rd/0-221-564/blusas-romanticas-tendencia-primavera-verano-2023-t.jpg',
+      'https://www.studiof.com.co/arquivos/Categoria-Ropa-Pantalones-100423.jpg?v=638167331724970000',
   },
   {
     title: 'zapatos',
@@ -22,68 +22,105 @@ export const Categories = (props: any) => {
   return (
     <Box>
       {props.siP === 'si' ? (
+        //box principal
         <Box
           margin='60px 20px 60px 20px'
-          maxHeight={{xs: '450px', sm: '550px', md: '650px', xl: '700px'}}
-          // maxWidth={{xl: '2500px'}}
+          maxHeight={{xs: '450px', sm: '550px', md: '650px', xl: '800px'}}
           display='flex'
         >
-          {}
-          <img
-            src={category[2].image}
-            style={{width: '60%', maxHeight: '100%', objectFit: 'cover'}}
-          />
-          <Box width='40%'>
+          {/* primer imagen */}
+          <Box marginRight='2px' width='60%' maxHeight='100%'>
             <img
-              src={category[0].image}
+              src={category[2].image}
               style={{
-                width: '100%',
-                maxHeight: '50%',
-                minHeight: '50%',
+                maxHeight: '100%',
+                minHeight: '100%',
                 objectFit: 'cover',
+                width: '99.5%',
               }}
             />
-            <img
-              src={category[1].image}
-              style={{
-                width: '100%',
-                maxHeight: '50%',
-                minHeight: '50%',
-                objectFit: 'cover',
-              }}
-            />
+          </Box>
+
+          {/* Box de segunda y tercer imagen */}
+          <Box width='40%' maxHeight='100%'>
+            {/* Segunda imagen */}
+            <Box height='50%' width='100%'>
+              <img
+                src={category[0].image}
+                style={{
+                  objectFit: 'cover',
+                  maxWidth: '100%',
+                  minWidth: '100%',
+                  maxHeight: '100%',
+                  minHeight: '100%',
+                }}
+              />
+            </Box>
+
+            {/* tercer imagen */}
+            <Box height='50%' width='100%' paddingTop='4px'>
+              <img
+                src={category[1].image}
+                style={{
+                  objectFit: 'cover',
+                  maxWidth: '100%',
+                  minWidth: '100%',
+                  maxHeight: '99.10%',
+                  minHeight: '99.10%',
+                }}
+              />
+            </Box>
           </Box>
         </Box>
       ) : (
+        //box principal
         <Box
           margin='60px 20px 60px 20px'
-          maxHeight={{xs: '450px', sm: '550px', md: '650px'}}
+          maxHeight={{xs: '450px', sm: '550px', md: '650px', xl: '800px'}}
           display='flex'
         >
-          <Box width='40%'>
+          {/* Box de segunda y tercer imagen */}
+          <Box width='40%' maxHeight='100%'>
+            {/* Segunda imagen */}
+            <Box height='50%' width='100%'>
+              <img
+                src={category[1].image}
+                style={{
+                  objectFit: 'cover',
+                  maxWidth: '100%',
+                  minWidth: '100%',
+                  maxHeight: '100%',
+                  minHeight: '100%',
+                }}
+              />
+            </Box>
+
+            {/* tercer imagen */}
+            <Box height='50%' width='100%' paddingTop='4px'>
+              <img
+                src={category[0].image}
+                style={{
+                  objectFit: 'cover',
+                  maxWidth: '100%',
+                  minWidth: '100%',
+                  maxHeight: '99.10%',
+                  minHeight: '99.10%',
+                }}
+              />
+            </Box>
+          </Box>
+          {/* primer imagen */}
+          <Box marginLeft='3px' width='60%' maxHeight='100%'>
             <img
-              src={category[1].image}
+              src={category[2].image}
               style={{
-                width: '100%',
-                maxHeight: '50%',
-                minHeight: '50%',
+                maxHeight: '100%',
+                minHeight: '100%',
                 objectFit: 'cover',
-              }}
-            />
-            <img
-              src={category[0].image}
-              style={{
-                width: '100%',
-                maxHeight: '50%',
-                minHeight: '50%',
-                objectFit: 'cover',
+                width: '99.5%',
               }}
             />
           </Box>
-          <img
-            src={category[2].image}
-            style={{width: '60%', maxHeight: '100%', objectFit: 'cover'}}
-          />
         </Box>
       )}
     </Box>
