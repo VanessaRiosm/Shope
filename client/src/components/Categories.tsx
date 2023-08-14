@@ -1,4 +1,5 @@
 import {Box, Typography, createTheme, ThemeProvider} from '@mui/material'
+import {Link} from 'react-router-dom'
 
 const category = [
   {
@@ -45,64 +46,74 @@ export const Categories = (props: any) => {
               display='inline-block'
               textAlign='center'
             >
-              <img
-                src={category[2].image}
-                style={{
-                  maxHeight: '100%',
-                  minHeight: '100%',
-                  objectFit: 'cover',
-                  width: '99.5%',
-                }}
-              />
-
-              <Typography
-                position='absolute'
-                fontFamily='monospace'
-                top='50%'
-                left='50%'
-                sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
-                style={{
-                  transform: 'translate(-50%, -50%)',
-                  WebkitTextStroke: '1px #4518d9',
-                }}
+              <Link
+                to={`/productlist`}
+                style={{textDecoration: 'none', color: 'black'}}
               >
-                Chaquetas
-              </Typography>
+                <img
+                  src={category[2].image}
+                  style={{
+                    maxHeight: '100%',
+                    minHeight: '100%',
+                    objectFit: 'cover',
+                    width: '99.5%',
+                  }}
+                />
+
+                <Typography
+                  position='absolute'
+                  fontFamily='monospace'
+                  top='50%'
+                  left='50%'
+                  sx={{typography: {xs: 'h4', sm: 'h2', md: 'h1'}}}
+                  style={{
+                    transform: 'translate(-50%, -50%)',
+                    WebkitTextStroke: '0.8px #4518d9',
+                  }}
+                >
+                  Chaquetas
+                </Typography>
+              </Link>
             </Box>
 
             {/* Box de segunda y tercer imagen */}
             <Box width='40%' maxHeight='100%'>
               {/* Segunda imagen */}
               <Box
-                height='50%'
+                height='49.5%'
                 width='100%'
                 position='relative'
                 display='inline-block'
                 textAlign='center'
               >
-                <img
-                  src={category[0].image}
-                  style={{
-                    objectFit: 'cover',
-                    maxWidth: '100%',
-                    minWidth: '100%',
-                    maxHeight: '100%',
-                    minHeight: '100%',
-                  }}
-                />
-                <Typography
-                  position='absolute'
-                  fontFamily='monospace'
-                  top='50%'
-                  left='50%'
-                  sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
-                  style={{
-                    transform: 'translate(-50%, -50%)',
-                    WebkitTextStroke: '1px #4518d9',
-                  }}
+                <Link
+                  to={`/productlist`}
+                  style={{textDecoration: 'none', color: 'black'}}
                 >
-                  Vestidos
-                </Typography>
+                  <img
+                    src={category[0].image}
+                    style={{
+                      objectFit: 'cover',
+                      maxWidth: '100%',
+                      minWidth: '100%',
+                      maxHeight: '100%',
+                      minHeight: '100%',
+                    }}
+                  />
+                  <Typography
+                    position='absolute'
+                    fontFamily='monospace'
+                    top='50%'
+                    left='50%'
+                    sx={{typography: {xs: 'h4', sm: 'h2', md: 'h1'}}}
+                    style={{
+                      transform: 'translate(-50%, -50%)',
+                      WebkitTextStroke: '0.8px #4518d9',
+                    }}
+                  >
+                    Vestidos
+                  </Typography>
+                </Link>
               </Box>
 
               {/* tercer imagen */}
@@ -114,29 +125,34 @@ export const Categories = (props: any) => {
                 display='inline-block'
                 textAlign='center'
               >
-                <img
-                  src={category[1].image}
-                  style={{
-                    objectFit: 'cover',
-                    maxWidth: '100%',
-                    minWidth: '100%',
-                    maxHeight: '99.10%',
-                    minHeight: '99.10%',
-                  }}
-                />
-                <Typography
-                  position='absolute'
-                  fontFamily='monospace'
-                  top='50%'
-                  left='50%'
-                  sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
-                  style={{
-                    transform: 'translate(-50%, -50%)',
-                    WebkitTextStroke: '1px #4518d9',
-                  }}
+                <Link
+                  to={`/productlist`}
+                  style={{textDecoration: 'none', color: 'black'}}
                 >
-                  Jeans
-                </Typography>
+                  <img
+                    src={category[1].image}
+                    style={{
+                      objectFit: 'cover',
+                      maxWidth: '100%',
+                      minWidth: '100%',
+                      maxHeight: '99%',
+                      minHeight: '99%',
+                    }}
+                  />
+                  <Typography
+                    position='absolute'
+                    fontFamily='monospace'
+                    top='50%'
+                    left='50%'
+                    sx={{typography: {xs: 'h4', sm: 'h2', md: 'h1'}}}
+                    style={{
+                      transform: 'translate(-50%, -50%)',
+                      WebkitTextStroke: '0.8px #4518d9',
+                    }}
+                  >
+                    Jeans
+                  </Typography>
+                </Link>
               </Box>
             </Box>
           </ThemeProvider>
@@ -153,36 +169,41 @@ export const Categories = (props: any) => {
             <Box width='40%' maxHeight='100%'>
               {/* Segunda imagen */}
               <Box
-                height='50%'
+                height='49.5%'
                 width='100%'
                 position='relative'
                 display='inline-block'
                 textAlign='center'
               >
-                <img
-                  src={category[1].image}
-                  style={{
-                    objectFit: 'cover',
-                    maxWidth: '100%',
-                    minWidth: '100%',
-                    maxHeight: '100%',
-                    minHeight: '100%',
-                  }}
-                />
-
-                <Typography
-                  position='absolute'
-                  fontFamily='monospace'
-                  top='50%'
-                  left='50%'
-                  sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
-                  style={{
-                    transform: 'translate(-50%, -50%)',
-                    WebkitTextStroke: '1px #4518d9',
-                  }}
+                <Link
+                  to={`/productlist`}
+                  style={{textDecoration: 'none', color: 'black'}}
                 >
-                  Pantalones
-                </Typography>
+                  <img
+                    src={category[1].image}
+                    style={{
+                      objectFit: 'cover',
+                      maxWidth: '100%',
+                      minWidth: '100%',
+                      maxHeight: '100%',
+                      minHeight: '100%',
+                    }}
+                  />
+
+                  <Typography
+                    position='absolute'
+                    fontFamily='monospace'
+                    top='50%'
+                    left='50%'
+                    sx={{typography: {xs: 'h3', sm: 'h2', md: 'h1'}}}
+                    style={{
+                      transform: 'translate(-50%, -50%)',
+                      WebkitTextStroke: '0.8px #4518d9',
+                    }}
+                  >
+                    Tejidos
+                  </Typography>
+                </Link>
               </Box>
 
               {/* tercer imagen */}
@@ -194,29 +215,34 @@ export const Categories = (props: any) => {
                 display='inline-block'
                 textAlign='center'
               >
-                <img
-                  src={category[0].image}
-                  style={{
-                    objectFit: 'cover',
-                    maxWidth: '100%',
-                    minWidth: '100%',
-                    maxHeight: '99.10%',
-                    minHeight: '99.10%',
-                  }}
-                />
-                <Typography
-                  position='absolute'
-                  fontFamily='monospace'
-                  top='50%'
-                  left='50%'
-                  sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
-                  style={{
-                    transform: 'translate(-50%, -50%)',
-                    WebkitTextStroke: '1px #4518d9',
-                  }}
+                <Link
+                  to={`/productlist`}
+                  style={{textDecoration: 'none', color: 'black'}}
                 >
-                  Camisas
-                </Typography>
+                  <img
+                    src={category[0].image}
+                    style={{
+                      objectFit: 'cover',
+                      maxWidth: '100%',
+                      minWidth: '100%',
+                      maxHeight: '99.10%',
+                      minHeight: '99.10%',
+                    }}
+                  />
+                  <Typography
+                    position='absolute'
+                    fontFamily='monospace'
+                    top='50%'
+                    left='50%'
+                    sx={{typography: {xs: 'h4', sm: 'h2', md: 'h1'}}}
+                    style={{
+                      transform: 'translate(-50%, -50%)',
+                      WebkitTextStroke: '0.8px #4518d9',
+                    }}
+                  >
+                    Camisas
+                  </Typography>
+                </Link>
               </Box>
             </Box>
             {/* primer imagen */}
@@ -228,28 +254,33 @@ export const Categories = (props: any) => {
               display='inline-block'
               textAlign='center'
             >
-              <img
-                src={category[2].image}
-                style={{
-                  maxHeight: '100%',
-                  minHeight: '100%',
-                  objectFit: 'cover',
-                  width: '99.5%',
-                }}
-              />
-              <Typography
-                position='absolute'
-                fontFamily='monospace'
-                top='50%'
-                left='50%'
-                sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
-                style={{
-                  transform: 'translate(-50%, -50%)',
-                  WebkitTextStroke: '1px #4518d9',
-                }}
+              <Link
+                to={`/productlist`}
+                style={{textDecoration: 'none', color: 'black'}}
               >
-                Tejidos
-              </Typography>
+                <img
+                  src={category[2].image}
+                  style={{
+                    maxHeight: '100%',
+                    minHeight: '100%',
+                    objectFit: 'cover',
+                    width: '99.5%',
+                  }}
+                />
+                <Typography
+                  position='absolute'
+                  fontFamily='monospace'
+                  top='50%'
+                  left='50%'
+                  sx={{typography: {xs: 'h4', sm: 'h2', md: 'h1'}}}
+                  style={{
+                    transform: 'translate(-50%, -50%)',
+                    WebkitTextStroke: '0.8px #4518d9',
+                  }}
+                >
+                  Pantalones
+                </Typography>
+              </Link>
             </Box>
           </ThemeProvider>
         </Box>
