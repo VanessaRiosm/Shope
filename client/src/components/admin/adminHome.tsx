@@ -1,106 +1,124 @@
 import * as React from 'react'
-// import {useState} from 'react'
-import {useSelector} from 'react-redux'
-import {RootState} from '../../redux/store'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
+import {useState} from 'react'
+import {useAppSelector} from '../../hooks'
 import {AiOutlineMenu} from 'react-icons/ai'
-import Container from '@mui/material/Container'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
 import {Link} from 'react-router-dom'
 
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Button,
+  MenuItem,
+  Menu,
+  Fade,
+} from '@mui/material'
+import {AdminProducts} from './AdminProducts'
+import {AdminUsers} from './AdminUsers'
+
 const pages = [
-  {name: 'Productos', page: 'adminProducts'},
-  {name: 'Ofertas', page: 'adminOffers'},
-  {name: 'Envios', page: 'adminShip'},
-  {name: 'Usuarios', page: 'adminUsers'},
+  {id: 1, name: 'Productos'},
+  {id: 2, name: 'Ofertas'},
+  {id: 3, name: 'Envios'},
+  {id: 4, name: 'Usuarios'},
 ]
 
 export const AdminHome = () => {
-  const rol = useSelector((state: RootState) => state.user.rol)
+  //no sirve le rootstate
+  const rol = useAppSelector((state: any) => state.user.rol)
+  const [component, setComponent] = useState('Productos')
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget)
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+  const handleComponent = () => {
+    if (component === 'Productos') return <AdminProducts />
+    if (component === 'Usuarios') return <AdminUsers />
   }
 
   return (
     <div>
       {rol === 'admin' ? (
-        <AppBar position='static' color={'transparent' || '#00e5ff'}>
-          <Container maxWidth='xl'>
-            <Toolbar disableGutters>
-              <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
-                <IconButton
-                  size='large'
-                  aria-label='account of current user'
-                  aria-controls='menu-appbar'
-                  aria-haspopup='true'
-                  onClick={handleOpenNavMenu}
-                  color='inherit'
-                >
-                  <AiOutlineMenu />
-                </IconButton>
+        <Box>
+          <AppBar position='static' color={'transparent' || '#00e5ff'}>
+            <Container maxWidth='xl'>
+              <Toolbar disableGutters>
+                <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
+                  <IconButton
+                    size='large'
+                    aria-label='account of current user'
+                    aria-controls='menu-appbar'
+                    aria-haspopup='true'
+                    onClick={handleClick}
+                    color='inherit'
+                  >
+                    <AiOutlineMenu />
+                  </IconButton>
 
-                <Menu
-                  id='menu-appbar'
-                  anchorEl={anchorElNav}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  open={Boolean(anchorElNav)}
-                  // onClick
-                  sx={{
-                    display: {xs: 'block', md: 'none'},
-                  }}
+                  <Menu
+                    id='fade-menu'
+                    MenuListProps={{
+                      'aria-labelledby': 'fade-button',
+                    }}
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    TransitionComponent={Fade}
+                  >
+                    {pages.map((page) => (
+                      <MenuItem
+                        key={page.id}
+                        onClick={() => {
+                          handleClick
+                          setComponent(page.name)
+                        }}
+                      >
+                        <Typography textAlign='center'>{page.name}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+
+                <Typography
+                  variant='h4'
+                  noWrap
+                  component='div'
+                  sx={{flexGrow: 1, display: {xs: 'block', sm: 'block'}}}
                 >
+                  <Link
+                    to={'/'}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    SHOPE
+                  </Link>
+                </Typography>
+
+                <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                   {pages.map((page) => (
-                    <MenuItem key={page.name} onClick={() => {}}>
-                      <Typography textAlign='center'>{page.name}</Typography>
-                    </MenuItem>
+                    <Box mx={2}>
+                      <Button
+                        key={page.id}
+                        onClick={() => setComponent(page.name)}
+                        sx={{my: 2, color: 'black', display: 'block'}}
+                      >
+                        {page.name}
+                      </Button>
+                    </Box>
                   ))}
-                </Menu>
-              </Box>
-
-              <Typography
-                variant='h4'
-                noWrap
-                component='div'
-                sx={{flexGrow: 1, display: {xs: 'block', sm: 'block'}}}
-              >
-                <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
-                  SHOPE
-                </Link>
-              </Typography>
-
-              <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-                {pages.map((page) => (
-                  <Box mx={2}>
-                    <Button
-                      key={page.name}
-                      // onClick
-                      sx={{my: 2, color: 'black', display: 'block'}}
-                    >
-                      {page.name}
-                    </Button>
-                  </Box>
-                ))}
-              </Box>
-            </Toolbar>
-          </Container>
-        </AppBar>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+          <div className=''>{handleComponent()}</div>
+        </Box>
       ) : null}
     </div>
   )

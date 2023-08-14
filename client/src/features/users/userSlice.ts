@@ -54,7 +54,7 @@ export const fetchRegister: any = createAsyncThunk(
   }
 )
 
-export const userSlice = createSlice({
+export const userSlice: any = createSlice({
   name: 'users',
   initialState,
 
