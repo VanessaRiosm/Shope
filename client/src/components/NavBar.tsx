@@ -1,6 +1,5 @@
 import {styled, alpha} from '@mui/material/styles'
-import {useSelector} from 'react-redux'
-import {RootState} from '../redux/store'
+import {useAppSelector} from '../hooks'
 import {AppBar, Box, Menu, MenuItem} from '@mui/material'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
@@ -63,7 +62,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 
 export const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const rol = useSelector((state: RootState) => state.user.rol)
+  const rol = useAppSelector((state: any) => state.user.rol)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
