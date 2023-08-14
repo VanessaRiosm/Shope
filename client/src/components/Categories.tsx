@@ -1,4 +1,4 @@
-import {Box} from '@mui/material'
+import {Box, Typography, createTheme, ThemeProvider} from '@mui/material'
 
 const category = [
   {
@@ -18,59 +18,128 @@ const category = [
   },
 ]
 
+const categoryFont = createTheme({
+  typography: {
+    fontFamily: ['Dancing Script', 'cursive'].join(','),
+  },
+})
+
 export const Categories = (props: any) => {
   return (
     <Box>
       {props.siP === 'si' ? (
         //box principal
+
         <Box
           margin='60px 20px 60px 20px'
           maxHeight={{xs: '450px', sm: '550px', md: '650px', xl: '800px'}}
           display='flex'
         >
-          {/* primer imagen */}
-          <Box marginRight='2px' width='60%' maxHeight='100%'>
-            <img
-              src={category[2].image}
-              style={{
-                maxHeight: '100%',
-                minHeight: '100%',
-                objectFit: 'cover',
-                width: '99.5%',
-              }}
-            />
-          </Box>
-
-          {/* Box de segunda y tercer imagen */}
-          <Box width='40%' maxHeight='100%'>
-            {/* Segunda imagen */}
-            <Box height='50%' width='100%'>
+          <ThemeProvider theme={categoryFont}>
+            {/* primer imagen */}
+            <Box
+              marginRight='5px'
+              width='60%'
+              maxHeight='100%'
+              position='relative'
+              display='inline-block'
+              textAlign='center'
+            >
               <img
-                src={category[0].image}
+                src={category[2].image}
                 style={{
-                  objectFit: 'cover',
-                  maxWidth: '100%',
-                  minWidth: '100%',
                   maxHeight: '100%',
                   minHeight: '100%',
+                  objectFit: 'cover',
+                  width: '99.5%',
                 }}
               />
+
+              <Typography
+                position='absolute'
+                fontFamily='monospace'
+                top='50%'
+                left='50%'
+                sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
+                style={{
+                  transform: 'translate(-50%, -50%)',
+                  WebkitTextStroke: '1px #4518d9',
+                }}
+              >
+                Chaquetas
+              </Typography>
             </Box>
 
-            {/* tercer imagen */}
-            <Box height='50%' width='100%' paddingTop='4px'>
-              <img
-                src={category[1].image}
-                style={{
-                  objectFit: 'cover',
-                  maxWidth: '100%',
-                  minWidth: '100%',
-                  maxHeight: '99.10%',
-                  minHeight: '99.10%',
-                }}
-              />
+            {/* Box de segunda y tercer imagen */}
+            <Box width='40%' maxHeight='100%'>
+              {/* Segunda imagen */}
+              <Box
+                height='50%'
+                width='100%'
+                position='relative'
+                display='inline-block'
+                textAlign='center'
+              >
+                <img
+                  src={category[0].image}
+                  style={{
+                    objectFit: 'cover',
+                    maxWidth: '100%',
+                    minWidth: '100%',
+                    maxHeight: '100%',
+                    minHeight: '100%',
+                  }}
+                />
+                <Typography
+                  position='absolute'
+                  fontFamily='monospace'
+                  top='50%'
+                  left='50%'
+                  sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
+                  style={{
+                    transform: 'translate(-50%, -50%)',
+                    WebkitTextStroke: '1px #4518d9',
+                  }}
+                >
+                  Vestidos
+                </Typography>
+              </Box>
+
+              {/* tercer imagen */}
+              <Box
+                height='50%'
+                width='100%'
+                paddingTop='4px'
+                position='relative'
+                display='inline-block'
+                textAlign='center'
+              >
+                <img
+                  src={category[1].image}
+                  style={{
+                    objectFit: 'cover',
+                    maxWidth: '100%',
+                    minWidth: '100%',
+                    maxHeight: '99.10%',
+                    minHeight: '99.10%',
+                  }}
+                />
+                <Typography
+                  position='absolute'
+                  fontFamily='monospace'
+                  top='50%'
+                  left='50%'
+                  sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
+                  style={{
+                    transform: 'translate(-50%, -50%)',
+                    WebkitTextStroke: '1px #4518d9',
+                  }}
+                >
+                  Jeans
+                </Typography>
+              </Box>
             </Box>
-          </Box>
+          </ThemeProvider>
         </Box>
       ) : (
         //box principal
@@ -79,48 +148,110 @@ export const Categories = (props: any) => {
           maxHeight={{xs: '450px', sm: '550px', md: '650px', xl: '800px'}}
           display='flex'
         >
-          {/* Box de segunda y tercer imagen */}
-          <Box width='40%' maxHeight='100%'>
-            {/* Segunda imagen */}
-            <Box height='50%' width='100%'>
+          <ThemeProvider theme={categoryFont}>
+            {/* Box de segunda y tercer imagen */}
+            <Box width='40%' maxHeight='100%'>
+              {/* Segunda imagen */}
+              <Box
+                height='50%'
+                width='100%'
+                position='relative'
+                display='inline-block'
+                textAlign='center'
+              >
+                <img
+                  src={category[1].image}
+                  style={{
+                    objectFit: 'cover',
+                    maxWidth: '100%',
+                    minWidth: '100%',
+                    maxHeight: '100%',
+                    minHeight: '100%',
+                  }}
+                />
+
+                <Typography
+                  position='absolute'
+                  fontFamily='monospace'
+                  top='50%'
+                  left='50%'
+                  sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
+                  style={{
+                    transform: 'translate(-50%, -50%)',
+                    WebkitTextStroke: '1px #4518d9',
+                  }}
+                >
+                  Pantalones
+                </Typography>
+              </Box>
+
+              {/* tercer imagen */}
+              <Box
+                height='50%'
+                width='100%'
+                paddingTop='5px'
+                position='relative'
+                display='inline-block'
+                textAlign='center'
+              >
+                <img
+                  src={category[0].image}
+                  style={{
+                    objectFit: 'cover',
+                    maxWidth: '100%',
+                    minWidth: '100%',
+                    maxHeight: '99.10%',
+                    minHeight: '99.10%',
+                  }}
+                />
+                <Typography
+                  position='absolute'
+                  fontFamily='monospace'
+                  top='50%'
+                  left='50%'
+                  sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
+                  style={{
+                    transform: 'translate(-50%, -50%)',
+                    WebkitTextStroke: '1px #4518d9',
+                  }}
+                >
+                  Camisas
+                </Typography>
+              </Box>
+            </Box>
+            {/* primer imagen */}
+            <Box
+              marginLeft='5px'
+              width='60%'
+              maxHeight='100%'
+              position='relative'
+              display='inline-block'
+              textAlign='center'
+            >
               <img
-                src={category[1].image}
+                src={category[2].image}
                 style={{
-                  objectFit: 'cover',
-                  maxWidth: '100%',
-                  minWidth: '100%',
                   maxHeight: '100%',
                   minHeight: '100%',
-                }}
-              />
-            </Box>
-
-            {/* tercer imagen */}
-            <Box height='50%' width='100%' paddingTop='4px'>
-              <img
-                src={category[0].image}
-                style={{
                   objectFit: 'cover',
-                  maxWidth: '100%',
-                  minWidth: '100%',
-                  maxHeight: '99.10%',
-                  minHeight: '99.10%',
+                  width: '99.5%',
                 }}
               />
+              <Typography
+                position='absolute'
+                fontFamily='monospace'
+                top='50%'
+                left='50%'
+                sx={{typography: {xs: 'h4', sm: 'h3', md: 'h2'}}}
+                style={{
+                  transform: 'translate(-50%, -50%)',
+                  WebkitTextStroke: '1px #4518d9',
+                }}
+              >
+                Tejidos
+              </Typography>
             </Box>
-          </Box>
-          {/* primer imagen */}
-          <Box marginLeft='3px' width='60%' maxHeight='100%'>
-            <img
-              src={category[2].image}
-              style={{
-                maxHeight: '100%',
-                minHeight: '100%',
-                objectFit: 'cover',
-                width: '99.5%',
-              }}
-            />
-          </Box>
+          </ThemeProvider>
         </Box>
       )}
     </Box>
