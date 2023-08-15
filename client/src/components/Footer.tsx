@@ -7,7 +7,7 @@ import {
   FaInstagramSquare,
   FaTwitterSquare,
 } from 'react-icons/fa'
-import {Box, Button, Link} from '@mui/material'
+import {Box, Button} from '@mui/material'
 
 export const Footerr = () => {
   return (
@@ -86,31 +86,27 @@ export const Footerr = () => {
               <Typography variant='h6' color='text.primary' gutterBottom>
                 Follow Us
               </Typography>
-              <Link href='https://www.facebook.com/' color='inherit'>
+              <a href='https://www.facebook.com/'>
                 <FaFacebookSquare
                   style={{color: '#4518D9', fontSize: '30px'}}
                 />
-              </Link>
-              <Link
-                href='https://www.instagram.com/'
-                color='inherit'
-                sx={{pl: 1, pr: 1}}
-              >
+              </a>
+              <a href='https://www.instagram.com/'>
                 <FaInstagramSquare
                   style={{color: '#4518D9', fontSize: '30px'}}
                 />
-              </Link>
-              <Link href='https://www.twitter.com/' color='inherit'>
+              </a>
+              <a href='https://www.twitter.com/'>
                 <FaTwitterSquare style={{color: '#4518D9', fontSize: '30px'}} />
-              </Link>
+              </a>
             </Grid>
           </Grid>
           <Box mt={5}>
             <Typography variant='body2' color='text.secondary' align='center'>
               {'Copyright © '}
-              <Link color='inherit' href='https://portfolio-67iu.vercel.app/'>
+              <a href='https://portfolio-67iu.vercel.app/'>
                 portfolio website
-              </Link>{' '}
+              </a>{' '}
               {new Date().getFullYear()}
               {'.'}
             </Typography>
