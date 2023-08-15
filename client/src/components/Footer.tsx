@@ -1,6 +1,6 @@
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
+import {Link} from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 import {
   FaFacebookSquare,
@@ -30,14 +30,19 @@ export const Footerr = () => {
         </Box>
 
         <Box>
-          <Button
-            variant='contained'
-            style={{
-              backgroundColor: '#4518D9 ',
-            }}
+          <Link
+            to={'/register'}
+            style={{textDecoration: 'none', color: 'white'}}
           >
-            REGISTRARSE
-          </Button>
+            <Button
+              variant='contained'
+              style={{
+                backgroundColor: '#4518D9 ',
+              }}
+            >
+              REGISTRARSE
+            </Button>
+          </Link>
         </Box>
       </Box>
 

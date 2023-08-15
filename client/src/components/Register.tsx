@@ -91,7 +91,7 @@ export const Register = () => {
             >
               <Link to={'/'}>
                 <img
-                  src='../../public/assets/shopelogo.png'
+                  src='../../assets/shopelogo.png'
                   style={{width: '90px', height: '90px'}}
                 />
               </Link>

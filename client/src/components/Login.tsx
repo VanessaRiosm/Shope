@@ -82,7 +82,7 @@ export const Login = () => {
             >
               <Link to={'/'}>
                 <img
-                  src='../../public/assets/shopelogo.png'
+                  src='../../assets/shopelogo.png'
                   style={{width: '90px', height: '90px'}}
                 />
               </Link>
@@ -189,7 +189,7 @@ export const Login = () => {
                     <Grid container>
                       <Grid>
                         <Link
-                          to={'/Register'}
+                          to={'/register'}
                           style={{
                             textDecoration: 'none',
                             color: '#4518D9',
