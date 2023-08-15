@@ -55,6 +55,7 @@ export const Collection = ({title}: {title: string}) => {
         itemsToScroll={1}
         infinite={true}
         disableSwipeByMouse={true}
+        disableSwipeByTouch={true}
         // botones
         forwardBtnProps={{
           style: {
@@ -64,11 +65,11 @@ export const Collection = ({title}: {title: string}) => {
             borderRadius: '50%',
             color: 'white',
             cursor: 'pointer',
-            fontSize: '20px',
-            height: 30,
+            fontSize: '16px',
+            height: 25,
             lineHeight: 1,
             textAlign: 'center',
-            width: 30,
+            width: 20,
           },
           children: <span>{`>`}</span>,
         }}
@@ -80,11 +81,11 @@ export const Collection = ({title}: {title: string}) => {
             borderRadius: '50%',
             color: 'white',
             cursor: 'pointer',
-            fontSize: '20px',
-            height: 30,
-            lineHeight: 1,
+            fontSize: '16px',
+            height: 25,
+            lineHeight: 0,
             textAlign: 'center',
-            width: 30,
+            width: 20,
           },
           children: <span>{`<`}</span>,
         }}
@@ -101,7 +102,7 @@ export const Collection = ({title}: {title: string}) => {
         {products.map((product: any) => (
           <Box key={product.id}>
             <img
-              style={{width: 300, height: 400, margin: '5px'}}
+              style={{width: 295, height: 430, margin: '5px'}}
               src={product.image}
             />
             <Box>{product.title}</Box>
