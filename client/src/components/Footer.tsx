@@ -7,7 +7,7 @@ import {
   FaInstagramSquare,
   FaTwitterSquare,
 } from 'react-icons/fa'
-import {Box, Button} from '@mui/material'
+import {Box, Button, Link} from '@mui/material'
 
 export const Footerr = () => {
   return (

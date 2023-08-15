@@ -90,7 +90,8 @@ export const Collection = ({title}: {title: string}) => {
           children: <span>{`<`}</span>,
         }}
         responsiveProps={[
-          {minWidth: 1700, itemsToShow: 5},
+          {minWidth: 2000, itemsToShow: 6},
+          {minWidth: 1700, maxWidth: 2000, itemsToShow: 5},
           {minWidth: 1300, maxWidth: 1700, itemsToShow: 4},
           {maxWidth: 1299, itemsToShow: 3},
           {maxWidth: 1000, itemsToShow: 2},

@@ -80,7 +80,12 @@ export const NavBar = () => {
           <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
             <img
               src='../../assets/shopelogo.png'
-              style={{width: '40px', height: '40px', margin: '0px 5px 7px 0px'}}
+              style={{
+                width: '40px',
+                height: '40px',
+                // top, right, bottom, left
+                margin: '5px 5px 10px 5px',
+              }}
             />
           </Link>
 
