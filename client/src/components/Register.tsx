@@ -91,8 +91,8 @@ export const Register = () => {
             >
               <Link to={'/'}>
                 <img
-                  src='https://static.vecteezy.com/system/resources/previews/003/275/730/original/shopping-bag-store-logo-online-shopping-logo-design-free-vector.jpg'
-                  style={{width: '100px', height: '100px'}}
+                  src='../../public/assets/shopelogo.png'
+                  style={{width: '90px', height: '90px'}}
                 />
               </Link>
               <Typography component='h1' variant='h5'>

@@ -77,10 +77,12 @@ export const NavBar = () => {
     <Box sx={{flexGrow: 1}}>
       <AppBar position='static' color={'transparent' || '#00e5ff'}>
         <Toolbar>
-          <img
-            src='https://static.vecteezy.com/system/resources/previews/003/275/730/original/shopping-bag-store-logo-online-shopping-logo-design-free-vector.jpg'
-            style={{width: '70px', height: '70px'}}
-          />
+          <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
+            <img
+              src='../../public/assets/shopelogo.png'
+              style={{width: '40px', height: '40px', margin: '0px 5px 7px 0px'}}
+            />
+          </Link>
 
           <Typography
             variant='h4'

@@ -68,13 +68,13 @@ export const Footerr = () => {
                 Contact Us
               </Typography>
               <Typography variant='body2' color='text.secondary'>
-                123 Main Street, Anytown, USA
+                linkedIn: nomeseelenlace.com
               </Typography>
               <Typography variant='body2' color='text.secondary'>
-                Email: info@example.com
+                Email: vanessa.riosm571@gmail.com
               </Typography>
               <Typography variant='body2' color='text.secondary'>
-                Phone: +1 234 567 8901
+                Phone: +57 3025061093
               </Typography>
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -82,25 +82,29 @@ export const Footerr = () => {
                 Follow Us
               </Typography>
               <Link href='https://www.facebook.com/' color='inherit'>
-                <FaFacebookSquare />
+                <FaFacebookSquare
+                  style={{color: '#4518D9', fontSize: '30px'}}
+                />
               </Link>
               <Link
                 href='https://www.instagram.com/'
                 color='inherit'
                 sx={{pl: 1, pr: 1}}
               >
-                <FaInstagramSquare />
+                <FaInstagramSquare
+                  style={{color: '#4518D9', fontSize: '30px'}}
+                />
               </Link>
               <Link href='https://www.twitter.com/' color='inherit'>
-                <FaTwitterSquare />
+                <FaTwitterSquare style={{color: '#4518D9', fontSize: '30px'}} />
               </Link>
             </Grid>
           </Grid>
           <Box mt={5}>
             <Typography variant='body2' color='text.secondary' align='center'>
               {'Copyright © '}
-              <Link color='inherit' href='https://your-website.com/'>
-                Your Website
+              <Link color='inherit' href='https://portfolio-67iu.vercel.app/'>
+                portfolio website
               </Link>{' '}
               {new Date().getFullYear()}
               {'.'}
