@@ -79,12 +79,12 @@ export const NavBar = () => {
         <Toolbar>
           <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
             <img
-              src='../../assets/shopelogo.png'
+              src='../../shopelogo.png'
               style={{
                 width: '40px',
                 height: '40px',
                 // top, right, bottom, left
-                margin: '5px 5px 10px 5px',
+                margin: '5px 5px px 5px',
               }}
             />
           </Link>

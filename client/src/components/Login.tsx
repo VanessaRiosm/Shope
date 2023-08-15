@@ -82,7 +82,7 @@ export const Login = () => {
             >
               <Link to={'/'}>
                 <img
-                  src='../../assets/shopelogo.png'
+                  src='../../shopelogo.png'
                   style={{width: '90px', height: '90px'}}
                 />
               </Link>
