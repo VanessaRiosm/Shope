@@ -1,8 +1,14 @@
-import {Box} from '@mui/material'
+import {Box, Typography} from '@mui/material'
 import {products} from '../products'
-import {styled} from '@mui/material/styles'
+import {createTheme, styled, ThemeProvider} from '@mui/material/styles'
 import {useState} from 'react'
 import ReactSimplyCarousel from 'react-simply-carousel'
+
+const categoryFont = createTheme({
+  typography: {
+    fontFamily: ['Noto Sans', 'sans-serif'].join(','),
+  },
+})
 
 const Hr = styled('hr')(({title}: {title: string}) => ({
   lineHeight: ' 0.2em',
@@ -39,7 +45,7 @@ const Hr = styled('hr')(({title}: {title: string}) => ({
   },
 }))
 
-export const Collection = ({title}: {title: string}) => {
+export const Collection = ({title, badg}: {title: string; badg: string}) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
 
   return (
@@ -101,11 +107,37 @@ export const Collection = ({title}: {title: string}) => {
         easing='linear'
       >
         {products.map((product: any) => (
-          <Box key={product.id}>
-            <img
-              style={{width: 295, height: 430, margin: '5px'}}
-              src={product.image}
-            />
+          <Box
+            key={product.id}
+            position='relative'
+            display='inline-block'
+            textAlign='center'
+          >
+            <ThemeProvider theme={categoryFont}>
+              <img
+                style={{width: 295, height: 430, margin: '5px'}}
+                src={product.image}
+              />
+
+              <Box
+                width='40px'
+                height='20px'
+                bgcolor='#000'
+                padding='4px'
+                position='absolute'
+                color='white'
+                display='flex'
+                justifyContent='center'
+                alignItems='center'
+                top='3.9%'
+                left='9.8%'
+                style={{
+                  transform: 'translate(-50%, -50%)',
+                }}
+              >
+                <Typography>{badg}</Typography>
+              </Box>
+            </ThemeProvider>
             <Box>{product.title}</Box>
             <Box>{product.price}</Box>
           </Box>

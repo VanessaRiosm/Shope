@@ -1,6 +1,6 @@
 import {styled, alpha} from '@mui/material/styles'
 import {useAppSelector} from '../hooks'
-import {AppBar, Box, Button, Menu, MenuItem} from '@mui/material'
+import {AppBar, Badge, Box, Menu, MenuItem, BadgeProps} from '@mui/material'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
@@ -57,6 +57,16 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
   },
 }))
 
+const StyledBadge = styled(Badge)<BadgeProps>(({theme}) => ({
+  '& .MuiBadge-badge': {
+    top: 1,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+    backgroundColor: '#4518D9',
+    color: 'white',
+  },
+}))
+
 export const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const rol = useAppSelector((state: any) => state.user.rol)
@@ -84,7 +94,7 @@ export const NavBar = () => {
                 width: '40px',
                 height: '40px',
                 // top, right, bottom, left
-                margin: '5px 8px px 0px',
+                margin: '5px 8px 10px 0px',
               }}
             />
           </Link>
@@ -128,8 +138,12 @@ export const NavBar = () => {
             onClick={toggleDrawer}
             sx={{mr: 1}}
           >
-            <RiShoppingCartLine />
+            {' '}
+            <StyledBadge badgeContent={1}>
+              <RiShoppingCartLine />
+            </StyledBadge>
           </IconButton>
+
           <Drawer
             open={isOpen}
             onClose={toggleDrawer}
@@ -139,13 +153,14 @@ export const NavBar = () => {
             className='bla bla bla'
           >
             <Box>
-              <Button
+              {/* <Button
                 onClick={() => {
                   toggleDrawer
                 }}
               >
-                X
-              </Button>
+              X
+            </Button> */}
+
               <Cart />
             </Box>
           </Drawer>

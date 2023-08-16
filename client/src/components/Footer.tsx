@@ -104,8 +104,11 @@ export const Footerr = () => {
           <Box mt={5}>
             <Typography variant='body2' color='text.secondary' align='center'>
               {'Copyright © '}
-              <a href='https://portfolio-67iu.vercel.app/'>
-                portfolio website
+              <a
+                href='https://portfolio-67iu.vercel.app/'
+                style={{textDecoration: 'none', color: 'gray'}}
+              >
+                Vanessa Rios Muñoz
               </a>{' '}
               {new Date().getFullYear()}
               {'.'}

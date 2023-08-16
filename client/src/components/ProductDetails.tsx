@@ -15,12 +15,12 @@ export const ProductDetails = () => {
   return (
     <Box>
       <NavBar />
-      <Box maxHeight='600px' display='flex' margin='10px 40px 10px 40px'>
+      <Box maxHeight='950px' display='flex' margin='10px 40px 10px 40px'>
         <img
           src={product.image}
           style={{
-            width: '100%',
-            maxHeight: '650px',
+            width: '90%',
+            height: '900px',
             border: '0.5px solid black',
           }}
         />
@@ -37,7 +37,14 @@ export const ProductDetails = () => {
           <p style={{fontSize: '20px'}}> {product.description} </p>
           <Box>
             <Box>
-              <Button>Comprar</Button>
+              <Button
+                variant='contained'
+                style={{
+                  backgroundColor: '#4518D9 ',
+                }}
+              >
+                Comprar
+              </Button>
             </Box>
           </Box>
         </Box>
