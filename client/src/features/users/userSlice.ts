@@ -5,25 +5,18 @@ const URL = import.meta.env.VITE_APP_URL
 
 // como se remplaza el any en esta interfaz
 interface UsersState {
+  usersList: any | null
   user: any | null
   status: string
   rol: string
 }
 
 const initialState = {
+  usersList: null,
   user: null,
   status: 'idle',
-  rol: 'other',
+  rol: 'admin',
 } as UsersState
-
-// export const fetchLogin: any = createAsyncThunk(
-//   'users/fetchLogin',
-//   async (data: any) => {
-//     const response = await axios.post(`${URL}/auth/login`, data)
-
-//     return response.data
-//   }
-// )
 
 export const fetchLogin: any = createAsyncThunk(
   'users/fetchLogin',
@@ -49,6 +42,15 @@ export const fetchRegister: any = createAsyncThunk(
   'users/fetchRegister',
   async (data: any) => {
     const response = await axios.post(`${URL}/users/`, data)
+
+    return response.data
+  }
+)
+
+export const fetchGetUsers: any = createAsyncThunk(
+  'users/fetchGetUsers',
+  async () => {
+    const response = await axios.get(`${URL}/users/`)
 
     return response.data
   }
@@ -80,6 +82,16 @@ export const userSlice: any = createSlice({
         // if (action.payload.token)
         //   localStorage.setItem('token', action.payload.token)
 
+        state.status = 'success'
+      })
+
+      //get users
+
+      .addCase(fetchGetUsers.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchGetUsers.fulfilled, (state, action) => {
+        state.usersList = action.payload
         state.status = 'success'
       })
   },

@@ -1,6 +1,6 @@
 import {styled, alpha} from '@mui/material/styles'
 import {useAppSelector} from '../hooks'
-import {AppBar, Box, Menu, MenuItem} from '@mui/material'
+import {AppBar, Box, Button, Menu, MenuItem} from '@mui/material'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
@@ -46,7 +46,7 @@ const SearchIconWrapper = styled('div')(({theme}) => ({
 const StyledInputBase = styled(InputBase)(({theme}) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
+    padding: theme.spacing(1, 1, 1, '5px'),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
@@ -84,7 +84,7 @@ export const NavBar = () => {
                 width: '40px',
                 height: '40px',
                 // top, right, bottom, left
-                margin: '5px 5px px 5px',
+                margin: '5px 8px px 0px',
               }}
             />
           </Link>
@@ -126,7 +126,7 @@ export const NavBar = () => {
             color='inherit'
             aria-label='open drawer'
             onClick={toggleDrawer}
-            sx={{mr: 2}}
+            sx={{mr: 1}}
           >
             <RiShoppingCartLine />
           </IconButton>
@@ -139,6 +139,13 @@ export const NavBar = () => {
             className='bla bla bla'
           >
             <Box>
+              <Button
+                onClick={() => {
+                  toggleDrawer
+                }}
+              >
+                X
+              </Button>
               <Cart />
             </Box>
           </Drawer>
@@ -171,12 +178,19 @@ export const NavBar = () => {
             {rol === 'admin' ? (
               <div>
                 <Link
+                  to={'/profile'}
+                  style={{textDecoration: 'none', color: 'black'}}
+                >
+                  <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                </Link>
+
+                <Link
                   to={'/admin'}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
                   <MenuItem onClick={handleClose}>Panel de admin</MenuItem>
                 </Link>
-                <MenuItem onClick={handleClose}>Perfil</MenuItem>
+
                 <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
               </div>
             ) : rol === 'user' ? (

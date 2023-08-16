@@ -87,6 +87,17 @@ export const AdminHome = () => {
                   </Menu>
                 </Box>
 
+                <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
+                  <img
+                    src='../../../shopelogo.png'
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      // top, right, bottom, left
+                      margin: '5px 5px px 5px',
+                    }}
+                  />
+                </Link>
                 <Typography
                   variant='h4'
                   noWrap
@@ -117,7 +128,7 @@ export const AdminHome = () => {
               </Toolbar>
             </Container>
           </AppBar>
-          <div className=''>{handleComponent()}</div>
+          <div>{handleComponent()}</div>
         </Box>
       ) : null}
     </div>

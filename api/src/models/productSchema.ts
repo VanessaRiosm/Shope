@@ -5,8 +5,16 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: true,
+  },
   price: {
     type: Number,
+    required: true,
+  },
+  category: {
+    type: String,
     required: true,
   },
   description: {
@@ -14,4 +22,4 @@ const productSchema = new Schema({
   },
 })
 
-export const User = model('Product', productSchema)
+export const Product = model('Product', productSchema)
