@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
-import {useAppSelector, useAppDispatch} from '../../hooks'
-import {fetchGetProducts} from '../../features/products/productSlice'
+import {useAppSelector, useAppDispatch} from '../hooks'
+import {fetchGetProducts} from '../features/products/productSlice'
 import {Box, Grid} from '@mui/material'
 
 export const AdminProducts = () => {

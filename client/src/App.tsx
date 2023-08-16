@@ -6,7 +6,7 @@ import {ProductList} from './components/ProductList'
 import {Profile} from './components/Profile'
 import {Login} from './components/Login'
 import {Register} from './components/Register'
-import {AdminHome} from './components/admin/AdminHome'
+import {AdminHome} from './components/AdminHome'
 
 function App() {
   return (

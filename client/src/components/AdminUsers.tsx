@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
-import {useAppSelector, useAppDispatch} from '../../hooks'
-import {fetchGetUsers} from '../../features/users/userSlice'
+import {useAppSelector, useAppDispatch} from '../hooks'
+import {fetchGetUsers} from '../features/users/userSlice'
 import {Box} from '@mui/material'
 
 export const AdminUsers = () => {
