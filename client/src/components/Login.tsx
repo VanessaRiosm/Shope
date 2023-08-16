@@ -18,14 +18,14 @@ import {fetchLogin} from '../features/users/userSlice'
 
 const formSchema = Yup.object().shape({
   email: Yup.string()
-    .required('campo requerido')
-    .max(50, 'maximo 50 caracteres')
-    .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'correo electronico invalido'),
+    .required('required field')
+    .max(50, 'maximum 50 characters')
+    .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'invalid email address'),
 
   password: Yup.string()
-    .required('campo requerido')
-    .min(8, 'minimo 8 caracteres')
-    .max(16, 'maximo 15 caracteres'),
+    .required('required field')
+    .min(8, 'minimum 8 characters')
+    .max(15, 'maximum 15 characters'),
 })
 
 export const Login = () => {
@@ -87,7 +87,7 @@ export const Login = () => {
                 />
               </Link>
               <Typography component='h1' variant='h5'>
-                Inicia Sesión
+                Sign in
               </Typography>
 
               {viewError === 'show' ? (
@@ -99,7 +99,7 @@ export const Login = () => {
                     severity='error'
                     sx={{mt: '10px', width: '100%'}}
                   >
-                    Usuario o contraseña incorrecta
+                    Incorrect user or password
                   </Alert>
                 </div>
               ) : null}
@@ -129,12 +129,12 @@ export const Login = () => {
                     <FormGroup>
                       <label htmlFor='email' id='email'>
                         {' '}
-                        Correo Electronico:
+                        Email:
                       </label>
 
                       <Field
                         name='email'
-                        placeholder='Ejemplo@gmail.com'
+                        placeholder='Example@gmail.com'
                         type='email'
                         style={{
                           margin: '5px 0px 0px 0px',
@@ -156,11 +156,11 @@ export const Login = () => {
                         style={{marginTop: '10px'}}
                       >
                         {' '}
-                        Contraseña:
+                        Password:
                       </label>
                       <Field
                         name='password'
-                        placeholder='Contraseña *'
+                        placeholder='Password *'
                         type='password'
                         style={{
                           margin: '10px 0px 0px 0px',
@@ -184,7 +184,7 @@ export const Login = () => {
                       sx={{mt: 3, mb: 2}}
                     >
                       {' '}
-                      Entrar
+                      Sign in
                     </Button>
                     <Grid container>
                       <Grid>
@@ -196,7 +196,7 @@ export const Login = () => {
                             margin: '20px 0 10px 0',
                           }}
                         >
-                          {'¿No tienes cuenta? Registrate'}
+                          {'Dont have an account? Sign up'}
                         </Link>
                       </Grid>
                     </Grid>

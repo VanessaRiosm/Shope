@@ -22,9 +22,9 @@ export const Footerr = () => {
       >
         <Box>
           <Box>
-            <p>Regístrate y obtén un 25% de descuento</p>
+            <p>Sign up and get a 25% discount</p>
             <p style={{fontWeight: 'bold', fontSize: '25px'}}>
-              EN TU PRIMERA COMPRA
+              ON YOUR FIRST PURCHASE
             </p>
           </Box>
         </Box>
@@ -40,7 +40,7 @@ export const Footerr = () => {
                 backgroundColor: '#4518D9 ',
               }}
             >
-              REGISTRARSE
+              SIGN UP
             </Button>
           </Link>
         </Box>

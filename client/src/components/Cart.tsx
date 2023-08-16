@@ -1,3 +1,5 @@
 export const Cart = () => {
-  return <div>No hay productos en tu carrito de compras Continua comprando</div>
+  return (
+    <div>There are no products in your shopping cart, Continue shopping</div>
+  )
 }

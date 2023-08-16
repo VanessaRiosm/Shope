@@ -15,7 +15,7 @@ const initialState = {
   usersList: null,
   user: null,
   status: 'idle',
-  rol: 'admin',
+  rol: 'other',
 } as UsersState
 
 export const fetchLogin: any = createAsyncThunk(

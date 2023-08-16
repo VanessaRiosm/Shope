@@ -14,9 +14,9 @@ export const ProductList = () => {
         marginBottom='20px'
       >
         <Typography variant='h6' fontWeight='bold'>
-          Explora la colección de prendas tejidas de Shope que van a darle un
-          toque trendy y sofisticado a tus días. Nuestros colores y detalles
-          especiales serán the pop of color que tu clóset necesita.
+          Explore Shope's collection of knitwear that will give you a trendy and
+          sophisticated touch to your days. Our colors and details special items
+          will be the pop of color that your closet needs.
         </Typography>
       </Box>
 

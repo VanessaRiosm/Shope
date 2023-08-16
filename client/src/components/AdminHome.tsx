@@ -20,16 +20,16 @@ import {AdminProducts} from './AdminProducts'
 import {AdminUsers} from './AdminUsers'
 
 const pages = [
-  {id: 1, name: 'Productos'},
-  {id: 2, name: 'Ofertas'},
-  {id: 3, name: 'Envios'},
-  {id: 4, name: 'Usuarios'},
+  {id: 1, name: 'Products'},
+  {id: 2, name: 'Offers'},
+  {id: 3, name: 'Shipping'},
+  {id: 4, name: 'Users'},
 ]
 
 export const AdminHome = () => {
   //no sirve le rootstate
   const rol = useAppSelector((state: any) => state.user.rol)
-  const [component, setComponent] = useState('Productos')
+  const [component, setComponent] = useState('Products')
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -40,8 +40,8 @@ export const AdminHome = () => {
     setAnchorEl(null)
   }
   const handleComponent = () => {
-    if (component === 'Productos') return <AdminProducts />
-    if (component === 'Usuarios') return <AdminUsers />
+    if (component === 'Products') return <AdminProducts />
+    if (component === 'Users') return <AdminUsers />
   }
 
   return (

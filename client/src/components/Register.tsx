@@ -18,23 +18,23 @@ import {useState} from 'react'
 
 const formSchema = Yup.object().shape({
   username: Yup.string()
-    .required('Campo Requerido')
-    .min(5, 'minimo 5 caracteres')
-    .max(25, 'maximo 25 caracteres'),
+    .required('required field')
+    .min(5, 'minimum 5 characters')
+    .max(25, 'maximum 15 characters'),
 
   email: Yup.string()
-    .required('Campo Requerido')
-    .max(50, 'maximo 50 caracteres')
-    .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'correo electronico invalido'),
+    .required('required field')
+    .max(50, 'maximum 50 characters')
+    .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'invalid email address'),
 
   password: Yup.string()
-    .required('Campo Requerido')
-    .min(8, 'minimo 8 caracteres')
-    .max(15, 'maximo 15 caracteres'),
+    .required('required field')
+    .min(8, 'minimum 8 characters')
+    .max(15, 'maximum 15 characters'),
 
   confirmPassword: Yup.string()
-    .required('Campo Requerido')
-    .oneOf([Yup.ref('password')], 'la contraseña no coincide'),
+    .required('required field')
+    .oneOf([Yup.ref('password')], 'the password does not match'),
 })
 
 export const Register = () => {
@@ -96,13 +96,13 @@ export const Register = () => {
                 />
               </Link>
               <Typography component='h1' variant='h5'>
-                Regístrate
+                Sign Up
               </Typography>
 
               {viewSuccess === 'show' ? (
                 <div>
                   <Alert severity='success' sx={{mt: '10px', width: '100%'}}>
-                    Usuario creado existosamente
+                    User created successfully
                   </Alert>
                 </div>
               ) : null}
@@ -133,7 +133,7 @@ export const Register = () => {
                         style={{marginTop: '10px'}}
                       >
                         {' '}
-                        Nombre de usuario:
+                        Username:
                       </label>
 
                       <Field
@@ -160,7 +160,7 @@ export const Register = () => {
                         style={{marginTop: '10px'}}
                       >
                         {' '}
-                        Correo Electronico:
+                        Email:
                       </label>
 
                       <Field
@@ -187,11 +187,11 @@ export const Register = () => {
                         style={{marginTop: '10px'}}
                       >
                         {' '}
-                        Contraseña:
+                        Password:
                       </label>
                       <Field
                         name='password'
-                        placeholder='Contraseña *'
+                        placeholder='Password *'
                         type='password'
                         style={{
                           margin: '10px 0px 0px 0px',
@@ -212,11 +212,11 @@ export const Register = () => {
                         style={{marginTop: '10px'}}
                       >
                         {' '}
-                        Confirmar Contraseña:
+                        Confirm Password:
                       </label>
                       <Field
                         name='confirmPassword'
-                        placeholder='Confirmar contraseña *'
+                        placeholder=' Confirm Password *'
                         type='password'
                         style={{
                           margin: '10px 0px 0px 0px',
@@ -240,7 +240,7 @@ export const Register = () => {
                       sx={{mt: 3, mb: 2}}
                     >
                       {' '}
-                      Registrarme
+                      Sign Up
                     </Button>
                     <Grid container>
                       <Grid>
@@ -252,7 +252,7 @@ export const Register = () => {
                             margin: '20px 0 10px 0',
                           }}
                         >
-                          {'¿Ya tienes cuenta? Inicia Sesión'}
+                          {'Already have an account? Sign In'}
                         </Link>
                       </Grid>
                     </Grid>

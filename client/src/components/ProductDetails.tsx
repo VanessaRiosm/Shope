@@ -43,7 +43,7 @@ export const ProductDetails = () => {
                   backgroundColor: '#4518D9 ',
                 }}
               >
-                Comprar
+                Buy
               </Button>
             </Box>
           </Box>

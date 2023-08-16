@@ -13,9 +13,9 @@ export const Home = () => {
       <NavBar />
       <Carousel />
       <Marque />
-      <Collection title={'NUEVA COLECCIÓN'} badg={'NEW'} />
+      <Collection title={'NEW COLLECTION'} badg={'NEW'} />
       <Categories siP={'si'} />
-      <Collection title={'MAS VENDIDO'} badg={'TOP'} />
+      <Collection title={'TOP SELLER'} badg={'TOP'} />
       <Categories siP={'no'} />
       <Footerr />
     </Box>

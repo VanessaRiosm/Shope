@@ -11,7 +11,7 @@ export const Profile = () => {
   return (
     <Box>
       <NavBar />
-      <div>Tu perfil</div>
+      <div>Your Profile</div>
 
       <p>{user.username}</p>
       <p>{user.email}</p>

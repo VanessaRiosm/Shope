@@ -71,7 +71,7 @@ export const Categories = (props: any) => {
                     WebkitTextStroke: '0.8px #4518d9',
                   }}
                 >
-                  Chaquetas
+                  Jackets
                 </Typography>
               </Link>
             </Box>
@@ -111,7 +111,7 @@ export const Categories = (props: any) => {
                       WebkitTextStroke: '0.8px #4518d9',
                     }}
                   >
-                    Vestidos
+                    Dresses
                   </Typography>
                 </Link>
               </Box>
@@ -201,7 +201,7 @@ export const Categories = (props: any) => {
                       WebkitTextStroke: '0.8px #4518d9',
                     }}
                   >
-                    Tejidos
+                    Woven
                   </Typography>
                 </Link>
               </Box>
@@ -240,7 +240,7 @@ export const Categories = (props: any) => {
                       WebkitTextStroke: '0.8px #4518d9',
                     }}
                   >
-                    Camisas
+                    Shirts
                   </Typography>
                 </Link>
               </Box>
@@ -278,7 +278,7 @@ export const Categories = (props: any) => {
                     WebkitTextStroke: '0.8px #4518d9',
                   }}
                 >
-                  Pantalones
+                  Pants
                 </Typography>
               </Link>
             </Box>

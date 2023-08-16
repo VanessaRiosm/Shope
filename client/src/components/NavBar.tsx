@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import InputBase from '@mui/material/InputBase'
 import {BsSearch} from 'react-icons/bs'
-import {RiShoppingCartLine} from 'react-icons/ri'
+import {FaShoppingCart} from 'react-icons/fa'
 import {FaUserCircle} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import {useState} from 'react'
@@ -117,7 +117,7 @@ export const NavBar = () => {
             fontWeight={'bold'}
             sx={{flexGrow: 1, display: {xs: 'none', md: 'block'}}}
           >
-            REBAJAS HASTA 60%DCTO
+            SALES UP TO 60% OFF
           </Typography>
 
           <Search>
@@ -140,7 +140,7 @@ export const NavBar = () => {
           >
             {' '}
             <StyledBadge badgeContent={1}>
-              <RiShoppingCartLine />
+              <FaShoppingCart />
             </StyledBadge>
           </IconButton>
 
@@ -150,7 +150,6 @@ export const NavBar = () => {
             direction='right'
             size={400}
             overlayOpacity={0.5}
-            className='bla bla bla'
           >
             <Box>
               {/* <Button
@@ -196,22 +195,22 @@ export const NavBar = () => {
                   to={'/profile'}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
-                  <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>
 
                 <Link
                   to={'/admin'}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
-                  <MenuItem onClick={handleClose}>Panel de admin</MenuItem>
+                  <MenuItem onClick={handleClose}>Admin Panel</MenuItem>
                 </Link>
 
-                <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
+                <MenuItem onClick={handleClose}>Log Out</MenuItem>
               </div>
             ) : rol === 'user' ? (
               <div>
-                <MenuItem onClick={handleClose}>Mi perfil</MenuItem>
-                <MenuItem onClick={handleClose}>salir </MenuItem>{' '}
+                <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Log Out</MenuItem>{' '}
               </div>
             ) : (
               <div>
@@ -219,13 +218,13 @@ export const NavBar = () => {
                   to={'/login'}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
-                  <MenuItem>Iniciar Sesion</MenuItem>
+                  <MenuItem>Sign In</MenuItem>
                 </Link>
                 <Link
                   to={'/register'}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
-                  <MenuItem>Registrarme</MenuItem>
+                  <MenuItem>Sign Up</MenuItem>
                 </Link>
               </div>
             )}
