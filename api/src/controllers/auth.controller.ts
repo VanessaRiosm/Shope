@@ -15,7 +15,7 @@ export const login = async (req: Request, res: Response) => {
         }
 
         const token = jwt.sign(payload, process.env.JWT_SW || '')
-        return res.json(token)
+        return res.json({token})
       }
     }
     res.json('no user found')
@@ -24,14 +24,14 @@ export const login = async (req: Request, res: Response) => {
   }
 }
 
-// export const verifyUser = async (req: Request, res: Response) => {
-//   try {
-//     const {userId} = req.params
+export const verifyUser = async (req: Request, res: Response) => {
+  try {
+    const {userId} = req.params
 
-//     const userInfo = User.findById(userId)
+    const userInfo = await User.findById(userId)
 
-//     res.json(userInfo)
-//   } catch (err) {
-//     res.json(err)
-//   }
-// }
+    res.json(userInfo)
+  } catch (err) {
+    res.json(err)
+  }
+}

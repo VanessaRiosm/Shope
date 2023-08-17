@@ -1,6 +1,14 @@
 import {styled, alpha} from '@mui/material/styles'
 import {useAppSelector} from '../hooks'
-import {AppBar, Badge, Box, Menu, MenuItem, BadgeProps} from '@mui/material'
+import {
+  AppBar,
+  Badge,
+  Box,
+  Menu,
+  MenuItem,
+  BadgeProps,
+  Button,
+} from '@mui/material'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
@@ -152,13 +160,7 @@ export const NavBar = () => {
             overlayOpacity={0.5}
           >
             <Box>
-              {/* <Button
-                onClick={() => {
-                  toggleDrawer
-                }}
-              >
-              X
-            </Button> */}
+              <Button onClick={toggleDrawer}>X</Button>
 
               <Cart />
             </Box>

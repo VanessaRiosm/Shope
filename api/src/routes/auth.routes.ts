@@ -1,10 +1,10 @@
 import {Router} from 'express'
-import {login} from '../controllers/auth.controller'
-// import auth from '../middlewares/auth.middleware'
+import {login, verifyUser} from '../controllers/auth.controller'
+import verifyToken from '../middlewares/auth.middleware'
 
 const router = Router()
 
 router.post('/login', login)
-// router.get('/', verifyUser)
+router.get('/getuser', [verifyToken], verifyUser)
 
 export default router

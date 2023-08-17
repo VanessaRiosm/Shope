@@ -6,16 +6,16 @@ const URL = import.meta.env.VITE_APP_URL
 // como se remplaza el any en esta interfaz
 interface UsersState {
   usersList: any | null
-  user: any | null
+  currentUser: any | null
   status: string
   rol: string
 }
 
 const initialState = {
   usersList: null,
-  user: null,
+  currentUser: {},
   status: 'idle',
-  rol: 'other',
+  rol: '',
 } as UsersState
 
 export const fetchLogin: any = createAsyncThunk(
@@ -24,14 +24,14 @@ export const fetchLogin: any = createAsyncThunk(
     try {
       const response = await fetch(`${URL}/auth/login`, {
         method: 'POST',
-        mode: 'cors', //cors para localhost no-cors para deploy
+        mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       })
 
-      return await response.text()
+      return await response.json()
     } catch (err: any) {
       return err.message
     }
@@ -56,6 +56,19 @@ export const fetchGetUsers: any = createAsyncThunk(
   }
 )
 
+export const fetchCurrentUser: any = createAsyncThunk(
+  'users/fetchCurrentUser',
+  async () => {
+    const token = window.localStorage.getItem('token')
+
+    const response = await axios.get(`${URL}/auth/getuser`, {
+      headers: {Authorization: `Bearer ${token}`},
+    })
+
+    return response.data
+  }
+)
+
 export const userSlice: any = createSlice({
   name: 'users',
   initialState,
@@ -68,8 +81,8 @@ export const userSlice: any = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchLogin.fulfilled, (state, action) => {
-        if (action.payload !== '"no user found"')
-          localStorage.setItem('token', action.payload)
+        if (action.payload.token)
+          localStorage.setItem('token', action.payload.token)
 
         state.status = 'success'
       })
@@ -79,9 +92,6 @@ export const userSlice: any = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchRegister.fulfilled, (state) => {
-        // if (action.payload.token)
-        //   localStorage.setItem('token', action.payload.token)
-
         state.status = 'success'
       })
 
@@ -92,6 +102,17 @@ export const userSlice: any = createSlice({
       })
       .addCase(fetchGetUsers.fulfilled, (state, action) => {
         state.usersList = action.payload
+        state.status = 'success'
+      })
+
+      //get current user
+
+      .addCase(fetchCurrentUser.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, action) => {
+        state.currentUser = action.payload
+        state.rol = action.payload.rol
         state.status = 'success'
       })
   },

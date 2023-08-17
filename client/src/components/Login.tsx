@@ -14,7 +14,7 @@ import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Link, useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {useState} from 'react'
-import {fetchLogin} from '../features/users/userSlice'
+import {fetchCurrentUser, fetchLogin} from '../features/users/userSlice'
 
 const formSchema = Yup.object().shape({
   email: Yup.string()
@@ -114,9 +114,10 @@ export const Login = () => {
                   onSubmit={async (values: any) => {
                     try {
                       const resp = await dispatch(fetchLogin(values))
+                      await dispatch(fetchCurrentUser())
 
                       if (resp) {
-                        if (resp.payload !== '"no user found"') {
+                        if (resp.payload.token) {
                           history('/', {replace: true})
                         } else {
                           setViewError('show')
