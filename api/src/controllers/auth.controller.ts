@@ -13,9 +13,10 @@ export const login = async (req: Request, res: Response) => {
           id: findUser.id,
           email: email,
         }
-
+        console.log('find user', findUser)
         const token = jwt.sign(payload, process.env.JWT_SW || '')
 
+        console.log('token', token)
         return res.json({token})
       }
     }

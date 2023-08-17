@@ -201,7 +201,7 @@ export const Categories = (props: any) => {
                       WebkitTextStroke: '0.8px #4518d9',
                     }}
                   >
-                    Woven
+                    Shoes
                   </Typography>
                 </Link>
               </Box>

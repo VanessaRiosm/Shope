@@ -87,7 +87,7 @@ export const Login = () => {
                 />
               </Link>
               <Typography component='h1' variant='h5'>
-                Sign in
+                Sign In
               </Typography>
 
               {viewError === 'show' ? (
@@ -114,7 +114,7 @@ export const Login = () => {
                   onSubmit={async (values: any) => {
                     try {
                       const resp = await dispatch(fetchLogin(values))
-
+                      console.log(resp)
                       if (resp.payload.token) {
                         history('/', {replace: true})
                       } else if (resp.payload === 'no user found') {
