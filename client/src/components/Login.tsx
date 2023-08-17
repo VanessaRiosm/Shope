@@ -114,12 +114,14 @@ export const Login = () => {
                   onSubmit={async (values: any) => {
                     try {
                       const resp = await dispatch(fetchLogin(values))
-                      console.log(resp)
-                      if (resp.payload.token) {
-                        history('/', {replace: true})
-                      } else if (resp.payload === 'no user found') {
-                        setViewError('show')
-                      } else console.log('ninguno sirve')
+
+                      if (resp) {
+                        if (resp.payload !== '"no user found"') {
+                          history('/', {replace: true})
+                        } else {
+                          setViewError('show')
+                        }
+                      } else console.log('bad response')
                     } catch (error) {
                       throw Error
                     }

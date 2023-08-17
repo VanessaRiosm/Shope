@@ -68,8 +68,8 @@ export const userSlice: any = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchLogin.fulfilled, (state, action) => {
-        if (action.payload.token)
-          localStorage.setItem('token', action.payload.token)
+        if (action.payload !== '"no user found"')
+          localStorage.setItem('token', action.payload)
 
         state.status = 'success'
       })
