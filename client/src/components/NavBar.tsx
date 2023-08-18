@@ -77,7 +77,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({theme}) => ({
 
 export const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const rol = useAppSelector((state: any) => state.user.rol)
+  const rol = useAppSelector((state) => state.user.rol)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
