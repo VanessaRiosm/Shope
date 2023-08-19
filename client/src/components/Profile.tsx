@@ -1,20 +1,17 @@
 import {Box} from '@mui/material'
 import {NavBar} from './NavBar'
-
-const user = {
-  id: 1,
-  username: 'Vanessa',
-  email: 'example@gmail.com',
-}
+import {useAppSelector} from '../hooks'
 
 export const Profile = () => {
+  const {username, email} = useAppSelector((state) => state.user.currentUser)
+
   return (
     <Box>
       <NavBar />
       <div>Your Profile</div>
 
-      <p>{user.username}</p>
-      <p>{user.email}</p>
+      <p>{username}</p>
+      <p>{email}</p>
     </Box>
   )
 }

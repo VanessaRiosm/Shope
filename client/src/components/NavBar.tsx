@@ -1,5 +1,5 @@
 import {styled, alpha} from '@mui/material/styles'
-import {useAppSelector} from '../hooks'
+import {useAppDispatch, useAppSelector} from '../hooks'
 import {
   AppBar,
   Badge,
@@ -17,10 +17,11 @@ import {BsSearch} from 'react-icons/bs'
 import {FaShoppingCart} from 'react-icons/fa'
 import {FaUserCircle} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import {Cart} from './Cart'
+import {fetchCurrentUser, fetchLogOut} from '../features/users/userSlice'
 
 //searchbar
 const Search = styled('div')(({theme}) => ({
@@ -78,6 +79,8 @@ const StyledBadge = styled(Badge)<BadgeProps>(({theme}) => ({
 export const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const rol = useAppSelector((state) => state.user.rol)
+  const refresh = useAppSelector((state) => state.user.refresh)
+  const dispatch = useAppDispatch()
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -90,6 +93,10 @@ export const NavBar = () => {
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState)
   }
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser())
+  }, [refresh])
 
   return (
     <Box sx={{flexGrow: 1}}>
@@ -211,8 +218,17 @@ export const NavBar = () => {
               </div>
             ) : rol === 'user' ? (
               <div>
-                <MenuItem onClick={handleClose}>My Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Log Out</MenuItem>{' '}
+                <Link
+                  to={'/profile'}
+                  style={{textDecoration: 'none', color: 'black'}}
+                >
+                  <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                </Link>
+                <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
+                  <MenuItem onClick={() => dispatch(fetchLogOut())}>
+                    Log Out
+                  </MenuItem>{' '}
+                </Link>
               </div>
             ) : (
               <div>

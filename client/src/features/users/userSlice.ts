@@ -8,6 +8,7 @@ interface UsersState {
   usersList: any | null
   currentUser: any | null
   status: string
+  refresh: boolean
   rol: string
 }
 
@@ -15,6 +16,7 @@ const initialState = {
   usersList: null,
   currentUser: {},
   status: 'idle',
+  refresh: true,
   rol: '',
 } as UsersState
 
@@ -69,6 +71,10 @@ export const fetchCurrentUser: any = createAsyncThunk(
   }
 )
 
+export const fetchLogOut: any = createAsyncThunk('users/fetchLogOut', () => {
+  window.localStorage.removeItem('token')
+})
+
 export const userSlice = createSlice({
   name: 'users',
   initialState,
@@ -113,6 +119,16 @@ export const userSlice = createSlice({
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.currentUser = action.payload
         state.rol = action.payload.rol
+        state.status = 'success'
+      })
+
+      //refresh log out
+
+      .addCase(fetchLogOut.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchLogOut.fulfilled, (state) => {
+        state.refresh = !state.refresh
         state.status = 'success'
       })
   },
