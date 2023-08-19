@@ -23,7 +23,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
 
     next()
   } catch (err) {
-    res.json('se va para el catch')
+    res.json(err.message)
   }
 }
 
