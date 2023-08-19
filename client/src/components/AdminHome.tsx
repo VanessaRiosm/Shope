@@ -2,7 +2,7 @@ import * as React from 'react'
 import {useState} from 'react'
 import {useAppSelector} from '../hooks'
 import {AiOutlineMenu} from 'react-icons/ai'
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 
 import {
   AppBar,
@@ -130,7 +130,9 @@ export const AdminHome = () => {
           </AppBar>
           <div>{handleComponent()}</div>
         </Box>
-      ) : null}
+      ) : (
+        <Box>{<Navigate to='/' />}</Box>
+      )}
     </div>
   )
 }

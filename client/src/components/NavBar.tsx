@@ -13,9 +13,9 @@ import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import InputBase from '@mui/material/InputBase'
+import {FaShoppingCart, FaUserCircle} from 'react-icons/fa'
 import {BsSearch} from 'react-icons/bs'
-import {FaShoppingCart} from 'react-icons/fa'
-import {FaUserCircle} from 'react-icons/fa'
+import {AiOutlineClose} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import Drawer from 'react-modern-drawer'
@@ -167,7 +167,16 @@ export const NavBar = () => {
             overlayOpacity={0.5}
           >
             <Box>
-              <Button onClick={toggleDrawer}>X</Button>
+              <Button
+                // style={{
+                //   width: '400px',
+                //   height: '100px',
+                //   display: 'block',
+                // }}
+                onClick={toggleDrawer}
+              >
+                <AiOutlineClose />
+              </Button>
 
               <Cart />
             </Box>

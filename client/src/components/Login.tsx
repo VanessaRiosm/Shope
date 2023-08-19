@@ -199,7 +199,7 @@ export const Login = () => {
                             margin: '20px 0 10px 0',
                           }}
                         >
-                          {'Dont have an account? Sign up'}
+                          {'Dont have an account? Sign Up'}
                         </Link>
                       </Grid>
                     </Grid>

@@ -8,43 +8,48 @@ import {
   FaTwitterSquare,
 } from 'react-icons/fa'
 import {Box, Button} from '@mui/material'
+import {useAppSelector} from '../hooks'
 
 export const Footerr = () => {
+  const {currentUser} = useAppSelector((state) => state.user)
+
   return (
     <Box>
-      <Box
-        border='1px solid gray'
-        margin='60px 70px 50px 70px'
-        padding='30px'
-        justifyContent='space-around'
-        alignItems='center'
-        display={{xs: 'grid', sm: 'flex'}}
-      >
-        <Box>
+      {!currentUser.username && (
+        <Box
+          border='1px solid gray'
+          margin='60px 70px 50px 70px'
+          padding='30px'
+          justifyContent='space-around'
+          alignItems='center'
+          display={{xs: 'grid', sm: 'flex'}}
+        >
           <Box>
-            <p>Sign up and get a 25% discount</p>
-            <p style={{fontWeight: 'bold', fontSize: '25px'}}>
-              ON YOUR FIRST PURCHASE
-            </p>
+            <Box>
+              <p>Sign up and get a 25% discount</p>
+              <p style={{fontWeight: 'bold', fontSize: '25px'}}>
+                ON YOUR FIRST PURCHASE
+              </p>
+            </Box>
+          </Box>
+
+          <Box>
+            <Link
+              to={'/register'}
+              style={{textDecoration: 'none', color: 'white'}}
+            >
+              <Button
+                variant='contained'
+                style={{
+                  backgroundColor: '#4518D9 ',
+                }}
+              >
+                SIGN UP
+              </Button>
+            </Link>
           </Box>
         </Box>
-
-        <Box>
-          <Link
-            to={'/register'}
-            style={{textDecoration: 'none', color: 'white'}}
-          >
-            <Button
-              variant='contained'
-              style={{
-                backgroundColor: '#4518D9 ',
-              }}
-            >
-              SIGN UP
-            </Button>
-          </Link>
-        </Box>
-      </Box>
+      )}
 
       <Box
         component='footer'

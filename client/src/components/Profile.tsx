@@ -1,6 +1,7 @@
 import {Box} from '@mui/material'
 import {NavBar} from './NavBar'
 import {useAppSelector} from '../hooks'
+import {Footerr} from './Footer'
 
 export const Profile = () => {
   const {username, email} = useAppSelector((state) => state.user.currentUser)
@@ -12,6 +13,7 @@ export const Profile = () => {
 
       <p>{username}</p>
       <p>{email}</p>
+      <Footerr />
     </Box>
   )
 }
