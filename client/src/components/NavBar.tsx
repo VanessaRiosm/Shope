@@ -167,16 +167,18 @@ export const NavBar = () => {
             overlayOpacity={0.5}
           >
             <Box>
-              <Button
-                // style={{
-                //   width: '400px',
-                //   height: '100px',
-                //   display: 'block',
-                // }}
-                onClick={toggleDrawer}
-              >
-                <AiOutlineClose />
-              </Button>
+              <Box>
+                <Button
+                  style={{
+                    width: '20px',
+                    height: '50px',
+                    left: '85%',
+                  }}
+                  onClick={toggleDrawer}
+                >
+                  <AiOutlineClose />
+                </Button>
+              </Box>
 
               <Cart />
             </Box>
