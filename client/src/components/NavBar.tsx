@@ -1,4 +1,4 @@
-import {styled, alpha} from '@mui/material/styles'
+import {styled, alpha, createTheme, ThemeProvider} from '@mui/material/styles'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {
   AppBar,
@@ -76,6 +76,12 @@ const StyledBadge = styled(Badge)<BadgeProps>(({theme}) => ({
   },
 }))
 
+const promFont = createTheme({
+  typography: {
+    fontFamily: ['ADLaM Display', 'cursive'].join(','),
+  },
+})
+
 export const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const rol = useAppSelector((state) => state.user.rol)
@@ -125,15 +131,17 @@ export const NavBar = () => {
             </Link>
           </Typography>
 
-          <Typography
-            noWrap
-            component='div'
-            fontSize={20}
-            fontWeight={'bold'}
-            sx={{flexGrow: 1, display: {xs: 'none', md: 'block'}}}
-          >
-            SALES UP TO 60% OFF
-          </Typography>
+          <ThemeProvider theme={promFont}>
+            <Typography
+              noWrap
+              component='div'
+              fontSize={20}
+              fontWeight={'bold'}
+              sx={{flexGrow: 1, display: {xs: 'none', md: 'block'}}}
+            >
+              SALES UP TO 60% OFF
+            </Typography>
+          </ThemeProvider>
 
           <Search>
             <SearchIconWrapper>
@@ -168,6 +176,7 @@ export const NavBar = () => {
           >
             <Box>
               <Box>
+                {/* <Typography>Cart</Typography> */}
                 <Button
                   style={{
                     width: '20px',

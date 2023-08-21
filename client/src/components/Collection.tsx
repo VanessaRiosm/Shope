@@ -10,6 +10,12 @@ const categoryFont = createTheme({
   },
 })
 
+// const categoryNameFont = createTheme({
+//   typography: {
+//     fontFamily: ['Noto Sans', 'sans-serif'].join(','),
+//   },
+// })
+
 const Hr = styled('hr')(({title}: {title: string}) => ({
   lineHeight: ' 0.2em',
   position: 'relative',
