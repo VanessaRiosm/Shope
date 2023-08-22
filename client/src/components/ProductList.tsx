@@ -1,9 +1,18 @@
 import {Box, Grid, Typography} from '@mui/material'
 import {NavBar} from './NavBar'
-import {products} from '../products'
 import {Product} from '../types/types'
+import {useAppDispatch, useAppSelector} from '../hooks'
+import {useEffect} from 'react'
+import {fetchGetProducts} from '../features/products/productSlice'
 
 export const ProductList = () => {
+  const products = useAppSelector((state: any) => state.product.productsList)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchGetProducts())
+  }, [])
+
   return (
     <Box>
       <NavBar />
@@ -32,7 +41,7 @@ export const ProductList = () => {
               <Box display='flex' flexDirection='column' alignItems='center'>
                 <img style={{maxWidth: 500, height: 500}} src={product.image} />
 
-                <Box>{product.title}</Box>
+                <Box>{product.name}</Box>
                 <Box>{product.price}</Box>
               </Box>
             </Grid>
