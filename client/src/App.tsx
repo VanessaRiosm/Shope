@@ -13,7 +13,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' Component={Home} />
-        <Route path='/productdetails' Component={ProductDetails} />
+        <Route path='/product/:id' Component={ProductDetails} />
         <Route path='/productlist' Component={ProductList} />
         <Route path='/profile' Component={Profile} />
         <Route path='/login' Component={Login} />

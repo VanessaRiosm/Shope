@@ -1,4 +1,4 @@
-import {Box, Button, Typography} from '@mui/material'
+import {Box, Button, Skeleton, Typography} from '@mui/material'
 import {createTheme, styled, ThemeProvider} from '@mui/material/styles'
 import {useEffect, useState} from 'react'
 import ReactSimplyCarousel from 'react-simply-carousel'
@@ -6,6 +6,7 @@ import {BsCartPlusFill} from 'react-icons/bs'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {fetchGetProducts} from '../features/products/productSlice'
 import {Product} from '../types/types'
+import {Link} from 'react-router-dom'
 
 const categoryFont = createTheme({
   typography: {
@@ -114,58 +115,96 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
         speed={400}
         easing='linear'
       >
-        {products &&
+        {products ? (
           products.map((product: Product) => (
             <Box
-              key={product.id}
+              key={product._id}
               position='relative'
               display='inline-block'
               textAlign='center'
             >
-              <ThemeProvider theme={categoryFont}>
-                <img
-                  style={{width: 295, height: 430, margin: '5px'}}
-                  src={product.image}
-                />
+              <Link to={`/product/${product._id}`}>
+                <ThemeProvider theme={categoryFont}>
+                  <img
+                    style={{width: 295, height: 430, margin: '5px'}}
+                    src={product.image}
+                  />
 
-                <Box
-                  width='40px'
-                  height='20px'
-                  bgcolor='#000'
-                  padding='4px'
-                  position='absolute'
-                  color='white'
-                  display='flex'
-                  justifyContent='center'
-                  alignItems='center'
-                  top='3.9%'
-                  left='9.8%'
-                  style={{
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                >
-                  <Typography>{badg}</Typography>
-                </Box>
-                <Box
-                  style={{
-                    transform: 'translate(-50%, -50%)',
-                  }}
-                  position='absolute'
-                  display='flex'
-                  justifyContent='center'
-                  alignItems='center'
-                  bottom='5%'
-                  left='90%'
-                >
-                  <Button>
-                    <BsCartPlusFill fontSize='35px' color='black' />
-                  </Button>
-                </Box>
-              </ThemeProvider>
+                  <Box
+                    width='40px'
+                    height='20px'
+                    bgcolor='#000'
+                    padding='4px'
+                    position='absolute'
+                    color='white'
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    top='3.9%'
+                    left='9.8%'
+                    style={{
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                  >
+                    <Typography>{badg}</Typography>
+                  </Box>
+
+                  <Box
+                    style={{
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                    position='absolute'
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    bottom='5%'
+                    left='90%'
+                  >
+                    <Button>
+                      <BsCartPlusFill fontSize='35px' color='black' />
+                    </Button>
+                  </Box>
+                </ThemeProvider>
+              </Link>
+
               <Box>{product.name}</Box>
               <Box>${product.price}</Box>
             </Box>
-          ))}
+          ))
+        ) : (
+          <Box display='flex' justifyContent='center' gap='3px'>
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={295}
+              height={430}
+            />
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={295}
+              height={430}
+            />
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={295}
+              height={430}
+            />
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={295}
+              height={430}
+            />
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={295}
+              height={430}
+            />
+          </Box>
+        )}
       </ReactSimplyCarousel>
     </Box>
   )

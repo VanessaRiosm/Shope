@@ -21,10 +21,8 @@ const Marque = () => (
       }}
     >
       {anArray.map((par: string) => (
-        <Box>
-          <p key={par} style={{marginLeft: '60px'}}>
-            {par}
-          </p>
+        <Box key={par}>
+          <p style={{marginLeft: '60px'}}>{par}</p>
         </Box>
       ))}
     </Marquee>
