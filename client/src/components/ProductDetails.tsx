@@ -1,10 +1,20 @@
-import {Box, Button} from '@mui/material'
+import {
+  Box,
+  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+  Skeleton,
+  FormControl,
+  Stack,
+  SelectChangeEvent,
+} from '@mui/material'
 import {NavBar} from './NavBar'
 import {Footerr} from './Footer'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {useParams} from 'react-router-dom'
 import {fetchGetProduct} from '../features/products/productSlice'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {clear} from '../features/products/productSlice'
 
 export const ProductDetails = () => {
@@ -20,6 +30,12 @@ export const ProductDetails = () => {
       dispatch(clear())
     }
   }, [])
+
+  const [Size, setSize] = useState('')
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setSize(event.target.value)
+  }
 
   return (
     <Box>
@@ -51,6 +67,28 @@ export const ProductDetails = () => {
               {product.price}
             </p>
             <p style={{fontSize: '20px'}}> {product.description} </p>
+
+            <Box>
+              <FormControl variant='standard' sx={{m: 1, minWidth: 120}}>
+                <InputLabel id='demo-simple-select-standard-label'>
+                  Size
+                </InputLabel>
+                <Select
+                  labelId='demo-simple-select-standard-label'
+                  id='demo-simple-select-standard'
+                  value={Size}
+                  onChange={handleChange}
+                  label='Size'
+                >
+                  <MenuItem value=''>
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>xs</MenuItem>
+                  <MenuItem value={20}>sm</MenuItem>
+                  <MenuItem value={30}>lg</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
             <Box>
               <Box>
                 <Button
@@ -59,13 +97,34 @@ export const ProductDetails = () => {
                     backgroundColor: '#4518D9 ',
                   }}
                 >
-                  Buy
+                  Add to cart
                 </Button>
               </Box>
             </Box>
           </Box>
         </Box>
-      ) : null}
+      ) : (
+        <Box
+          maxHeight='950px'
+          display='flex'
+          margin='10px 40px 10px 40px'
+          gap='30px'
+        >
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width='30%'
+            height='700px'
+          />
+
+          <Stack spacing={1} margin='10px 40px 10px 40px'>
+            <Skeleton variant='text' sx={{fontSize: '2rem'}} />
+            <Skeleton variant='rectangular' width={100} height={20} />
+            <Skeleton variant='rectangular' width={210} height={60} />
+            <Skeleton variant='rectangular' width={100} height={20} />
+          </Stack>
+        </Box>
+      )}
 
       <Footerr />
     </Box>

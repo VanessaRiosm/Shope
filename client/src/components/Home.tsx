@@ -13,7 +13,7 @@ export const Home = () => {
       <NavBar />
       <Carousel />
       <Marque />
-      <Collection title={'NEW COLLECTION'} badg={'NEW'} />
+      <Collection title={'NEW ARRIVALS'} badg={'NEW'} />
       <Categories siP={'si'} />
       <Collection title={'TOP SELLER'} badg={'TOP'} />
       <Categories siP={'no'} />

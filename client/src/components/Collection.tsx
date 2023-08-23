@@ -123,8 +123,8 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
               display='inline-block'
               textAlign='center'
             >
-              <Link to={`/product/${product._id}`}>
-                <ThemeProvider theme={categoryFont}>
+              <ThemeProvider theme={categoryFont}>
+                <Link to={`/product/${product._id}`}>
                   <img
                     style={{width: 295, height: 430, margin: '5px'}}
                     src={product.image}
@@ -148,24 +148,23 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
                   >
                     <Typography>{badg}</Typography>
                   </Box>
-
-                  <Box
-                    style={{
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                    position='absolute'
-                    display='flex'
-                    justifyContent='center'
-                    alignItems='center'
-                    bottom='5%'
-                    left='90%'
-                  >
-                    <Button>
-                      <BsCartPlusFill fontSize='35px' color='black' />
-                    </Button>
-                  </Box>
-                </ThemeProvider>
-              </Link>
+                </Link>
+                <Box
+                  style={{
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                  position='absolute'
+                  display='flex'
+                  justifyContent='center'
+                  alignItems='center'
+                  bottom='5%'
+                  left='90%'
+                >
+                  <Button>
+                    <BsCartPlusFill fontSize='35px' color='black' />
+                  </Button>
+                </Box>
+              </ThemeProvider>
 
               <Box>{product.name}</Box>
               <Box>${product.price}</Box>
