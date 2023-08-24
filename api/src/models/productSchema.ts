@@ -23,3 +23,10 @@ const productSchema = new Schema({
 })
 
 export const Product = model('Product', productSchema)
+
+productSchema.set('toJSON', {
+  transform: (document, retunObject) => {
+    retunObject.id = retunObject._id
+    delete retunObject._id
+  },
+})

@@ -11,14 +11,12 @@ export const addToCart = async (req: Request, res: Response) => {
       //buscamos si usuario tiene carrito
       let cart = await Cart.findOne({usId})
 
-      console.log(cart)
       if (cart) {
         //si tiene carrito, buscamos el index de el producto (para confirmar si existe)
         const itemIndex = cart.products.findIndex(
           (p) => p.productId == productId
         )
 
-        console.log(itemIndex)
         if (itemIndex > -1) {
           //si el producto existe en el carrito, se cambia la cantidad
 

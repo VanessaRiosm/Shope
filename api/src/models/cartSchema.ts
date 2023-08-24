@@ -30,3 +30,10 @@ const cartSchema = new Schema<CartSchemaDocument>({
 })
 
 export const Cart = model<CartSchemaDocument>('Cart', cartSchema)
+
+cartSchema.set('toJSON', {
+  transform: (document, retunObject) => {
+    retunObject.id = retunObject._id
+    delete retunObject._id
+  },
+})

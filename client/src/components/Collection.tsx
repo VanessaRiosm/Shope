@@ -118,13 +118,13 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
         {products ? (
           products.map((product: Product) => (
             <Box
-              key={product._id}
+              key={product.id}
               position='relative'
               display='inline-block'
               textAlign='center'
             >
               <ThemeProvider theme={categoryFont}>
-                <Link to={`/product/${product._id}`}>
+                <Link to={`/product/${product.id}`}>
                   <img
                     style={{width: 295, height: 430, margin: '5px'}}
                     src={product.image}

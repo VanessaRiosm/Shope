@@ -12,7 +12,7 @@ export const createUser = async (req: Request, res: Response) => {
 
     const newUser = await User.create({username, email, password, rol})
 
-    await Cart.create({userId: newUser._id})
+    await Cart.create({userId: newUser.id})
 
     res.status(200).json(newUser)
   } catch (err) {
