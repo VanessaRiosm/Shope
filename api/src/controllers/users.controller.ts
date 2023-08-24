@@ -1,5 +1,6 @@
 import {Request, Response} from 'express'
 import {User} from '../models/userSchema'
+import {Cart} from '../models/cartSchema'
 
 export const createUser = async (req: Request, res: Response) => {
   try {
@@ -11,9 +12,11 @@ export const createUser = async (req: Request, res: Response) => {
 
     const newUser = await User.create({username, email, password, rol})
 
-    res.json(newUser)
+    await Cart.create({userId: newUser._id})
+
+    res.status(200).json(newUser)
   } catch (err) {
-    res.json(err)
+    res.status(400).json(err.message)
   }
 }
 

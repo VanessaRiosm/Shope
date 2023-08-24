@@ -1,4 +1,4 @@
-import {Schema, model} from 'mongoose'
+import {Schema, model, Document, Types} from 'mongoose'
 
 const userSchema = new Schema({
   username: {
@@ -17,9 +17,7 @@ const userSchema = new Schema({
     type: String,
     default: 'user',
   },
-  cart: {
-    type: String,
-  },
+  cart: [{type: Schema.Types.ObjectId, ref: 'Cart'}],
 })
 
 export const User = model('User', userSchema)

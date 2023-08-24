@@ -4,7 +4,7 @@ import {addToCart, removeFromCart} from '../controllers/cart.controller'
 
 const router = Router()
 
-router.put('/add/:', addToCart)
-router.put('/remove/:', removeFromCart)
+router.put('/add/:usId', addToCart)
+router.put('/remove/:id', removeFromCart)
 
 export default router
