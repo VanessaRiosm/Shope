@@ -14,17 +14,24 @@ import {Footerr} from './Footer'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {useParams} from 'react-router-dom'
 import {fetchGetProduct} from '../features/products/productSlice'
+import {fetchAddToCart} from '../features/cart/cartSlice'
 import {useEffect, useState} from 'react'
 import {clear} from '../features/products/productSlice'
 
 export const ProductDetails = () => {
   const product = useAppSelector((state) => state.product.productDetails)
+  const {rol, currentUser} = useAppSelector((state) => state.user)
   const dispatch = useAppDispatch()
   const {id} = useParams()
 
+  const addToCart = (data: any) => {
+    if (rol === 'user' || rol === 'admin') {
+      dispatch(fetchAddToCart(data))
+    } else console.log('tienes que registrarte')
+  }
+
   useEffect(() => {
     dispatch(fetchGetProduct(id))
-    // window.scrollTo({top: 0, behavior: 'smooth'})
 
     return () => {
       dispatch(clear())
@@ -96,6 +103,15 @@ export const ProductDetails = () => {
                   style={{
                     backgroundColor: '#4518D9 ',
                   }}
+                  onClick={() =>
+                    addToCart({
+                      userId: currentUser.id,
+                      productId: product.id,
+                      name: product.name,
+                      price: product.price,
+                      quantity: 1,
+                    })
+                  }
                 >
                   Add to cart
                 </Button>

@@ -21,3 +21,10 @@ const userSchema = new Schema({
 })
 
 export const User = model('User', userSchema)
+
+userSchema.set('toJSON', {
+  transform: (document, returnObject) => {
+    returnObject.id = returnObject._id
+    delete returnObject._id
+  },
+})

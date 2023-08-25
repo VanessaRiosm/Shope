@@ -1,13 +1,22 @@
-import {createSlice} from '@reduxjs/toolkit'
-// import axios from 'axios'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import axios from 'axios'
 
-// const URL = import.meta.env.VITE_APP_URL
+const URL = import.meta.env.VITE_APP_URL
 
 interface cartState {
   cartItems: any | null
   cartTotalQuantity: number
   cartTotalAmount: number
   status: string
+  refresh: boolean
+}
+
+interface ids {
+  userId: string
+  productId: string
+  name: string
+  price: number
+  quantity: number
 }
 
 const initialState = {
@@ -15,33 +24,41 @@ const initialState = {
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
   status: 'idle',
+  refresh: true,
 } as cartState
 
-// export const fetchGetProducts: any = createAsyncThunk(
-//   'users/fetchGetProducts',
-//   async () => {
-//     const response = await axios.get(`${URL}/products/`)
+export const fetchAddToCart: any = createAsyncThunk(
+  'users/fetchAddToCart',
+  async (ids: ids) => {
+    const {userId, productId, name, price, quantity} = ids
 
-//     return response.data
-//   }
-// )
+    const response = await axios.put(`${URL}/cart/add/${userId}`, {
+      productId,
+      name,
+      price,
+      quantity,
+    })
+
+    return response.data
+  }
+)
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
 
   reducers: {},
-  // recibe por parametro el builder
-  extraReducers: () => {
-    // builder
-    //   //Login
-    //   .addCase(fetchGetProducts.pending, (state) => {
-    //     state.status = 'loading'
-    //   })
-    //   .addCase(fetchGetProducts.fulfilled, (state, action) => {
-    //     state.productsList = action.payload
-    //     state.status = 'success'
-    //   })
+
+  extraReducers: (builder) => {
+    builder
+      //añadiendo al carrito
+      .addCase(fetchAddToCart.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchAddToCart.fulfilled, (state) => {
+        state.refresh = !state.refresh
+        state.status = 'success'
+      })
   },
 })
 
