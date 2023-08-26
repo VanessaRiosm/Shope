@@ -1,6 +1,14 @@
 import {Schema, model, Document, Types} from 'mongoose'
 
-const userSchema = new Schema({
+interface user extends Document {
+  username: string
+  email: string
+  password: string
+  rol: string
+  cart: Types.ObjectId
+}
+
+const userSchema = new Schema<user>({
   username: {
     type: String,
   },
@@ -20,7 +28,7 @@ const userSchema = new Schema({
   cart: [{type: Schema.Types.ObjectId, ref: 'Cart'}],
 })
 
-export const User = model('User', userSchema)
+export const User = model<user>('User', userSchema)
 
 userSchema.set('toJSON', {
   transform: (document, returnObject) => {

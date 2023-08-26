@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
 import {Cart} from '../models/cartSchema'
-// import {User} from '../models/userSchema'
+import {User} from '../models/userSchema'
+import {Product} from '../models/productSchema'
 
 export const addToCart = async (req: Request, res: Response) => {
   const {usId} = req.params
@@ -10,16 +11,15 @@ export const addToCart = async (req: Request, res: Response) => {
     if (productId && name && quantity && price) {
       //buscamos si usuario tiene carrito
       let cart = await Cart.findOne({usId})
+      let user = await User.findById(usId)
 
       if (cart) {
-        //si tiene carrito, buscamos el index de el producto (para confirmar si existe)
         const itemIndex = cart.products.findIndex(
           (p) => p.productId == productId
         )
 
+        //el producto existe
         if (itemIndex > -1) {
-          //si el producto existe en el carrito, se cambia la cantidad
-
           let productItem = cart.products[itemIndex]
 
           productItem.quantity = productItem.quantity + quantity
@@ -30,14 +30,18 @@ export const addToCart = async (req: Request, res: Response) => {
           cart.products[itemIndex] = productItem
           cart.subTotal = sub
 
-          // User.cart.push(productItem)
-          //
+          await cart.save()
+          await user.updateOne({cart}, {cart})
+
+          //el producto no existe
         } else {
           cart.subTotal = price
           cart.products.push({productId, quantity, name, price})
+          await cart.save()
+          await user.updateOne({cart}, {productId})
         }
-        cart = await cart.save()
-        return res.status(201).json(cart)
+
+        return res.status(201).json('pk')
 
         //
       } else {
