@@ -48,7 +48,7 @@ export const AdminHome = () => {
     <div>
       {rol === 'admin' ? (
         <Box>
-          <AppBar position='static' color={'transparent' || '#00e5ff'}>
+          <AppBar position='static' sx={{bgcolor: 'white'}}>
             <Container maxWidth='xl'>
               <Toolbar disableGutters>
                 <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
@@ -58,7 +58,7 @@ export const AdminHome = () => {
                     aria-controls='menu-appbar'
                     aria-haspopup='true'
                     onClick={handleClick}
-                    color='inherit'
+                    color='black'
                   >
                     <AiOutlineMenu />
                   </IconButton>
