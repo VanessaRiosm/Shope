@@ -48,6 +48,7 @@ const SearchIconWrapper = styled('div')(({theme}) => ({
   pointerEvents: 'none',
   display: 'flex',
   alignItems: 'center',
+  color: 'black',
   justifyContent: 'center',
 }))
 
@@ -106,7 +107,7 @@ export const NavBar = () => {
 
   return (
     <Box sx={{flexGrow: 1}}>
-      <AppBar position='static' color={'transparent' || '#00e5ff'}>
+      <AppBar position='fixed' sx={{bgcolor: 'white'}}>
         <Toolbar>
           <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
             <img
@@ -134,6 +135,7 @@ export const NavBar = () => {
           <ThemeProvider theme={promFont}>
             <Typography
               noWrap
+              color='black'
               component='div'
               fontSize={20}
               fontWeight={'bold'}
@@ -148,6 +150,7 @@ export const NavBar = () => {
               <BsSearch />
             </SearchIconWrapper>
             <StyledInputBase
+              sx={{color: 'black'}}
               placeholder='Search…'
               inputProps={{'aria-label': 'search'}}
             />
@@ -156,10 +159,9 @@ export const NavBar = () => {
           <IconButton
             size='large'
             edge='start'
-            color='inherit'
             aria-label='open drawer'
             onClick={toggleDrawer}
-            sx={{mr: 1}}
+            sx={{mr: 1, color: 'black'}}
           >
             {' '}
             <StyledBadge badgeContent={1}>
@@ -196,9 +198,9 @@ export const NavBar = () => {
           <IconButton
             size='large'
             edge='start'
-            color='inherit'
+            
             aria-label='open drawer'
-            sx={{mr: 2}}
+            sx={{mr: 2, color:'black'}}
             onClick={handleMenu}
           >
             <FaUserCircle />
