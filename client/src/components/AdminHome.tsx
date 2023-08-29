@@ -58,7 +58,7 @@ export const AdminHome = () => {
                     aria-controls='menu-appbar'
                     aria-haspopup='true'
                     onClick={handleClick}
-                    color='black'
+                    sx={{color: 'black'}}
                   >
                     <AiOutlineMenu />
                   </IconButton>
