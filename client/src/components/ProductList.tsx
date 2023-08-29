@@ -22,7 +22,7 @@ export const ProductList = () => {
         marginTop='20px'
         marginBottom='20px'
       >
-        <Typography variant='h6' fontWeight='bold'>
+        <Typography variant='h6' fontWeight='bold' mt='50px'>
           Explore Shope's collection of knitwear that will give you a trendy and
           sophisticated touch to your days. Our colors and details special items
           will be the pop of color that your closet needs.
