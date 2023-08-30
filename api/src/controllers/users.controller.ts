@@ -22,7 +22,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const getUsers = async (req: Request, res: Response) => {
   try {
-    const users = await User.find()
+    const users = await User.find().populate('cart')
 
     res.json(users)
   } catch (err) {
