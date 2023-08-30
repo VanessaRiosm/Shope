@@ -63,60 +63,59 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
       <Box>
         <Hr title={title} />
       </Box>
-
-      <ReactSimplyCarousel
-        activeSlideIndex={activeSlideIndex}
-        onRequestChange={setActiveSlideIndex}
-        itemsToShow={1}
-        itemsToScroll={1}
-        infinite={true}
-        disableSwipeByMouse={true}
-        disableSwipeByTouch={true}
-        // botones
-        forwardBtnProps={{
-          style: {
-            alignSelf: 'center',
-            background: 'black',
-            border: 'none',
-            borderRadius: '50%',
-            color: 'white',
-            cursor: 'pointer',
-            fontSize: '16px',
-            height: 25,
-            lineHeight: 1,
-            textAlign: 'center',
-            width: 20,
-          },
-          children: <span>{`>`}</span>,
-        }}
-        backwardBtnProps={{
-          style: {
-            alignSelf: 'center',
-            background: 'black',
-            border: 'none',
-            borderRadius: '50%',
-            color: 'white',
-            cursor: 'pointer',
-            fontSize: '16px',
-            height: 25,
-            lineHeight: 0,
-            textAlign: 'center',
-            width: 20,
-          },
-          children: <span>{`<`}</span>,
-        }}
-        responsiveProps={[
-          {minWidth: 1700, itemsToShow: 5},
-          {minWidth: 1300, maxWidth: 1700, itemsToShow: 4},
-          {maxWidth: 1299, itemsToShow: 3},
-          {maxWidth: 1000, itemsToShow: 2},
-          {maxWidth: 700, itemsToShow: 1},
-        ]}
-        speed={400}
-        easing='linear'
-      >
-        {products ? (
-          products.map((product: Product) => (
+      {products ? (
+        <ReactSimplyCarousel
+          activeSlideIndex={activeSlideIndex}
+          onRequestChange={setActiveSlideIndex}
+          itemsToShow={1}
+          itemsToScroll={1}
+          infinite={true}
+          disableSwipeByMouse={true}
+          disableSwipeByTouch={true}
+          // botones
+          forwardBtnProps={{
+            style: {
+              alignSelf: 'center',
+              background: 'black',
+              border: 'none',
+              borderRadius: '50%',
+              color: 'white',
+              cursor: 'pointer',
+              fontSize: '16px',
+              height: 25,
+              lineHeight: 1,
+              textAlign: 'center',
+              width: 20,
+            },
+            children: <span>{`>`}</span>,
+          }}
+          backwardBtnProps={{
+            style: {
+              alignSelf: 'center',
+              background: 'black',
+              border: 'none',
+              borderRadius: '50%',
+              color: 'white',
+              cursor: 'pointer',
+              fontSize: '16px',
+              height: 25,
+              lineHeight: 0,
+              textAlign: 'center',
+              width: 20,
+            },
+            children: <span>{`<`}</span>,
+          }}
+          responsiveProps={[
+            {minWidth: 1700, itemsToShow: 5},
+            {minWidth: 1300, maxWidth: 1700, itemsToShow: 4},
+            {maxWidth: 1299, itemsToShow: 3},
+            {maxWidth: 1000, itemsToShow: 2},
+            {maxWidth: 700, itemsToShow: 1},
+          ]}
+          speed={400}
+          easing='linear'
+        >
+          {products.map((product: Product) => (
             <Box
               key={product.id}
               position='relative'
@@ -169,42 +168,36 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
               <Box>{product.name}</Box>
               <Box>${product.price}</Box>
             </Box>
-          ))
-        ) : (
-          <Box display='flex' justifyContent='center' gap='3px'>
-            <Skeleton
-              sx={{bgcolor: 'grey.900'}}
-              variant='rectangular'
-              width={295}
-              height={430}
-            />
-            <Skeleton
-              sx={{bgcolor: 'grey.900'}}
-              variant='rectangular'
-              width={295}
-              height={430}
-            />
-            <Skeleton
-              sx={{bgcolor: 'grey.900'}}
-              variant='rectangular'
-              width={295}
-              height={430}
-            />
-            <Skeleton
-              sx={{bgcolor: 'grey.900'}}
-              variant='rectangular'
-              width={295}
-              height={430}
-            />
-            <Skeleton
-              sx={{bgcolor: 'grey.900'}}
-              variant='rectangular'
-              width={295}
-              height={430}
-            />
-          </Box>
-        )}
-      </ReactSimplyCarousel>
+          ))}
+        </ReactSimplyCarousel>
+      ) : (
+        <Box display='flex' justifyContent='center' gap='3px'>
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width={295}
+            height={430}
+          />
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width={295}
+            height={430}
+          />
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width={295}
+            height={430}
+          />
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width={295}
+            height={430}
+          />
+        </Box>
+      )}
     </Box>
   )
 }
