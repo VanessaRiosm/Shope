@@ -1,7 +1,6 @@
 import {Request, Response} from 'express'
 import {Cart} from '../models/cartSchema'
 import {User} from '../models/userSchema'
-import {Product} from '../models/productSchema'
 
 export const addToCart = async (req: Request, res: Response) => {
   const {usId} = req.params
