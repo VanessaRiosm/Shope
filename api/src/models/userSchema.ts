@@ -1,6 +1,7 @@
 import {Schema, model, Document, Types} from 'mongoose'
 
 interface user extends Document {
+  id: string
   username: string
   email: string
   password: string

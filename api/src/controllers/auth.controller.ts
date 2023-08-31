@@ -28,7 +28,7 @@ export const verifyUser = async (req: Request, res: Response) => {
   try {
     const {userId} = req.params
 
-    const userInfo = await User.findById(userId)
+    const userInfo = await User.findById(userId).populate('cart')
 
     res.json(userInfo)
   } catch (err) {

@@ -18,6 +18,7 @@ const cartSchema = new Schema<CartSchemaDocument>({
     {
       productId: String,
       quantity: Number,
+      image: String,
       name: String,
       price: Number,
       totalValue: Number,

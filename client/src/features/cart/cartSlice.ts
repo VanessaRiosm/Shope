@@ -17,6 +17,7 @@ interface ids {
   name: string
   price: number
   quantity: number
+  image: string
 }
 
 const initialState = {
@@ -30,13 +31,14 @@ const initialState = {
 export const fetchAddToCart: any = createAsyncThunk(
   'users/fetchAddToCart',
   async (ids: ids) => {
-    const {userId, productId, name, price, quantity} = ids
+    const {userId, productId, name, price, quantity, image} = ids
 
     const response = await axios.put(`${URL}/cart/add/${userId}`, {
       productId,
       name,
       price,
       quantity,
+      image,
     })
 
     return response.data

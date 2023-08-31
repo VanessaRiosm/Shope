@@ -1,17 +1,35 @@
 import {Box, Typography} from '@mui/material'
-import {useAppSelector} from '../hooks'
+import {useAppDispatch, useAppSelector} from '../hooks'
+import {useEffect} from 'react'
+import {fetchCurrentUser} from '../features/users/userSlice'
 
 export const Cart = () => {
   const {currentUser} = useAppSelector((state) => state.user)
+  const {refresh} = useAppSelector((state) => state.cart)
+  const dispatch = useAppDispatch()
 
-  // console.log(currentUser)
+  useEffect(() => {
+    dispatch(fetchCurrentUser())
+  }, [refresh])
+
   return (
     <Box>
-      {currentUser.cart && currentUser.cart.length > 0 ? (
+      {currentUser && currentUser.cart && currentUser.cart[0] ? (
         <Box>
-          {currentUser.cart.map((p: any) => (
-            <div>{p}</div>
-          ))}
+          <Box>
+            {currentUser.cart[0].products.map((p: any) => (
+              <div key={p.productId} style={{backgroundColor: 'red'}}>
+                <img src={p.image} style={{width: '160px', height: '160px'}} />
+                {p.name}
+                {p.price} <br />
+                {p.quantity}
+              </div>
+            ))}
+          </Box>
+          <Box style={{backgroundColor: 'red'}}>
+            {' Total'}
+            {currentUser.cart[0].subTotal}{' '}
+          </Box>
         </Box>
       ) : (
         <Typography>

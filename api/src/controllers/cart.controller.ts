@@ -4,10 +4,10 @@ import {User} from '../models/userSchema'
 
 export const addToCart = async (req: Request, res: Response) => {
   const {usId} = req.params
-  const {productId, name, quantity, price} = req.body
+  const {productId, name, quantity, price, image} = req.body
 
   try {
-    if (productId && name && quantity && price) {
+    if (productId && name && quantity && price && image) {
       //buscamos si usuario tiene carrito
       let cart = await Cart.findOne({usId})
       let user = await User.findById(usId)
@@ -35,7 +35,7 @@ export const addToCart = async (req: Request, res: Response) => {
           //el producto no existe
         } else {
           cart.subTotal = price
-          cart.products.push({productId, quantity, name, price})
+          cart.products.push({productId, quantity, name, price, image})
           await cart.save()
           await user.updateOne({cart}, {productId})
         }
@@ -48,7 +48,7 @@ export const addToCart = async (req: Request, res: Response) => {
 
         const newCart = await Cart.create({
           usId,
-          products: [{productId, quantity, name, price}],
+          products: [{productId, quantity, name, price, image}],
           subTotal: price,
         })
 
