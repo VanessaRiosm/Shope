@@ -1,4 +1,4 @@
-import {Box, Typography} from '@mui/material'
+import {Box, Button, Typography} from '@mui/material'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {useEffect} from 'react'
 import {fetchCurrentUser} from '../features/users/userSlice'
@@ -39,15 +39,30 @@ export const Cart = () => {
                   <Box>Qty: {p.quantity}</Box>
                 </Box>
 
-                <Box color='black'>
+                <Box color='#4518D9'>
                   <BsTrash3 style={{marginBottom: '12px'}} />
                 </Box>
               </Box>
             ))}
           </Box>
-          <Box color='black'>
-            {' Total'}
-            {currentUser.cart[0].subTotal}{' '}
+          <Box display='flex'>
+            <Box color='black' mt='40px' ml='20%'>
+              {'TOTAL: '}
+              {currentUser.cart[0].subTotal}
+            </Box>
+
+            <Button
+              variant='contained'
+              sx={{
+                bgcolor: '#4518D9',
+                color: 'white',
+                height: '30px',
+                mt: '34px',
+                ml: '10px',
+              }}
+            >
+              CheckOut
+            </Button>
           </Box>
         </Box>
       ) : (

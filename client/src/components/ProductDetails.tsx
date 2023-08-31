@@ -32,7 +32,7 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchGetProduct(id))
-
+    window.scrollTo({top: 0, behavior: 'smooth'})
     return () => {
       dispatch(clear())
     }
@@ -49,7 +49,7 @@ export const ProductDetails = () => {
       <NavBar />
 
       {product ? (
-        <Box maxHeight='950px' display='flex' margin='10px 40px 10px 40px'>
+        <Box maxHeight='950px' display='flex' margin='80px 40px 10px 40px'>
           <img
             src={product.image}
             style={{
