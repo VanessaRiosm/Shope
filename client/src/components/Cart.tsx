@@ -18,7 +18,13 @@ export const Cart = () => {
         <Box>
           <Box>
             {currentUser.cart[0].products.map((p: any) => (
-              <div key={p.productId} style={{backgroundColor: 'red'}}>
+              <div
+                key={p.productId}
+                style={{
+                  backgroundColor: 'red',
+                  marginTop: '3px',
+                }}
+              >
                 <img src={p.image} style={{width: '160px', height: '160px'}} />
                 {p.name}
                 {p.price} <br />
@@ -32,7 +38,7 @@ export const Cart = () => {
           </Box>
         </Box>
       ) : (
-        <Typography>
+        <Typography color='black'>
           There are no products in your shopping cart, Continue shopping
         </Typography>
       )}
