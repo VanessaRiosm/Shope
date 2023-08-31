@@ -178,12 +178,12 @@ export const NavBar = () => {
           >
             <Box>
               <Box>
-                {/* <Typography>Cart</Typography> */}
                 <Button
                   style={{
                     width: '20px',
                     height: '50px',
                     left: '85%',
+                    color: 'black',
                   }}
                   onClick={toggleDrawer}
                 >
@@ -198,9 +198,8 @@ export const NavBar = () => {
           <IconButton
             size='large'
             edge='start'
-            
             aria-label='open drawer'
-            sx={{mr: 2, color:'black'}}
+            sx={{mr: 2, color: 'black'}}
             onClick={handleMenu}
           >
             <FaUserCircle />
