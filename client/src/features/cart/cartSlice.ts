@@ -5,6 +5,7 @@ const URL = import.meta.env.VITE_APP_URL
 
 interface cartState {
   cartItems: any | null
+  cartTotalQuantity: number
   cartTotalAmount: number
   status: string
   refresh: boolean
@@ -21,6 +22,7 @@ interface ids {
 
 const initialState = {
   cartItems: null,
+  cartTotalQuantity: 0,
   cartTotalAmount: 0,
   status: 'idle',
   refresh: true,
@@ -55,11 +57,8 @@ export const cartSlice = createSlice({
       .addCase(fetchAddToCart.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(fetchAddToCart.fulfilled, (state, action) => {
-        if (action.payload.products) {
-          state.cartItems = action.payload.products
-          state.cartTotalAmount = action.payload.subTotal
-        }
+      .addCase(fetchAddToCart.fulfilled, (state) => {
+        // console.log(action.payload)
         state.refresh = !state.refresh
         state.status = 'success'
       })

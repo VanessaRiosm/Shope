@@ -176,8 +176,9 @@ export const NavBar = () => {
             direction='right'
             size={400}
             overlayOpacity={0.5}
+            lockBackgroundScroll={true}
           >
-            <Box>
+            <Box sx={{overflowX: 'hidden', height: '100%'}}>
               <Box display='flex'>
                 <Typography color='black' mt='13px' ml='30px'>
                   Your Cart
@@ -193,7 +194,6 @@ export const NavBar = () => {
                 >
                   <AiOutlineClose />
                 </Button>
-                {/* <Divider variant='middle' orientation='horizontal' /> */}
               </Box>
 
               <Cart />

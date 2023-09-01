@@ -5,22 +5,22 @@ import {fetchCurrentUser} from '../features/users/userSlice'
 import {BsTrash3} from 'react-icons/bs'
 
 export const Cart = () => {
-  // const {currentUser} = useAppSelector((state) => state.user)
-  const {refresh, cartItems, cartTotalAmount} = useAppSelector(
-    (state) => state.cart
-  )
+  const {currentUser} = useAppSelector((state) => state.user)
+  const {refresh} = useAppSelector((state) => state.cart)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(fetchCurrentUser())
   }, [refresh])
 
+  console.log(currentUser)
+
   return (
     <Box>
-      {cartItems && cartTotalAmount ? (
+      {currentUser && currentUser.cart && currentUser.cart[0] ? (
         <Box overflow={'auto'}>
           <Box>
-            {cartItems.map((p: any) => (
+            {currentUser.cart[0].products.map((p: any) => (
               <Box
                 key={p.productId}
                 mt='4px'
@@ -50,7 +50,7 @@ export const Cart = () => {
           <Box display='flex'>
             <Box color='black' mt='40px' ml='20%'>
               {'TOTAL: '}
-              {cartTotalAmount}
+              {currentUser.cart[0].subTotal}
             </Box>
 
             <Button
