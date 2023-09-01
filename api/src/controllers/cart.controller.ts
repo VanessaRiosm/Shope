@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
 import {Cart} from '../models/cartSchema'
 import {User} from '../models/userSchema'
+import {Product} from '../models/productSchema'
 
 export const addToCart = async (req: Request, res: Response) => {
   const {usId} = req.params
@@ -64,9 +65,26 @@ export const addToCart = async (req: Request, res: Response) => {
 }
 
 export const removeFromCart = async (req: Request, res: Response) => {
+  const {usId} = req.params
+  const {productId} = req.body
+
   try {
-    res.json('')
+    let cart = await Cart.findOne({usId})
+    let user = await User.findById(usId)
+
+    const itemIndex = cart.products.findIndex((p) => p.productId == productId)
+    let product = cart.products[itemIndex]
+    let products = cart.products
+    let total = cart.subTotal - product.quantity * product.price
+
+    cart.subTotal = Number(total.toFixed(2))
+    products.splice(itemIndex, 1)
+    cart.products = products
+
+    await cart.save()
+    await user.updateOne({cart}, {cart})
+    res.status(200).json(cart)
   } catch (err) {
-    res.json(err.message)
+    res.status(400).json(err.message)
   }
 }
