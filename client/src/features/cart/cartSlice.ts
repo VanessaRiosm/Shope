@@ -20,6 +20,11 @@ interface ids {
   image: string
 }
 
+interface removeIds {
+  userId: string
+  productId: string
+}
+
 const initialState = {
   cartItems: null,
   cartTotalQuantity: 0,
@@ -28,7 +33,7 @@ const initialState = {
   refresh: true,
 } as cartState
 
-export const fetchAddToCart: any = createAsyncThunk(
+export const fetchAddToCart = createAsyncThunk(
   'users/fetchAddToCart',
   async (ids: ids) => {
     const {userId, productId, name, price, quantity, image} = ids
@@ -45,6 +50,24 @@ export const fetchAddToCart: any = createAsyncThunk(
   }
 )
 
+export const fetchRemoveFromCart = createAsyncThunk(
+  'users/fetchRemoveFromCart',
+
+  async (ids: removeIds) => {
+    try {
+      const {userId, productId} = ids
+      console.log(productId)
+      const response = await axios.put(`${URL}/cart/remove/${userId}`, {
+        productId,
+      })
+
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
+  }
+)
+
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -58,7 +81,15 @@ export const cartSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchAddToCart.fulfilled, (state) => {
-        // console.log(action.payload)
+        state.refresh = !state.refresh
+        state.status = 'success'
+      })
+
+      // eliminando del carrito
+      .addCase(fetchRemoveFromCart.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchRemoveFromCart.fulfilled, (state) => {
         state.refresh = !state.refresh
         state.status = 'success'
       })

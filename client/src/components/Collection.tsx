@@ -7,6 +7,7 @@ import {useAppDispatch, useAppSelector} from '../hooks'
 import {fetchGetProducts} from '../features/products/productSlice'
 import {Product} from '../types/types'
 import {Link} from 'react-router-dom'
+import {fetchAddToCart} from '../features/cart/cartSlice'
 
 const categoryFont = createTheme({
   typography: {
@@ -51,8 +52,15 @@ const Hr = styled('hr')(({title}: {title: string}) => ({
 
 export const Collection = ({title, badg}: {title: string; badg: string}) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-  const products = useAppSelector((state: any) => state.product.productsList)
+  const products = useAppSelector((state) => state.product.productsList)
+  const {currentUser, rol} = useAppSelector((state) => state.user)
   const dispatch = useAppDispatch()
+
+  const addToCart = (data: any) => {
+    if (rol === 'user' || rol === 'admin') {
+      dispatch(fetchAddToCart(data))
+    } else console.log('tienes que registrarte')
+  }
 
   useEffect(() => {
     dispatch(fetchGetProducts())
@@ -159,7 +167,18 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
                   bottom='5%'
                   left='90%'
                 >
-                  <Button>
+                  <Button
+                    onClick={() =>
+                      addToCart({
+                        userId: currentUser.id,
+                        productId: product.id,
+                        name: product.name,
+                        price: product.price,
+                        quantity: 1,
+                        image: product.image,
+                      })
+                    }
+                  >
                     <BsCartPlusFill fontSize='35px' color='black' />
                   </Button>
                 </Box>

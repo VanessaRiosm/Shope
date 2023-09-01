@@ -28,14 +28,15 @@ export const addToCart = async (req: Request, res: Response) => {
           const sub = cart.subTotal + productItem.price
 
           cart.products[itemIndex] = productItem
-          cart.subTotal = sub
+          cart.subTotal = Number(sub.toFixed(2))
 
           await cart.save()
           await user.updateOne({cart}, {cart})
 
           //el producto no existe
         } else {
-          cart.subTotal = cart.subTotal + price
+          let sub = cart.subTotal + price
+          cart.subTotal = Number(sub.toFixed(2))
           cart.products.push({productId, quantity, name, price, image})
           await cart.save()
           await user.updateOne({cart}, {cart})
