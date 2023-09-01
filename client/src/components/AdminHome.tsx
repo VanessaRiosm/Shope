@@ -28,7 +28,7 @@ const pages = [
 
 export const AdminHome = () => {
   //no sirve le rootstate
-  const rol = useAppSelector((state: any) => state.user.rol)
+  const rol = useAppSelector((state) => state.user.rol)
   const [component, setComponent] = useState('Products')
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)

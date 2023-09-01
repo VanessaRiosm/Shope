@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Navigate} from 'react-router-dom'
 
 import {Home} from './components/Home'
 import {ProductDetails} from './components/ProductDetails'
@@ -7,6 +7,7 @@ import {Profile} from './components/Profile'
 import {Login} from './components/Login'
 import {Register} from './components/Register'
 import {AdminHome} from './components/AdminHome'
+import {NotFound} from './components/NotFound'
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path='/login' Component={Login} />
         <Route path='/register' Component={Register} />
         <Route path='/admin' Component={AdminHome} />
+        <Route path='*' element={<Navigate to='/404' />} />
+        <Route path='/404' Component={NotFound} />
       </Routes>
     </div>
   )
