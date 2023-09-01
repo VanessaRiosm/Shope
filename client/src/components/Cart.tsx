@@ -5,8 +5,10 @@ import {fetchCurrentUser} from '../features/users/userSlice'
 import {BsTrash3} from 'react-icons/bs'
 
 export const Cart = () => {
-  const {currentUser} = useAppSelector((state) => state.user)
-  const {refresh} = useAppSelector((state) => state.cart)
+  // const {currentUser} = useAppSelector((state) => state.user)
+  const {refresh, cartItems, cartTotalAmount} = useAppSelector(
+    (state) => state.cart
+  )
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -15,10 +17,10 @@ export const Cart = () => {
 
   return (
     <Box>
-      {currentUser && currentUser.cart && currentUser.cart[0] ? (
-        <Box>
+      {cartItems && cartTotalAmount ? (
+        <Box overflow={'auto'}>
           <Box>
-            {currentUser.cart[0].products.map((p: any) => (
+            {cartItems.map((p: any) => (
               <Box
                 key={p.productId}
                 mt='4px'
@@ -48,7 +50,7 @@ export const Cart = () => {
           <Box display='flex'>
             <Box color='black' mt='40px' ml='20%'>
               {'TOTAL: '}
-              {currentUser.cart[0].subTotal}
+              {cartTotalAmount}
             </Box>
 
             <Button
@@ -66,9 +68,11 @@ export const Cart = () => {
           </Box>
         </Box>
       ) : (
-        <Typography color='black'>
-          There are no products in your shopping cart, Continue shopping
-        </Typography>
+        <Box display='flex' justifyContent='center' mt='30%'>
+          <Typography color='black'>
+            There are no products in your shopping cart
+          </Typography>
+        </Box>
       )}
     </Box>
   )

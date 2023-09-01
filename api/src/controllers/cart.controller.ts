@@ -1,6 +1,5 @@
 import {Request, Response} from 'express'
 import {Cart} from '../models/cartSchema'
-import {User} from '../models/userSchema'
 
 export const addToCart = async (req: Request, res: Response) => {
   const {usId} = req.params
@@ -10,7 +9,6 @@ export const addToCart = async (req: Request, res: Response) => {
     if (productId && name && quantity && price && image) {
       //buscamos si usuario tiene carrito
       let cart = await Cart.findOne({usId})
-      let user = await User.findById(usId)
 
       if (cart) {
         const itemIndex = cart.products.findIndex(
@@ -30,17 +28,15 @@ export const addToCart = async (req: Request, res: Response) => {
           cart.subTotal = sub
 
           await cart.save()
-          await user.updateOne({cart}, {cart})
 
           //el producto no existe
         } else {
-          cart.subTotal = price
+          cart.subTotal = cart.subTotal + price
           cart.products.push({productId, quantity, name, price, image})
           await cart.save()
-          await user.updateOne({cart}, {productId})
         }
 
-        return res.status(201).json('pk')
+        return res.status(201).json(cart)
 
         //
       } else {

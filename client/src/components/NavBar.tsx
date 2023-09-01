@@ -8,6 +8,7 @@ import {
   MenuItem,
   BadgeProps,
   Button,
+  // Divider,
 } from '@mui/material'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
@@ -177,18 +178,22 @@ export const NavBar = () => {
             overlayOpacity={0.5}
           >
             <Box>
-              <Box>
+              <Box display='flex'>
+                <Typography color='black' mt='13px' ml='30px'>
+                  Your Cart
+                </Typography>
                 <Button
                   style={{
                     width: '20px',
                     height: '50px',
-                    left: '85%',
+                    left: '60%',
                     color: 'black',
                   }}
                   onClick={toggleDrawer}
                 >
                   <AiOutlineClose />
                 </Button>
+                {/* <Divider variant='middle' orientation='horizontal' /> */}
               </Box>
 
               <Cart />
