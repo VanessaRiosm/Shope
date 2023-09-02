@@ -11,13 +11,15 @@ export const Profile = () => {
   return (
     <>
       {rol === 'user' || rol === 'admin' ? (
-        <Box>
+        <Box mt='40px'>
           <NavBar />
           <div>Your Profile</div>
 
           <p>{username}</p>
           <p>{email}</p>
-          <Footerr />
+          <Box bottom='0' width='100%' position='fixed'>
+            <Footerr />
+          </Box>
         </Box>
       ) : (
         <Box>{<Navigate to='/' />}</Box>

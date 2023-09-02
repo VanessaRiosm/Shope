@@ -176,7 +176,6 @@ export const NavBar = () => {
             direction='right'
             size={400}
             overlayOpacity={0.5}
-            lockBackgroundScroll={true}
           >
             <Box sx={{overflowX: 'hidden', height: '100%'}}>
               <Box display='flex'>
@@ -210,6 +209,7 @@ export const NavBar = () => {
             <FaUserCircle />
           </IconButton>
           <Menu
+            disableScrollLock={false}
             id='menu-appbar'
             anchorEl={anchorEl}
             anchorOrigin={{

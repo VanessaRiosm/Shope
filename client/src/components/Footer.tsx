@@ -53,7 +53,6 @@ export const Footerr = () => {
 
       <Box
         component='footer'
-        marginTop='60px'
         sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === 'light'
