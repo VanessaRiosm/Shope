@@ -182,6 +182,7 @@ export const NavBar = () => {
                 <Typography color='black' mt='13px' ml='30px'>
                   Your Cart
                 </Typography>
+                {/* <Divider orientation='vertical' flexItem /> */}
                 <Button
                   style={{
                     width: '20px',
