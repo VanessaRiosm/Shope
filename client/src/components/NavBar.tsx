@@ -17,7 +17,7 @@ import InputBase from '@mui/material/InputBase'
 import {FaShoppingCart, FaUserCircle} from 'react-icons/fa'
 import {BsSearch} from 'react-icons/bs'
 import {AiOutlineClose} from 'react-icons/ai'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
@@ -88,7 +88,15 @@ export const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const rol = useAppSelector((state) => state.user.rol)
   const refresh = useAppSelector((state) => state.user.refresh)
+  const history = useNavigate()
   const dispatch = useAppDispatch()
+  const [search, setSearch] = useState('')
+
+  const handleSearch = (e: any) => {
+    e.preventDefault()
+
+    if (search) history(`/search/${search}`, {replace: true})
+  }
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -146,16 +154,19 @@ export const NavBar = () => {
             </Typography>
           </ThemeProvider>
 
-          <Search>
-            <SearchIconWrapper>
-              <BsSearch />
-            </SearchIconWrapper>
-            <StyledInputBase
-              sx={{color: 'black'}}
-              placeholder='Search…'
-              inputProps={{'aria-label': 'search'}}
-            />
-          </Search>
+          <form onSubmit={handleSearch}>
+            <Search>
+              <SearchIconWrapper>
+                <BsSearch type='submit' onClick={handleSearch} />
+              </SearchIconWrapper>
+              <StyledInputBase
+                sx={{color: 'black'}}
+                placeholder='Search…'
+                inputProps={{'aria-label': 'search'}}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </Search>
+          </form>
 
           <IconButton
             size='large'

@@ -3,17 +3,17 @@ import {NavBar} from './NavBar'
 import {Product} from '../types/types'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {useEffect} from 'react'
-import {fetchGetProducts} from '../features/products/productSlice'
-import {Link} from 'react-router-dom'
+import {fetchSearchProducts} from '../features/products/productSlice'
+import {Link, useParams} from 'react-router-dom'
 
-export const ProductList = () => {
-  const products = useAppSelector((state: any) => state.product.productsList)
+export const Search = () => {
+  const products = useAppSelector((state: any) => state.product.productsFilter)
   const dispatch = useAppDispatch()
+  const params = useParams()
 
   useEffect(() => {
-    dispatch(fetchGetProducts())
-    window.scrollTo({top: 0, behavior: 'smooth'})
-  }, [])
+    dispatch(fetchSearchProducts(params.param))
+  }, [params])
 
   return (
     <Box>
