@@ -8,6 +8,7 @@ import {Login} from './components/Login'
 import {Register} from './components/Register'
 import {AdminHome} from './components/AdminHome'
 import {NotFound} from './components/NotFound'
+import {CategoryDetails} from './components/CategoryDetails'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' Component={Home} />
         <Route path='/product/:id' Component={ProductDetails} />
+        <Route path='/categories/:category' Component={CategoryDetails} />
         <Route path='/search/:param' Component={Search} />
         <Route path='/profile' Component={Profile} />
         <Route path='/login' Component={Login} />

@@ -15,8 +15,8 @@ const initialState = {
 
 export const fetchGetCategories = createAsyncThunk(
   'category/fetchGetCategories',
-  async (category) => {
-    const response = await axios.get(`${URL}/categories/?category=${category}`)
+  async (text: any) => {
+    const response = await axios.get(`${URL}/categories/?category=${text}`)
     return response.data
   }
 )

@@ -47,7 +47,7 @@ export const Categories = (props: any) => {
               textAlign='center'
             >
               <Link
-                to={`/productlist`}
+                to={`/categories/jackets`}
                 style={{textDecoration: 'none', color: 'black'}}
               >
                 <img
@@ -87,7 +87,7 @@ export const Categories = (props: any) => {
                 textAlign='center'
               >
                 <Link
-                  to={`/productlist`}
+                  to={`/categories/dresses`}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
                   <img
@@ -126,7 +126,7 @@ export const Categories = (props: any) => {
                 textAlign='center'
               >
                 <Link
-                  to={`/productlist`}
+                  to={`/categories/pants`}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
                   <img
@@ -216,7 +216,7 @@ export const Categories = (props: any) => {
                 textAlign='center'
               >
                 <Link
-                  to={`/productlist`}
+                  to={`/categories/blusas`}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
                   <img
