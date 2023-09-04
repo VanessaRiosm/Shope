@@ -148,7 +148,11 @@ export const NavBar = () => {
               component='div'
               fontSize={20}
               fontWeight={'bold'}
-              sx={{flexGrow: 1, display: {xs: 'none', md: 'block'}}}
+              sx={{
+                flexGrow: 1,
+                textShadow: '0 0 80px rgba(255, 255, 255, .5)',
+                display: {xs: 'none', md: 'block'},
+              }}
             >
               SALES UP TO 60% OFF
             </Typography>

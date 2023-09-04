@@ -56,7 +56,7 @@ export const fetchRemoveFromCart = createAsyncThunk(
   async (ids: removeIds) => {
     try {
       const {userId, productId} = ids
-      console.log(productId)
+
       const response = await axios.put(`${URL}/cart/remove/${userId}`, {
         productId,
       })

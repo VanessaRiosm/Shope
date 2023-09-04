@@ -13,7 +13,6 @@ export const Profile = () => {
   )
   const dispatch = useAppDispatch()
 
-  console.log(rol)
   useEffect(() => {
     dispatch(fetchCurrentUser())
   }, [])

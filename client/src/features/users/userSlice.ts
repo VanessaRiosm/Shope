@@ -117,7 +117,6 @@ export const userSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.currentUser = action.payload
         state.rol = action.payload.rol
         state.status = 'success'
