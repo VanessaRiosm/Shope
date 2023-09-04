@@ -34,7 +34,7 @@ const initialState = {
 } as cartState
 
 export const fetchAddToCart = createAsyncThunk(
-  'users/fetchAddToCart',
+  'cart/fetchAddToCart',
   async (ids: ids) => {
     const {userId, productId, name, price, quantity, image} = ids
 
@@ -51,7 +51,7 @@ export const fetchAddToCart = createAsyncThunk(
 )
 
 export const fetchRemoveFromCart = createAsyncThunk(
-  'users/fetchRemoveFromCart',
+  'cart/fetchRemoveFromCart',
 
   async (ids: removeIds) => {
     try {

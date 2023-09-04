@@ -18,7 +18,7 @@ const initialState = {
 } as ProductsState
 
 export const fetchGetProducts: any = createAsyncThunk(
-  'users/fetchGetProducts',
+  'product/fetchGetProducts',
   async () => {
     const response = await axios.get(`${URL}/products/`)
 
@@ -27,7 +27,7 @@ export const fetchGetProducts: any = createAsyncThunk(
 )
 
 export const fetchGetProduct: any = createAsyncThunk(
-  'users/fetchGetProduct',
+  'product/fetchGetProduct',
   async (id) => {
     const response = await axios.get(`${URL}/products/details/${id}`)
 
@@ -36,7 +36,7 @@ export const fetchGetProduct: any = createAsyncThunk(
 )
 
 export const fetchSearchProducts: any = createAsyncThunk(
-  'users/fetchSearchProduct',
+  'product/fetchSearchProduct',
   async (text) => {
     const response = await axios.get(`${URL}/products/search/?param=${text}`)
 
