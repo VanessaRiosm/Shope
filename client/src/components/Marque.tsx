@@ -15,7 +15,6 @@ const Marque = () => (
       style={{
         backgroundColor: 'black',
         color: 'white',
-        cursor: 'pointer',
         // top, right, bottom, left
         margin: '10px 0px 10px 0px',
       }}

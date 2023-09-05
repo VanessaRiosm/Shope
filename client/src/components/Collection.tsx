@@ -164,8 +164,8 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
                   display='flex'
                   justifyContent='center'
                   alignItems='center'
-                  bottom='5%'
-                  left='90%'
+                  bottom='4.5%'
+                  left='88%'
                 >
                   <Button
                     onClick={() =>
