@@ -1,26 +1,26 @@
 export const categoryImages = [
   {
     url: 'https://is4.revolveassets.com/images/up/2023/September/090523_f_partydresses_spotlight.jpg',
-    title: 'Vestidos',
+    title: 'Dressses',
   },
   {
     url: 'https://img.freepik.com/foto-gratis/tres-jovenes-hermosas-chicas-sonrientes-ropa-moda-verano-sexy-mujer-despreocupada-posando-modelos-positivos-divirtiendose-abrazando-mostrando-lengua_158538-5215.jpg',
-    title: 'Zapatos',
+    title: 'tops',
   },
   {
     url: 'https://media.boohoo.com/i/boohooamplience/DESKTOP_01_6?qlt=default&fmt=auto',
-    title: 'Blusas',
+    title: 'Classical',
   },
   {
-    url: 'https://www.beyoung.in/blog/wp-content/uploads/2023/01/The-Shoulder-Bag-853x1024.jpg',
-    title: 'Blusas',
+    url: 'https://www.bornshoes.com/dw/image/v2/BFCB_PRD/on/demandware.static/-/Library-Sites-BornShoesSharedLibrary/default/dw6f16d331/images/homepage/2023-03-20/homepage-features-iwa-mac.jpg',
+    title: 'Shoes',
   },
   {
-    url: 'https://www.reitmans.com/on/demandware.static/-/Sites/default/dw7722b301/Reitmans_CA/images/2023/home/20230901/hp-sub-outerwear.jpg',
-    title: 'Blusas',
+    url: 'https://i5.walmartimages.com/asr/c5cc7a00-b7be-4aab-acef-29b2201cd677.36843a1862a82b04076076cdb7e29518.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF',
+    title: 'Coats',
   },
   {
-    url: 'https://www.pacsun.com/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw39006fb2/product_images/0850604890047NEW_01_882.jpg?sw=500',
-    title: 'Blusas',
+    url: 'https://i.insider.com/637d425ec2058e0018535889?width=1000&format=jpeg&auto=webp',
+    title: 'Pants',
   },
 ]

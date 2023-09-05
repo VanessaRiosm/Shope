@@ -57,7 +57,7 @@ export const Categories = (props: any) => {
       {props.siP === 'si' ? (
         <Box
           margin='60px 20px 60px 20px'
-          height={{xs: '450px', sm: '550px', md: '650px', xl: '800px'}}
+          height={{xs: '450px', sm: '550px', md: '650px', xl: '700px'}}
         >
           <Box
             sx={{
@@ -229,7 +229,7 @@ export const Categories = (props: any) => {
       ) : (
         <Box
           margin='60px 20px 60px 20px'
-          height={{xs: '450px', sm: '550px', md: '650px', xl: '800px'}}
+          height={{xs: '450px', sm: '550px', md: '650px', xl: '750px'}}
         >
           <Box
             sx={{
@@ -295,7 +295,7 @@ export const Categories = (props: any) => {
               {/* tercer imagen */}
 
               <Link
-                to={`/categories/accessories`}
+                to={`/categories/shoes`}
                 style={{textDecoration: 'none', color: 'black'}}
               >
                 <ImageIconButton
@@ -312,7 +312,7 @@ export const Categories = (props: any) => {
                       top: 0,
                       bottom: 0,
                       backgroundSize: 'cover',
-                      backgroundPosition: 'center 40%',
+                      backgroundPosition: 'center 70%',
                       backgroundImage: `url(${categoryImages[3].url})`,
                     }}
                   />
@@ -338,7 +338,7 @@ export const Categories = (props: any) => {
                       className='imageTitle'
                       sx={{fontSize: {xs: '10px', sm: '20px', md: '30px'}}}
                     >
-                      Bags
+                      Shoes
                       <div className='imageMarked' />
                     </Typography>
                   </Box>
@@ -367,7 +367,7 @@ export const Categories = (props: any) => {
                       top: 0,
                       bottom: 0,
                       backgroundSize: 'cover',
-                      backgroundPosition: 'center 20%',
+                      backgroundPosition: 'center 60%',
                       backgroundImage: `url(${categoryImages[4].url})`,
                     }}
                   />
@@ -392,7 +392,7 @@ export const Categories = (props: any) => {
                       className='imageTitle'
                       sx={{typography: {xs: 'h5', sm: 'h4', md: 'h3'}}}
                     >
-                      PRUEBA
+                      Coats
                       <div className='imageMarked' />
                     </Typography>
                   </Box>

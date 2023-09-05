@@ -31,7 +31,7 @@ export const Carousel = () => {
               maxHeight: '500px',
               minHeight: '100px',
               objectFit: 'fill',
-              marginTop: '65px'
+              marginTop: '65px',
             }}
           />
         </SwiperSlide>
@@ -43,7 +43,7 @@ export const Carousel = () => {
               maxHeight: '500px',
               minHeight: '100px',
               objectFit: 'fill',
-              marginTop: '65px'
+              marginTop: '65px',
             }}
           />
         </SwiperSlide>
@@ -55,7 +55,7 @@ export const Carousel = () => {
               maxHeight: '500px',
               minHeight: '100px',
               objectFit: 'fill',
-              marginTop: '65px'
+              marginTop: '65px',
             }}
           />
         </SwiperSlide>
@@ -67,7 +67,7 @@ export const Carousel = () => {
               maxHeight: '500px',
               minHeight: '100px',
               objectFit: 'fill',
-              marginTop: '65px'
+              marginTop: '65px',
             }}
           />
         </SwiperSlide>
