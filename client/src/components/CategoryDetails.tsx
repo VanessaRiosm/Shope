@@ -1,10 +1,14 @@
-import {Box, Grid, Typography} from '@mui/material'
+import {Box, Grid, Skeleton, Typography} from '@mui/material'
 import {NavBar} from './NavBar'
 import {Product} from '../types/types'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import {fetchGetCategories} from '../features/categories/categorySlice'
+import {
+  clearCategory,
+  fetchGetCategories,
+} from '../features/categories/categorySlice'
+import {Footerr} from './Footer'
 
 export const CategoryDetails = () => {
   const products = useAppSelector((state) => state.category.filterProducts)
@@ -13,6 +17,10 @@ export const CategoryDetails = () => {
 
   useEffect(() => {
     dispatch(fetchGetCategories(params.category!))
+    window.scrollTo({top: 0, behavior: 'smooth'})
+    return () => {
+      dispatch(clearCategory())
+    }
   }, [params])
 
   return (
@@ -29,32 +37,66 @@ export const CategoryDetails = () => {
         </Typography>
       </Box>
 
-      <Grid
-        container
-        columnSpacing={0}
-        columns={{xs: 1, sm: 2, md: 3, lg: 4}}
-        justifyContent='center'
-      >
-        {products &&
-          products.map((product: Product) => (
-            <Grid key={product.id} xs={1}>
-              <Box display='flex' flexDirection='column' alignItems='center'>
-                <Link
-                  to={`/product/${product.id}`}
-                  style={{textDecoration: 'none', color: 'black'}}
-                >
-                  <img
-                    style={{maxWidth: 500, height: 500}}
-                    src={product.image}
-                  />
+      {products[0] ? (
+        <Box>
+          <Grid
+            container
+            columnSpacing={0}
+            columns={{xs: 1, sm: 2, md: 3, lg: 4}}
+            justifyContent='center'
+          >
+            {products.map((product: Product) => (
+              <Grid key={product.id} xs={1}>
+                <Box display='flex' flexDirection='column' alignItems='center'>
+                  <Link
+                    to={`/product/${product.id}`}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    <img
+                      style={{maxWidth: 500, height: 500}}
+                      src={product.image}
+                    />
 
-                  <Box>{product.name}</Box>
-                  <Box>{product.price}</Box>
-                </Link>
-              </Box>
-            </Grid>
-          ))}
-      </Grid>
+                    <Box>{product.name}</Box>
+                    <Box>{product.price}</Box>
+                  </Link>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      ) : (
+        <Box display='flex' justifyContent='center' gap='3px'>
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width={295}
+            height={430}
+          />
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width={295}
+            height={430}
+          />
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width={295}
+            height={430}
+          />
+          <Skeleton
+            sx={{bgcolor: 'grey.900'}}
+            variant='rectangular'
+            width={295}
+            height={430}
+          />
+        </Box>
+      )}
+
+      <Box mt='70px'>
+        <Footerr />
+      </Box>
     </Box>
   )
 }

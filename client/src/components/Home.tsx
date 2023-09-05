@@ -1,11 +1,11 @@
 // import React from 'react'
-import {Categories} from './Categories'
 import {Collection} from './Collection'
 import {Carousel} from './Carousel'
 import {NavBar} from './NavBar'
 import {Footerr} from './Footer'
 import Marque from './Marque'
 import {Box} from '@mui/material'
+import {Categories} from './Categories'
 
 export const Home = () => {
   return (

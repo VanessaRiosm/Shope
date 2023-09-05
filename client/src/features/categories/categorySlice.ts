@@ -25,7 +25,11 @@ export const categorySlice = createSlice({
   name: 'category',
   initialState,
 
-  reducers: {},
+  reducers: {
+    clearCategory(state) {
+      state.filterProducts = []
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -40,5 +44,5 @@ export const categorySlice = createSlice({
   },
 })
 
-export const {} = categorySlice.actions
+export const {clearCategory} = categorySlice.actions
 export default categorySlice.reducer
