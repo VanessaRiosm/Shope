@@ -267,7 +267,11 @@ export const NavBar = () => {
                   <MenuItem onClick={handleClose}>My Profile</MenuItem>
                 </Link>
                 <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
-                  <MenuItem onClick={() => dispatch(fetchLogOut())}>
+                  <MenuItem
+                    onClick={() => {
+                      dispatch(fetchLogOut())
+                    }}
+                  >
                     Log Out
                   </MenuItem>{' '}
                 </Link>

@@ -1,10 +1,10 @@
 import {Box, Button, Skeleton, Typography} from '@mui/material'
 import {createTheme, styled, ThemeProvider} from '@mui/material/styles'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import ReactSimplyCarousel from 'react-simply-carousel'
 import {BsCartPlusFill} from 'react-icons/bs'
 import {useAppDispatch, useAppSelector} from '../hooks'
-import {fetchGetProducts} from '../features/products/productSlice'
+// import {fetchGetProducts} from '../features/products/productSlice'
 import {Product} from '../types/types'
 import {Link} from 'react-router-dom'
 import {fetchAddToCart} from '../features/cart/cartSlice'
@@ -50,9 +50,16 @@ const Hr = styled('hr')(({title}: {title: string}) => ({
   },
 }))
 
-export const Collection = ({title, badg}: {title: string; badg: string}) => {
+export const Collection = ({
+  title,
+  badg,
+  products,
+}: {
+  title: string
+  badg: string
+  products: []
+}) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-  const products = useAppSelector((state) => state.product.productsList)
   const {currentUser, rol} = useAppSelector((state) => state.user)
   const dispatch = useAppDispatch()
 
@@ -62,10 +69,6 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
     } else console.log('tienes que registrarte')
   }
 
-  useEffect(() => {
-    dispatch(fetchGetProducts())
-  }, [])
-
   return (
     <Box marginTop='60px'>
       <Box>
@@ -73,6 +76,11 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
       </Box>
       {products ? (
         <ReactSimplyCarousel
+          containerProps={{
+            style: {
+              position: 'relative',
+            },
+          }}
           activeSlideIndex={activeSlideIndex}
           onRequestChange={setActiveSlideIndex}
           itemsToShow={1}
@@ -85,23 +93,7 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
             style: {
               alignSelf: 'center',
               background: 'black',
-              border: 'none',
-              borderRadius: '50%',
-              color: 'white',
-              cursor: 'pointer',
-              fontSize: '16px',
-              height: 25,
-              lineHeight: 1,
-              textAlign: 'center',
-              width: 20,
-            },
-            children: <span>{`>`}</span>,
-          }}
-          backwardBtnProps={{
-            style: {
-              alignSelf: 'center',
-              background: 'black',
-              border: 'none',
+              border: '1px solid white',
               borderRadius: '50%',
               color: 'white',
               cursor: 'pointer',
@@ -109,16 +101,34 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
               height: 25,
               lineHeight: 0,
               textAlign: 'center',
-              width: 20,
+              width: 23,
+            },
+            children: <span>{`>`}</span>,
+          }}
+          backwardBtnProps={{
+            style: {
+              alignSelf: 'center',
+              background: 'black',
+              border: '1px solid white',
+              borderRadius: '50%',
+              color: 'white',
+              cursor: 'pointer',
+              fontSize: '16px',
+              height: 25,
+              lineHeight: 0,
+              textAlign: 'center',
+              width: 23,
+              right: '25%',
             },
             children: <span>{`<`}</span>,
           }}
           responsiveProps={[
-            {minWidth: 1700, itemsToShow: 5},
-            {minWidth: 1300, maxWidth: 1700, itemsToShow: 4},
-            {maxWidth: 1299, itemsToShow: 3},
-            {maxWidth: 1000, itemsToShow: 2},
-            {maxWidth: 700, itemsToShow: 1},
+            {minWidth: 2301, itemsToShow: 6},
+            {minWidth: 1891, maxWidth: 2300, itemsToShow: 5},
+            {minWidth: 1531, maxWidth: 1890, itemsToShow: 4},
+            {minWidth: 1150, maxWidth: 1530, itemsToShow: 3},
+            {minWidth: 800, maxWidth: 1149, itemsToShow: 2},
+            {maxWidth: 799, itemsToShow: 1},
           ]}
           speed={400}
           easing='linear'
@@ -133,7 +143,7 @@ export const Collection = ({title, badg}: {title: string; badg: string}) => {
               <ThemeProvider theme={categoryFont}>
                 <Link to={`/product/${product.id}`}>
                   <img
-                    style={{width: 295, height: 430, margin: '5px'}}
+                    style={{width: 360, height: 550, margin: '3px'}}
                     src={product.image}
                   />
 

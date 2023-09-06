@@ -17,6 +17,8 @@ import {fetchGetProduct} from '../features/products/productSlice'
 import {fetchAddToCart} from '../features/cart/cartSlice'
 import {useEffect, useState} from 'react'
 import {clear} from '../features/products/productSlice'
+import 'react-toastify/dist/ReactToastify.css'
+import {toast} from 'react-toastify'
 
 export const ProductDetails = () => {
   const product = useAppSelector((state) => state.product.productDetails)
@@ -27,7 +29,22 @@ export const ProductDetails = () => {
   const addToCart = (data: any) => {
     if (rol === 'user' || rol === 'admin') {
       dispatch(fetchAddToCart(data))
-    } else console.log('tienes que registrarte')
+    } else {
+      console.log('esta entrando al else')
+
+      notifyRegister()
+    }
+  }
+
+  const notifyRegister = () => {
+    toast.error('🦄 Wow so easy!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
   }
 
   useEffect(() => {
