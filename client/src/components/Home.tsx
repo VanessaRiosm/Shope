@@ -30,13 +30,16 @@ export const Home = () => {
       />
       <Promotion knit={'no'} />
       <Categories siP={'si'} />
-      <Promotion knit={'si'} />
+
       <Collection
         title={'TOP SELLER'}
         badg={'TOP'}
         products={products && products.slice(1, 9)}
       />
+      <Promotion knit={'si'} />
       <Categories siP={'no'} />
+      <Promotion knit={''} />
+
       <Footerr />
     </Box>
   )

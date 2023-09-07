@@ -80,7 +80,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({theme}) => ({
 
 const promFont = createTheme({
   typography: {
-    fontFamily: ['ADLaM Display', 'cursive'].join(','),
+    fontFamily: ['Oswald', 'sans-serif'].join(','),
   },
 })
 
@@ -147,11 +147,11 @@ export const NavBar = () => {
               noWrap
               color='black'
               component='div'
-              fontSize={20}
+              fontSize={28}
               fontWeight={'bold'}
               sx={{
                 flexGrow: 1,
-                textShadow: '0 0 80px rgba(255, 255, 255, .5)',
+                textShadow: '0 0 00px rgba(255, 255, 255, .5)',
                 display: {xs: 'none', md: 'block'},
               }}
             >

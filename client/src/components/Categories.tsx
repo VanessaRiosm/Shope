@@ -71,7 +71,7 @@ export const Categories = (props: any) => {
                 {/* Primera imagen */}
 
                 <Link
-                  to={`/categories/coats`}
+                  to={`/categories/classical`}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
                   <ImageIconButton
@@ -352,7 +352,7 @@ export const Categories = (props: any) => {
               {/* Primera imagen */}
 
               <Link
-                to={`/categories/jackets`}
+                to={`/categories/coats`}
                 style={{textDecoration: 'none', color: 'black'}}
               >
                 <ImageIconButton
