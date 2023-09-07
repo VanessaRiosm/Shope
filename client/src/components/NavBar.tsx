@@ -86,8 +86,9 @@ const promFont = createTheme({
 
 export const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const rol = useAppSelector((state) => state.user.rol)
+  const {rol, currentUser} = useAppSelector((state) => state.user)
   const refresh = useAppSelector((state) => state.user.refresh)
+
   const history = useNavigate()
   const dispatch = useAppDispatch()
   const [search, setSearch] = useState('')
@@ -180,7 +181,14 @@ export const NavBar = () => {
             sx={{mr: 1, color: 'black'}}
           >
             {' '}
-            <StyledBadge badgeContent={1}>
+            <StyledBadge
+              badgeContent={
+                currentUser &&
+                currentUser.cart &&
+                currentUser.cart[0] &&
+                currentUser.cart[0].productsQty
+              }
+            >
               <FaShoppingCart />
             </StyledBadge>
           </IconButton>
@@ -197,7 +205,7 @@ export const NavBar = () => {
                 <Typography color='black' mt='13px' ml='30px'>
                   Your Cart
                 </Typography>
-                {/* <Divider orientation='vertical' flexItem /> */}
+
                 <Button
                   style={{
                     width: '20px',

@@ -8,6 +8,7 @@ import {
   FormControl,
   Stack,
   SelectChangeEvent,
+  Typography,
 } from '@mui/material'
 import {NavBar} from './NavBar'
 import {Footerr} from './Footer'
@@ -66,73 +67,85 @@ export const ProductDetails = () => {
       <NavBar />
 
       {product ? (
-        <Box maxHeight='950px' display='flex' margin='80px 40px 10px 40px'>
-          <img
-            src={product.image}
-            style={{
-              width: '38%',
-              height: '700px',
-              border: '0.5px solid black',
-            }}
-          />
-
+        <Box display='flex' justifyContent='center'>
           <Box
-            width='90%'
-            padding='30px'
-            maxHeight='500px'
-            margin='20px'
-            display='column'
+            maxHeight='650px'
+            maxWidth='1100px'
+            display='flex'
+            justifyContent='center'
+            margin='80px 40px 10px 40px'
           >
-            <p style={{fontSize: '30px', fontWeight: 'bold'}}>
-              {' '}
-              {product.name}
-            </p>
-            <p style={{fontSize: '20px', fontWeight: 'bold'}}>
-              {product.price}
-            </p>
-            <p style={{fontSize: '20px'}}> {product.description} </p>
+            <img
+              src={product.image}
+              style={{
+                width: '40%',
+                height: '650px',
+              }}
+            />
 
-            <Box>
-              <FormControl variant='standard' sx={{m: 1, minWidth: 120}}>
-                <InputLabel id='demo-simple-select-standard-label'>
-                  Size
-                </InputLabel>
-                <Select
-                  labelId='demo-simple-select-standard-label'
-                  id='demo-simple-select-standard'
-                  value={Size}
-                  onChange={handleChange}
-                  label='Size'
-                >
-                  <MenuItem value=''>
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>xs</MenuItem>
-                  <MenuItem value={20}>sm</MenuItem>
-                  <MenuItem value={30}>lg</MenuItem>
-                </Select>
-              </FormControl>
-            </Box>
-            <Box>
+            <Box
+              width='35%'
+              padding='20px'
+              maxHeight='650px'
+              display='flex'
+              flexDirection='column'
+            >
+              <p style={{fontSize: '30px', fontWeight: 'bold'}}>
+                {' '}
+                {product.name}
+              </p>
+              <p style={{fontSize: '20px', fontWeight: 'bold'}}>
+                USD ${product.price}
+              </p>
+
               <Box>
-                <Button
-                  variant='contained'
-                  style={{
-                    backgroundColor: '#4518D9 ',
-                  }}
-                  onClick={() =>
-                    addToCart({
-                      userId: currentUser.id,
-                      productId: product.id,
-                      name: product.name,
-                      price: product.price,
-                      quantity: 1,
-                      image: product.image,
-                    })
-                  }
-                >
-                  Add to cart
-                </Button>
+                <FormControl variant='standard' sx={{m: 1, minWidth: 160}}>
+                  <InputLabel id='demo-simple-select-standard-label'>
+                    Size
+                  </InputLabel>
+                  <Select
+                    labelId='demo-simple-select-standard-label'
+                    id='demo-simple-select-standard'
+                    value={Size}
+                    onChange={handleChange}
+                    label='Size'
+                  >
+                    <MenuItem value=''>
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>xs</MenuItem>
+                    <MenuItem value={20}>sm</MenuItem>
+                    <MenuItem value={30}>lg</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+
+              <Box>
+                <Box mt='40px'>
+                  <Button
+                    fullWidth
+                    variant='contained'
+                    style={{
+                      backgroundColor: '#4518D9 ',
+                    }}
+                    onClick={() =>
+                      addToCart({
+                        userId: currentUser.id,
+                        productId: product.id,
+                        name: product.name,
+                        price: product.price,
+                        quantity: 1,
+                        image: product.image,
+                      })
+                    }
+                  >
+                    Add to cart
+                  </Button>
+                </Box>
+              </Box>
+              <Box mt='40px'>
+                <Typography fontSize='20px'> Description: </Typography>
+                <Typography fontSize='15px'> {product.description} </Typography>
               </Box>
             </Box>
           </Box>

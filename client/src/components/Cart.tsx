@@ -20,17 +20,18 @@ export const Cart = () => {
       {currentUser && currentUser.cart && currentUser.cart[0] ? (
         <Box overflow={'auto'}>
           <Box>
+            <hr />
             {currentUser.cart[0].products.map((p: any) => (
               <Box key={p.productId} mt='4px' ml='4px' display='flex'>
                 <Link
                   to={`/product/${p.productId}`}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
-                  <Box mt='4px' ml='4px' display='flex' color='black'>
+                  <Box mt='4px' ml='10px' display='flex' color='black'>
                     <Box>
                       <img
                         src={p.image}
-                        style={{width: '160px', height: '200px'}}
+                        style={{width: '140px', height: '210px'}}
                       />
                     </Box>
                     <Box display='grid' ml='10px'>
@@ -60,8 +61,8 @@ export const Cart = () => {
 
           {currentUser.cart[0].subTotal > 0 ? (
             <Box display='flex'>
-              <Box color='black' mt='40px' ml='20%'>
-                {'TOTAL: '}
+              <Box color='black' mt='40px' ml='20%' mb='60px'>
+                {'TOTAL: $'}
                 {currentUser.cart[0].subTotal}
               </Box>
 
