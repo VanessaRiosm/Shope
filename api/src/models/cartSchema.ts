@@ -4,6 +4,7 @@ export interface CartSchema {
   userId: Types.ObjectId
   products: any
   subTotal: number
+  productsQty: number
 }
 
 export interface CartSchemaDocument extends CartSchema, Document {
@@ -25,6 +26,10 @@ const cartSchema = new Schema<CartSchemaDocument>({
     },
   ],
   subTotal: {
+    type: Number,
+    default: 0,
+  },
+  productsQty: {
     type: Number,
     default: 0,
   },

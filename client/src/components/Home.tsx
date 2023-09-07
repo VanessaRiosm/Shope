@@ -25,13 +25,13 @@ export const Home = () => {
       <Collection
         title={'NEW ARRIVALS'}
         badg={'NEW'}
-        products={products && products.slice(1, 9)}
+        products={products && products.slice(9, 17)}
       />
       <Categories siP={'si'} />
       <Collection
         title={'TOP SELLER'}
         badg={'TOP'}
-        products={products && products.slice(9, 17)}
+        products={products && products.slice(1, 9)}
       />
       <Categories siP={'no'} />
       <Footerr />

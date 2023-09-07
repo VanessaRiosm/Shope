@@ -1,7 +1,6 @@
 import {Request, Response} from 'express'
 import {Cart} from '../models/cartSchema'
 import {User} from '../models/userSchema'
-import {Product} from '../models/productSchema'
 
 export const addToCart = async (req: Request, res: Response) => {
   const {usId} = req.params
@@ -29,6 +28,7 @@ export const addToCart = async (req: Request, res: Response) => {
 
           cart.products[itemIndex] = productItem
           cart.subTotal = Number(sub.toFixed(2))
+          cart.productsQty = cart.productsQty + 1
 
           await cart.save()
           await user.updateOne({cart}, {cart})
@@ -37,12 +37,13 @@ export const addToCart = async (req: Request, res: Response) => {
         } else {
           let sub = cart.subTotal + price
           cart.subTotal = Number(sub.toFixed(2))
+          cart.productsQty = cart.productsQty + 1
           cart.products.push({productId, quantity, name, price, image})
           await cart.save()
           await user.updateOne({cart}, {cart})
         }
 
-        return res.status(201).json('ok')
+        return res.status(201).json(cart)
 
         //
       } else {
@@ -52,6 +53,7 @@ export const addToCart = async (req: Request, res: Response) => {
           usId,
           products: [{productId, quantity, name, price, image}],
           subTotal: price,
+          productsQty: 1,
         })
 
         await user.updateOne({cart}, {newCart})
@@ -79,6 +81,7 @@ export const removeFromCart = async (req: Request, res: Response) => {
     let total = cart.subTotal - product.quantity * product.price
 
     cart.subTotal = Number(total.toFixed(2))
+    cart.productsQty = cart.productsQty - product.quantity
     products.splice(itemIndex, 1)
     cart.products = products
 

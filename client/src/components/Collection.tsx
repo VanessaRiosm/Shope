@@ -1,4 +1,4 @@
-import {Box, Button, Skeleton, Typography} from '@mui/material'
+import {Box, Skeleton, Typography} from '@mui/material'
 import {createTheme, styled, ThemeProvider} from '@mui/material/styles'
 import {useState} from 'react'
 import ReactSimplyCarousel from 'react-simply-carousel'
@@ -174,10 +174,13 @@ export const Collection = ({
                   display='flex'
                   justifyContent='center'
                   alignItems='center'
-                  bottom='4.5%'
-                  left='88%'
+                  bottom='6.5%'
+                  left='90%'
                 >
-                  <Button
+                  <BsCartPlusFill
+                    fontSize='35px'
+                    color='black'
+                    cursor='pointer'
                     onClick={() =>
                       addToCart({
                         userId: currentUser.id,
@@ -188,9 +191,7 @@ export const Collection = ({
                         image: product.image,
                       })
                     }
-                  >
-                    <BsCartPlusFill fontSize='35px' color='black' />
-                  </Button>
+                  />
                 </Box>
               </ThemeProvider>
 
