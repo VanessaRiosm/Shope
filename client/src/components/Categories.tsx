@@ -55,174 +55,176 @@ export const Categories = (props: any) => {
   return (
     <Box>
       {props.siP === 'si' ? (
-        <Box
-          margin='60px 20px 60px 20px'
-          height={{xs: '450px', sm: '550px', md: '650px', xl: '700px'}}
-        >
+        <Box>
           <Box
-            sx={{
-              maxWidth: '100%',
-              height: '100%',
-              display: 'flex',
-            }}
+            margin='60px 20px 60px 20px'
+            height={{xs: '450px', sm: '550px', md: '650px', xl: '700px'}}
           >
-            <Box width='59.9%' marginRight='5px' height='100%'>
-              {/* Primera imagen */}
+            <Box
+              sx={{
+                maxWidth: '100%',
+                height: '100%',
+                display: 'flex',
+              }}
+            >
+              <Box width='59.9%' marginRight='5px' height='100%'>
+                {/* Primera imagen */}
 
-              <Link
-                to={`/categories/coats`}
-                style={{textDecoration: 'none', color: 'black'}}
-              >
-                <ImageIconButton
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                  }}
+                <Link
+                  to={`/categories/coats`}
+                  style={{textDecoration: 'none', color: 'black'}}
                 >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center 20%',
-                      backgroundImage: `url(${categoryImages[2].url})`,
-                    }}
-                  />
-                  <ImageBackdrop className='imageBackdrop' />
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'common.white',
+                  <ImageIconButton
+                    style={{
+                      width: '100%',
+                      height: '100%',
                     }}
                   >
-                    <Typography
-                      component='h3'
-                      variant='h6'
-                      color='inherit'
-                      className='imageTitle'
-                      sx={{typography: {xs: 'h5', sm: 'h4', md: 'h3'}}}
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center 20%',
+                        backgroundImage: `url(${categoryImages[2].url})`,
+                      }}
+                    />
+                    <ImageBackdrop className='imageBackdrop' />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'common.white',
+                      }}
                     >
-                      Classical
-                      <div className='imageMarked' />
-                    </Typography>
-                  </Box>
-                </ImageIconButton>
-              </Link>
-            </Box>
+                      <Typography
+                        component='h3'
+                        variant='h6'
+                        color='inherit'
+                        className='imageTitle'
+                        sx={{typography: {xs: 'h5', sm: 'h4', md: 'h3'}}}
+                      >
+                        Classical
+                        <div className='imageMarked' />
+                      </Typography>
+                    </Box>
+                  </ImageIconButton>
+                </Link>
+              </Box>
 
-            {/* Box de segunda y tercera imagen */}
-            <Box width='39.7%' maxHeight='100%'>
-              <Link
-                to={`/categories/dresses`}
-                style={{textDecoration: 'none', color: 'black'}}
-              >
-                <ImageIconButton
-                  style={{
-                    width: '100%',
-                    height: '50%',
-                    marginBottom: '5px',
-                  }}
+              {/* Box de segunda y tercera imagen */}
+              <Box width='39.7%' maxHeight='100%'>
+                <Link
+                  to={`/categories/dresses`}
+                  style={{textDecoration: 'none', color: 'black'}}
                 >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center 40%',
-                      backgroundImage: `url(${categoryImages[0].url})`,
-                    }}
-                  />
-                  <ImageBackdrop className='imageBackdrop' />
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'common.white',
+                  <ImageIconButton
+                    style={{
+                      width: '100%',
+                      height: '50%',
+                      marginBottom: '5px',
                     }}
                   >
-                    <Typography
-                      component='h3'
-                      variant='h6'
-                      color='inherit'
-                      className='imageTitle'
-                      sx={{fontSize: {xs: '10px', sm: '20px', md: '30px'}}}
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center 40%',
+                        backgroundImage: `url(${categoryImages[0].url})`,
+                      }}
+                    />
+                    <ImageBackdrop className='imageBackdrop' />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'common.white',
+                      }}
                     >
-                      Dresses
-                      <div className='imageMarked' />
-                    </Typography>
-                  </Box>
-                </ImageIconButton>
-              </Link>
+                      <Typography
+                        component='h3'
+                        variant='h6'
+                        color='inherit'
+                        className='imageTitle'
+                        sx={{fontSize: {xs: '10px', sm: '20px', md: '30px'}}}
+                      >
+                        Dresses
+                        <div className='imageMarked' />
+                      </Typography>
+                    </Box>
+                  </ImageIconButton>
+                </Link>
 
-              {/* tercer imagen */}
-              <Link
-                to={`/categories/tops`}
-                style={{textDecoration: 'none', color: 'black'}}
-              >
-                <ImageIconButton
-                  style={{
-                    width: '100%',
-                    height: '49.3%',
-                  }}
+                {/* tercer imagen */}
+                <Link
+                  to={`/categories/tops`}
+                  style={{textDecoration: 'none', color: 'black'}}
                 >
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center 40%',
-                      backgroundImage: `url(${categoryImages[1].url})`,
-                    }}
-                  />
-                  <ImageBackdrop className='imageBackdrop' />
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      bottom: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'common.white',
+                  <ImageIconButton
+                    style={{
+                      width: '100%',
+                      height: '49.3%',
                     }}
                   >
-                    <Typography
-                      component='h3'
-                      variant='h6'
-                      color='inherit'
-                      className='imageTitle'
-                      sx={{fontSize: {xs: '10px', sm: '20px', md: '30px'}}}
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center 40%',
+                        backgroundImage: `url(${categoryImages[1].url})`,
+                      }}
+                    />
+                    <ImageBackdrop className='imageBackdrop' />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'common.white',
+                      }}
                     >
-                      Tops
-                      <div className='imageMarked' />
-                    </Typography>
-                  </Box>
-                </ImageIconButton>
-              </Link>
+                      <Typography
+                        component='h3'
+                        variant='h6'
+                        color='inherit'
+                        className='imageTitle'
+                        sx={{fontSize: {xs: '10px', sm: '20px', md: '30px'}}}
+                      >
+                        Tops
+                        <div className='imageMarked' />
+                      </Typography>
+                    </Box>
+                  </ImageIconButton>
+                </Link>
+              </Box>
             </Box>
           </Box>
         </Box>

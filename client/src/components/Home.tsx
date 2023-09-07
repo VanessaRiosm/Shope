@@ -8,6 +8,7 @@ import {Box} from '@mui/material'
 import {Categories} from './Categories'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {fetchGetProducts} from '../features/products/productSlice'
+import {Promotion} from './Promotion'
 
 export const Home = () => {
   const products = useAppSelector((state) => state.product.productsList)
@@ -27,7 +28,9 @@ export const Home = () => {
         badg={'NEW'}
         products={products && products.slice(9, 17)}
       />
+      <Promotion knit={'no'} />
       <Categories siP={'si'} />
+      <Promotion knit={'si'} />
       <Collection
         title={'TOP SELLER'}
         badg={'TOP'}
