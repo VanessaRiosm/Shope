@@ -194,7 +194,7 @@ export const Collection = ({
                 </Box>
               </ThemeProvider>
 
-              <Box>{product.name}</Box>
+              <Typography>{product.name}</Typography>
               <Box>${product.price}</Box>
             </Box>
           ))}
