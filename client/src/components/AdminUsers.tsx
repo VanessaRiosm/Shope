@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import {useAppSelector, useAppDispatch} from '../hooks'
-import {fetchGetUsers} from '../features/users/userSlice'
+import {fetchGetUsers, fetchDeleteUser} from '../features/users/userSlice'
 import {
   Box,
   Button,
@@ -14,16 +14,18 @@ import {FaPencilAlt} from 'react-icons/fa'
 import {BsTrash3} from 'react-icons/bs'
 
 export const AdminUsers = () => {
-  const users = useAppSelector((state: any) => state.user.usersList)
+  const {usersList, refresh} = useAppSelector((state: any) => state.user)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(fetchGetUsers())
-  }, [])
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }, [refresh])
 
   return (
     <Box
-      margin='30px'
+      marginTop='90px'
+      marginLeft='25px'
       sx={{
         display: 'grid',
         gap: 1,
@@ -35,9 +37,9 @@ export const AdminUsers = () => {
         },
       }}
     >
-      {users &&
-        users.map((user: any) => (
-          <Box>
+      {usersList &&
+        usersList.map((user: any) => (
+          <Box key={user.id}>
             <Card sx={{maxWidth: 320}}>
               <CardMedia
                 component='img'
@@ -60,7 +62,10 @@ export const AdminUsers = () => {
                 <Button size='medium'>
                   <FaPencilAlt />
                 </Button>
-                <Button size='medium'>
+                <Button
+                  size='medium'
+                  onClick={() => dispatch(fetchDeleteUser(user.id))}
+                >
                   <BsTrash3 />
                 </Button>
               </CardActions>

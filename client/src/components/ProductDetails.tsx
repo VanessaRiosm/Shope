@@ -31,8 +31,6 @@ export const ProductDetails = () => {
     if (rol === 'user' || rol === 'admin') {
       dispatch(fetchAddToCart(data))
     } else {
-      console.log('esta entrando al else')
-
       notifyRegister()
     }
   }

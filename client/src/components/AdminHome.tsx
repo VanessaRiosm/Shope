@@ -45,10 +45,10 @@ export const AdminHome = () => {
   }
 
   return (
-    <div>
+    <Box>
       {rol === 'admin' ? (
         <Box>
-          <AppBar position='static' sx={{bgcolor: 'white'}}>
+          <AppBar position='fixed' sx={{bgcolor: 'white'}}>
             <Container maxWidth='xl'>
               <Toolbar disableGutters>
                 <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
@@ -133,6 +133,6 @@ export const AdminHome = () => {
       ) : (
         <Box>{<Navigate to='/' />}</Box>
       )}
-    </div>
+    </Box>
   )
 }

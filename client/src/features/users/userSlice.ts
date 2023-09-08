@@ -75,6 +75,19 @@ export const fetchLogOut: any = createAsyncThunk('users/fetchLogOut', () => {
   window.localStorage.removeItem('token')
 })
 
+export const fetchDeleteUser: any = createAsyncThunk(
+  'users/fetchDeleteUser',
+  async (uid: any) => {
+    const token = window.localStorage.getItem('token')
+
+    const response = await axios.delete(`${URL}/users/delete/${uid}`, {
+      headers: {Authorization: `Bearer ${token}`},
+    })
+
+    return response.data
+  }
+)
+
 export const userSlice = createSlice({
   name: 'users',
   initialState,
@@ -128,6 +141,15 @@ export const userSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchLogOut.fulfilled, (state) => {
+        state.refresh = !state.refresh
+        state.status = 'success'
+      })
+
+      //Delete user
+      .addCase(fetchDeleteUser.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchDeleteUser.fulfilled, (state) => {
         state.refresh = !state.refresh
         state.status = 'success'
       })

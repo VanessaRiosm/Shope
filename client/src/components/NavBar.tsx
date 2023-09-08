@@ -264,7 +264,13 @@ export const NavBar = () => {
                   <MenuItem onClick={handleClose}>Admin Panel</MenuItem>
                 </Link>
 
-                <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    dispatch(fetchLogOut())
+                  }}
+                >
+                  Log Out
+                </MenuItem>
               </div>
             ) : rol === 'user' ? (
               <div>
@@ -281,7 +287,7 @@ export const NavBar = () => {
                     }}
                   >
                     Log Out
-                  </MenuItem>{' '}
+                  </MenuItem>
                 </Link>
               </div>
             ) : (

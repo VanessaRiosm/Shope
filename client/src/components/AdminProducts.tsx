@@ -19,39 +19,13 @@ export const AdminProducts = () => {
 
   useEffect(() => {
     dispatch(fetchGetProducts())
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }, [])
 
   return (
-    // <Box
-    //   margin='30px'
-    //   bgcolor={{xs: 'green', sm: 'red', md: 'pink', lg: 'purple', xl: 'blue'}}
-    //   sx={{
-    //     display: 'grid',
-    //     gap: 1,
-    //     gridTemplateColumns: {
-    //       xs: 'repeat(1, 1fr)',
-    //       // sm: 'repeat(2, 1fr)',
-    //       // md: 'repeat(2, 1fr)',
-    //       lg: 'repeat(2, 1fr)',
-    //     },
-    //   }}
-    // >
-    //   {products &&
-    //     products.map((product: any) => (
-    //       <Grid key={product.id} xs={1}>
-    //         <Box display='flex' flexDirection='column' alignItems='center'>
-    //           <img style={{maxWidth: 500, height: 500}} src={product.image} />
-
-    //           <Box>{product.name}</Box>
-    //           <Box>{product.price}</Box>
-    //           <Box>{product.category}</Box>
-    //         </Box>
-    //       </Grid>
-    //     ))}
-    // </Box>
-
     <Box
-      margin='30px'
+      marginTop='90px'
+      marginLeft='25px'
       sx={{
         display: 'grid',
         gap: 1,
@@ -65,11 +39,11 @@ export const AdminProducts = () => {
     >
       {products &&
         products.map((product: any) => (
-          <Box>
+          <Box key={product.id}>
             <Card sx={{maxWidth: 320}}>
               <CardMedia
                 component='img'
-                alt='green iguana'
+                alt='product image'
                 height='160'
                 image={product.image}
               />

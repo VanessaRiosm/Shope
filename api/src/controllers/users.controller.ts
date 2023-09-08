@@ -43,7 +43,7 @@ export const deleteUser = async (req: Request, res: Response) => {
   try {
     const deletedUser = await User.findByIdAndDelete(uid)
 
-    res.json('the user was successfully deleted')
+    res.json(`the user ${deletedUser.email} was successfully deleted`)
   } catch (err) {
     res.json(err.message)
   }

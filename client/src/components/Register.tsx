@@ -165,7 +165,7 @@ export const Register = () => {
 
                         <Field
                           name='email'
-                          placeholder='Ejemplo@gmail.com'
+                          placeholder='Example@gmail.com'
                           type='email'
                           style={{
                             margin: '5px 0px 0px 0px',
