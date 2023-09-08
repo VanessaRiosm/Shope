@@ -22,7 +22,14 @@ export const Cart = () => {
           <Box>
             <hr />
             {currentUser.cart[0].products.map((p: any) => (
-              <Box key={p.productId} mt='4px' ml='4px' display='flex'>
+              <Box
+                key={p.productId}
+                margin='4px 10px'
+                display='flex'
+                justifyContent='center'
+                height='100%'
+                bgcolor='#EEEEEE'
+              >
                 <Link
                   to={`/product/${p.productId}`}
                   style={{textDecoration: 'none', color: 'black'}}
@@ -31,37 +38,49 @@ export const Cart = () => {
                     <Box>
                       <img
                         src={p.image}
-                        style={{width: '140px', height: '210px'}}
+                        style={{width: '120px', height: '170px'}}
                       />
                     </Box>
-                    <Box display='grid' ml='10px'>
-                      <Typography>{p.name}</Typography>
-                      <Box>${p.price}</Box>
-                      <Box>Color: red</Box>
-                      <Box>Qty: {p.quantity}</Box>
-                    </Box>
+                    <Typography
+                      display='flex'
+                      flexDirection='column'
+                      ml='10px'
+                      gap='15px'
+                      width='180px'
+                    >
+                      <Typography fontWeight='bold'>{p.name}</Typography>
+                      <Typography>${p.price}</Typography>
+                      <Typography>Qty: {p.quantity}</Typography>
+                    </Typography>
                   </Box>
                 </Link>
-                <Button
-                  sx={{color: '#4518D9'}}
-                  onClick={() =>
-                    dispatch(
-                      fetchRemoveFromCart({
-                        userId: currentUser.id,
-                        productId: p.productId,
-                      })
-                    )
-                  }
+                {/* caneca eliminar */}
+                <Box
+                  sx={{
+                    color: '#4518D9',
+                    display: 'flex',
+                    alignItems: 'end',
+                  }}
                 >
-                  <BsTrash3 style={{marginBottom: '12px'}} />
-                </Button>
+                  <BsTrash3
+                    style={{marginBottom: '12px', cursor: 'pointer'}}
+                    onClick={() =>
+                      dispatch(
+                        fetchRemoveFromCart({
+                          userId: currentUser.id,
+                          productId: p.productId,
+                        })
+                      )
+                    }
+                  />
+                </Box>
               </Box>
             ))}
           </Box>
 
           {currentUser.cart[0].subTotal > 0 ? (
             <Box display='flex'>
-              <Box color='black' mt='40px' ml='20%' mb='60px'>
+              <Box color='black' mt='40px' ml='20%' mb='20px'>
                 {'TOTAL: $'}
                 {currentUser.cart[0].subTotal}
               </Box>

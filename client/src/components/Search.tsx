@@ -1,4 +1,4 @@
-import {Box, Grid, Typography} from '@mui/material'
+import {Box, Grid} from '@mui/material'
 import {NavBar} from './NavBar'
 import {Product} from '../types/types'
 import {useAppDispatch, useAppSelector} from '../hooks'
@@ -18,7 +18,7 @@ export const Search = () => {
   return (
     <Box>
       <NavBar />
-      <Box
+      {/* <Box
         display='grid'
         justifyItems='center'
         marginTop='20px'
@@ -29,7 +29,7 @@ export const Search = () => {
           sophisticated touch to your days. Our colors and details special items
           will be the pop of color that your closet needs.
         </Typography>
-      </Box>
+      </Box> */}
 
       <Grid
         container

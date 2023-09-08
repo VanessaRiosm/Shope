@@ -46,6 +46,7 @@ export const Promotion = (props: any) => {
           <Box
             height='150px'
             mt='40px'
+            mb='30px'
             display='flex'
             justifyContent='center'
             alignItems='center'

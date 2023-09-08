@@ -202,7 +202,7 @@ export const NavBar = () => {
           >
             <Box sx={{overflowX: 'hidden', height: '100%'}}>
               <Box display='flex'>
-                <Typography color='black' mt='13px' ml='30px'>
+                <Typography color='black' mt='13px' ml='50px'>
                   Your Cart
                 </Typography>
 
@@ -210,7 +210,7 @@ export const NavBar = () => {
                   style={{
                     width: '20px',
                     height: '50px',
-                    left: '60%',
+                    left: '55%',
                     color: 'black',
                   }}
                   onClick={toggleDrawer}
