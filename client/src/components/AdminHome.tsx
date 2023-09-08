@@ -21,9 +21,9 @@ import {AdminUsers} from './AdminUsers'
 
 const pages = [
   {id: 1, name: 'Products'},
-  {id: 2, name: 'Offers'},
-  {id: 3, name: 'Shipping'},
-  {id: 4, name: 'Users'},
+  {id: 2, name: 'Users'},
+  {id: 3, name: 'Offers'},
+  {id: 4, name: 'Shipping'},
 ]
 
 export const AdminHome = () => {

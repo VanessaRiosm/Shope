@@ -6,6 +6,7 @@ const URL = import.meta.env.VITE_APP_URL
 interface ProductsState {
   productsList: any | null
   productsFilter: any | null
+  refresh: boolean
   status: string
   productDetails: any | null
 }
@@ -13,6 +14,7 @@ interface ProductsState {
 const initialState = {
   productsList: null,
   productsFilter: null,
+  refresh: true,
   status: 'idle',
   productDetails: null,
 } as ProductsState
@@ -39,6 +41,19 @@ export const fetchSearchProducts: any = createAsyncThunk(
   'product/fetchSearchProduct',
   async (text) => {
     const response = await axios.get(`${URL}/products/search/?param=${text}`)
+
+    return response.data
+  }
+)
+
+export const fetchDeleteProduct: any = createAsyncThunk(
+  'users/fetchDeleteProduct',
+  async (pid: any) => {
+    const token = window.localStorage.getItem('token')
+
+    const response = await axios.delete(`${URL}/products/delete/${pid}`, {
+      headers: {Authorization: `Bearer ${token}`},
+    })
 
     return response.data
   }
@@ -83,6 +98,15 @@ export const productSlice = createSlice({
         if (!products) products = 'no products found'
 
         state.productsFilter = action.payload
+        state.status = 'success'
+      })
+
+      //delete product
+      .addCase(fetchDeleteProduct.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchDeleteProduct.fulfilled, (state) => {
+        state.refresh = !state.refresh
         state.status = 'success'
       })
   },
