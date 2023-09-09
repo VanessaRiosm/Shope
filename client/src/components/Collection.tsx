@@ -4,7 +4,7 @@ import {useState} from 'react'
 import ReactSimplyCarousel from 'react-simply-carousel'
 import {BsCartPlusFill} from 'react-icons/bs'
 import {useAppDispatch, useAppSelector} from '../hooks'
-// import {fetchGetProducts} from '../features/products/productSlice'
+import {toast} from 'react-toastify'
 import {Product} from '../types/types'
 import {Link} from 'react-router-dom'
 import {fetchAddToCart} from '../features/cart/cartSlice'
@@ -66,7 +66,30 @@ export const Collection = ({
   const addToCart = (data: any) => {
     if (rol === 'user' || rol === 'admin') {
       dispatch(fetchAddToCart(data))
-    } else console.log('tienes que registrarte')
+      notifyAddedToCart()
+    } else notifyRegister()
+  }
+
+  const notifyRegister = () => {
+    toast.error('Please register!', {
+      position: 'bottom-right',
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
+  }
+
+  const notifyAddedToCart = () => {
+    toast.success('Added to cart!', {
+      position: 'bottom-right',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
   }
 
   return (

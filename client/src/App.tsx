@@ -9,10 +9,12 @@ import {Register} from './components/Register'
 import {AdminHome} from './components/AdminHome'
 import {NotFound} from './components/NotFound'
 import {CategoryDetails} from './components/CategoryDetails'
+import {ToastContainer} from 'react-toastify'
 
 function App() {
   return (
     <div>
+      <ToastContainer />
       <Routes>
         <Route path='/' Component={Home} />
         <Route path='/product/:id' Component={ProductDetails} />

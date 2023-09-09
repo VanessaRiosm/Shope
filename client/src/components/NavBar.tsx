@@ -23,6 +23,7 @@ import Drawer from 'react-modern-drawer'
 import 'react-modern-drawer/dist/index.css'
 import {Cart} from './Cart'
 import {fetchCurrentUser, fetchLogOut} from '../features/users/userSlice'
+import {toast} from 'react-toastify'
 
 //searchbar
 const Search = styled('div')(({theme}) => ({
@@ -111,6 +112,17 @@ export const NavBar = () => {
     setIsOpen((prevState) => !prevState)
   }
 
+  const notifyLogOut = () => {
+    toast.info('You are logged out', {
+      position: 'bottom-right',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
+  }
+
   useEffect(() => {
     dispatch(fetchCurrentUser())
   }, [refresh])
@@ -178,14 +190,14 @@ export const NavBar = () => {
             edge='start'
             aria-label='open drawer'
             onClick={toggleDrawer}
-            sx={{mr: 1, color: 'black'}}
+            sx={{ml: {xs: '1px', sm: '0px'}, color: 'black'}}
           >
-            {' '}
             <StyledBadge
               badgeContent={
                 currentUser &&
                 currentUser.cart &&
                 currentUser.cart[0] &&
+                currentUser.cart[0].productsQty >= 0 &&
                 currentUser.cart[0].productsQty
               }
             >
@@ -197,12 +209,12 @@ export const NavBar = () => {
             open={isOpen}
             onClose={toggleDrawer}
             direction='right'
-            size={400}
+            size={350}
             overlayOpacity={0.5}
           >
             <Box sx={{overflowX: 'hidden', height: '100%'}}>
               <Box display='flex'>
-                <Typography color='black' mt='13px' ml='50px'>
+                <Typography color='black' mt='13px' ml='15px'>
                   Your Cart
                 </Typography>
 
@@ -233,7 +245,7 @@ export const NavBar = () => {
             <FaUserCircle />
           </IconButton>
           <Menu
-            disableScrollLock={false}
+            disableScrollLock={true}
             id='menu-appbar'
             anchorEl={anchorEl}
             anchorOrigin={{
@@ -267,6 +279,7 @@ export const NavBar = () => {
                 <MenuItem
                   onClick={() => {
                     dispatch(fetchLogOut())
+                    notifyLogOut()
                   }}
                 >
                   Log Out
@@ -284,6 +297,7 @@ export const NavBar = () => {
                   <MenuItem
                     onClick={() => {
                       dispatch(fetchLogOut())
+                      notifyLogOut()
                     }}
                   >
                     Log Out

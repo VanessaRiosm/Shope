@@ -54,7 +54,7 @@ export const Cart = () => {
                     </Typography>
                   </Box>
                 </Link>
-                {/* caneca eliminar */}
+
                 <Box
                   sx={{
                     color: '#4518D9',
@@ -63,7 +63,11 @@ export const Cart = () => {
                   }}
                 >
                   <BsTrash3
-                    style={{marginBottom: '12px', cursor: 'pointer'}}
+                    style={{
+                      cursor: 'pointer',
+                      marginLeft: '-30px',
+                      marginBottom: '10px',
+                    }}
                     onClick={() =>
                       dispatch(
                         fetchRemoveFromCart({
@@ -80,10 +84,10 @@ export const Cart = () => {
 
           {currentUser.cart[0].subTotal > 0 ? (
             <Box display='flex'>
-              <Box color='black' mt='40px' ml='20%' mb='20px'>
+              <Typography color='black' mt='40px' ml='17%' mb='20px'>
                 {'TOTAL: $'}
                 {currentUser.cart[0].subTotal}
-              </Box>
+              </Typography>
 
               <Button
                 variant='contained'
@@ -91,7 +95,7 @@ export const Cart = () => {
                   bgcolor: '#4518D9',
                   color: 'white',
                   height: '30px',
-                  mt: '34px',
+                  mt: '36px',
                   ml: '10px',
                 }}
               >

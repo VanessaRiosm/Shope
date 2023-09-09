@@ -30,16 +30,28 @@ export const ProductDetails = () => {
   const addToCart = (data: any) => {
     if (rol === 'user' || rol === 'admin') {
       dispatch(fetchAddToCart(data))
+      notifyAddedToCart()
     } else {
       notifyRegister()
     }
   }
 
   const notifyRegister = () => {
-    toast.error('🦄 Wow so easy!', {
+    toast.error('Please register!', {
       position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: false,
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
+  }
+
+  const notifyAddedToCart = () => {
+    toast.success('Added to cart!', {
+      position: 'bottom-right',
+      autoClose: 2000,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,

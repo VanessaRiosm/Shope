@@ -1,4 +1,4 @@
-import {Box, Grid, Skeleton, Typography} from '@mui/material'
+import {Box, Grid, Skeleton} from '@mui/material'
 import {NavBar} from './NavBar'
 import {Product} from '../types/types'
 import {useAppDispatch, useAppSelector} from '../hooks'
@@ -24,9 +24,9 @@ export const CategoryDetails = () => {
   }, [params])
 
   return (
-    <Box>
+    <Box marginTop='80px'>
       <NavBar />
-      <Box
+      {/* <Box
         display='grid'
         justifyItems='center'
         marginTop='20px'
@@ -35,7 +35,7 @@ export const CategoryDetails = () => {
         <Typography variant='h6' fontWeight='bold' mt='50px'>
           hola
         </Typography>
-      </Box>
+      </Box> */}
 
       {products[0] ? (
         <Box>
@@ -53,7 +53,7 @@ export const CategoryDetails = () => {
                     style={{textDecoration: 'none', color: 'black'}}
                   >
                     <img
-                      style={{maxWidth: 500, height: 500}}
+                      style={{maxWidth: 500, height: 550}}
                       src={product.image}
                     />
 
