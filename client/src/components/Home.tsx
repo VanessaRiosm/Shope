@@ -37,7 +37,7 @@ export const Home = () => {
       />
       <Promotion knit={'si'} />
       <Categories siP={'no'} />
-      <Promotion knit={''} />
+
       <Footerr />
     </Box>
   )

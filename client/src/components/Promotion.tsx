@@ -5,6 +5,12 @@ import banneroffer from '../images/banneroffer.png'
 import responsiveoffer from '../images/responsivebanneroffer.png'
 import {GiAmpleDress} from 'react-icons/gi'
 import {GrDeliver} from 'react-icons/gr'
+import visa from '../images/visa.png'
+import mastercard from '../images/mastercard.png'
+import maestro from '../images/maestro.png'
+import paypal from '../images/paypal.png'
+import american from '../images/american-express.png'
+import mercadopago from '../images/mercadoPago.png'
 
 export const Promotion = (props: any) => {
   return (
@@ -64,6 +70,20 @@ export const Promotion = (props: any) => {
               <Typography fontSize='20px' fontWeight='bold'>
                 Express Delivery
               </Typography>
+            </Box>
+          </Box>
+          <Box>
+            <Box display='flex' justifyContent='center' gap='40px' mb='10px'>
+              <img src={visa} height='50px' />
+              <img src={mastercard} height='40px' style={{marginTop: '5px'}} />
+              <img src={paypal} height='70px' style={{marginTop: '-10px'}} />
+              <img src={maestro} height='35px' style={{marginTop: '7px'}} />
+              <img src={american} height='55px' />
+              <img
+                src={mercadopago}
+                height='55px'
+                style={{marginTop: '-1px'}}
+              />
             </Box>
           </Box>
         </Box>

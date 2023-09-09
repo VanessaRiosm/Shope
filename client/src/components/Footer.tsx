@@ -9,6 +9,7 @@ import {
 } from 'react-icons/fa'
 import {Box, Button} from '@mui/material'
 import {useAppSelector} from '../hooks'
+import {Promotion} from './Promotion'
 
 export const Footerr = () => {
   const {currentUser} = useAppSelector((state) => state.user)
@@ -51,6 +52,9 @@ export const Footerr = () => {
         </Box>
       )}
 
+      <Box>
+        <Promotion knit={''} />
+      </Box>
       <Box
         component='footer'
         sx={{
@@ -62,7 +66,7 @@ export const Footerr = () => {
         }}
       >
         <Container maxWidth='lg'>
-          <Grid container spacing={5}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={4}>
               <Typography variant='h6' color='text.primary' gutterBottom>
                 About Us
