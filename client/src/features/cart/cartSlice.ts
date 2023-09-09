@@ -36,17 +36,21 @@ const initialState = {
 export const fetchAddToCart = createAsyncThunk(
   'cart/fetchAddToCart',
   async (ids: ids) => {
-    const {userId, productId, name, price, quantity, image} = ids
+    try {
+      const {userId, productId, name, price, quantity, image} = ids
 
-    const response = await axios.put(`${URL}/cart/add/${userId}`, {
-      productId,
-      name,
-      price,
-      quantity,
-      image,
-    })
+      const response = await axios.put(`${URL}/cart/add/${userId}`, {
+        productId,
+        name,
+        price,
+        quantity,
+        image,
+      })
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 

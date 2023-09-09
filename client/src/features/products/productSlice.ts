@@ -22,40 +22,56 @@ const initialState = {
 export const fetchGetProducts: any = createAsyncThunk(
   'product/fetchGetProducts',
   async () => {
-    const response = await axios.get(`${URL}/products/`)
+    try {
+      const response = await axios.get(`${URL}/products/`)
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 
 export const fetchGetProduct: any = createAsyncThunk(
   'product/fetchGetProduct',
   async (id) => {
-    const response = await axios.get(`${URL}/products/details/${id}`)
+    try {
+      const response = await axios.get(`${URL}/products/details/${id}`)
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 
 export const fetchSearchProducts: any = createAsyncThunk(
   'product/fetchSearchProduct',
   async (text) => {
-    const response = await axios.get(`${URL}/products/search/?param=${text}`)
+    try {
+      const response = await axios.get(`${URL}/products/search/?param=${text}`)
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 
 export const fetchDeleteProduct: any = createAsyncThunk(
   'users/fetchDeleteProduct',
   async (pid: any) => {
-    const token = window.localStorage.getItem('token')
+    try {
+      const token = window.localStorage.getItem('token')
 
-    const response = await axios.delete(`${URL}/products/delete/${pid}`, {
-      headers: {Authorization: `Bearer ${token}`},
-    })
+      const response = await axios.delete(`${URL}/products/delete/${pid}`, {
+        headers: {Authorization: `Bearer ${token}`},
+      })
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 

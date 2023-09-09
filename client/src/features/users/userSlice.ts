@@ -43,31 +43,43 @@ export const fetchLogin: any = createAsyncThunk(
 export const fetchRegister: any = createAsyncThunk(
   'users/fetchRegister',
   async (data: any) => {
-    const response = await axios.post(`${URL}/users/`, data)
+    try {
+      const response = await axios.post(`${URL}/users/`, data)
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 
 export const fetchGetUsers: any = createAsyncThunk(
   'users/fetchGetUsers',
   async () => {
-    const response = await axios.get(`${URL}/users/`)
+    try {
+      const response = await axios.get(`${URL}/users/`)
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 
 export const fetchCurrentUser: any = createAsyncThunk(
   'users/fetchCurrentUser',
   async () => {
-    const token = window.localStorage.getItem('token')
+    try {
+      const token = window.localStorage.getItem('token')
 
-    const response = await axios.get(`${URL}/auth/getuser`, {
-      headers: {Authorization: `Bearer ${token}`},
-    })
+      const response = await axios.get(`${URL}/auth/getuser`, {
+        headers: {Authorization: `Bearer ${token}`},
+      })
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 
@@ -78,13 +90,17 @@ export const fetchLogOut: any = createAsyncThunk('users/fetchLogOut', () => {
 export const fetchDeleteUser: any = createAsyncThunk(
   'users/fetchDeleteUser',
   async (uid: any) => {
-    const token = window.localStorage.getItem('token')
+    try {
+      const token = window.localStorage.getItem('token')
 
-    const response = await axios.delete(`${URL}/users/delete/${uid}`, {
-      headers: {Authorization: `Bearer ${token}`},
-    })
+      const response = await axios.delete(`${URL}/users/delete/${uid}`, {
+        headers: {Authorization: `Bearer ${token}`},
+      })
 
-    return response.data
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 )
 
