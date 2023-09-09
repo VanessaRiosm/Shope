@@ -79,22 +79,22 @@ export const ProductDetails = () => {
       {product ? (
         <Box display='flex' justifyContent='center'>
           <Box
-            maxHeight='650px'
             maxWidth='1100px'
-            display='flex'
+            display={{xs: 'grid', md: 'flex'}}
             justifyContent='center'
+            justifyItems='center'
             margin='80px 40px 10px 40px'
           >
-            <img
-              src={product.image}
-              style={{
-                width: '40%',
-                height: '650px',
-              }}
-            />
-
             <Box
-              width='35%'
+              sx={{
+                width: {sm: '70%', md: '40%'},
+                height: {sm: '800px', md: '100%'},
+              }}
+            >
+              <img src={product.image} width='100%' height='100%' />
+            </Box>
+            <Box
+              width={{sm: '63%', md: '35%'}}
               padding='20px'
               maxHeight='650px'
               display='flex'
