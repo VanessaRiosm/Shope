@@ -73,7 +73,13 @@ export const Promotion = (props: any) => {
             </Box>
           </Box>
           <Box>
-            <Box display='flex' justifyContent='center' gap='40px' mb='10px'>
+            <Box
+              display={{xs: 'grid', sm: 'flex'}}
+              justifyContent='center'
+              alignContent='center'
+              gap={{xs: '3px', sm: '40px'}}
+              mb='10px'
+            >
               <img src={visa} height='50px' />
               <img src={mastercard} height='40px' style={{marginTop: '5px'}} />
               <img src={paypal} height='70px' style={{marginTop: '-10px'}} />
