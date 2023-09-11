@@ -14,6 +14,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {useState} from 'react'
 import {fetchCurrentUser, fetchLogin} from '../features/users/userSlice'
+import loginImage from '../images/loginImage.png'
 
 const formSchema = Yup.object().shape({
   email: Yup.string()
@@ -49,7 +50,7 @@ export const Login = () => {
               sm={4}
               md={7}
               sx={{
-                backgroundImage: 'url(https://source.unsplash.com/random)',
+                backgroundImage: `url(${loginImage})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundColor: (t) =>
                   t.palette.mode === 'light'

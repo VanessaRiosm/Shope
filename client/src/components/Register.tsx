@@ -14,6 +14,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {fetchRegister} from '../features/users/userSlice'
 import {useDispatch} from 'react-redux'
 import {useState} from 'react'
+import loginImage from '../images/loginImage.png'
 
 const formSchema = Yup.object().shape({
   username: Yup.string()
@@ -58,7 +59,7 @@ export const Register = () => {
               sm={4}
               md={7}
               sx={{
-                backgroundImage: 'url(https://source.unsplash.com/random)',
+                backgroundImage: `url(${loginImage})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundColor: (t) =>
                   t.palette.mode === 'light'
