@@ -218,8 +218,13 @@ export const Collection = ({
                 </Box>
               </ThemeProvider>
 
-              <Typography>{product.name}</Typography>
-              <Box>${product.price}</Box>
+              <Link
+                to={`/product/${product.id}`}
+                style={{textDecoration: 'none', color: 'black'}}
+              >
+                <Typography>{product.name}</Typography>
+                <Box>${product.price}</Box>
+              </Link>
             </Box>
           ))}
         </ReactSimplyCarousel>

@@ -1,17 +1,24 @@
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation, Pagination, Autoplay} from 'swiper'
-
-// Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-
 import {Box} from '@mui/material'
+import vogue from '../images/carouselBanner/liceriaVogue.png'
+import vogueResponsive from '../images/carouselBanner/liceriaVogueResponsive.png'
+import fashion from '../images/carouselBanner/fashion.png'
+import fashionResponsive from '../images/carouselBanner/fashionResponsive.png'
+import fashionblack from '../images/carouselBanner/fashionblack.png'
+import fashionblackResponsive from '../images/carouselBanner/fashionblackresponsive.png'
+import collection from '../images/carouselBanner/collection.png'
+import collectionResponsive from '../images/carouselBanner/collectionResponsive.png'
+import blackmodern from '../images/carouselBanner/blackmodern.png'
+import blackmodernResponsive from '../images/carouselBanner/blackmodernResponsive.png'
 
 export const Carousel = () => {
   return (
-    <Box>
+    <Box marginTop='65px'>
       <Swiper
         navigation={true}
         autoplay={true}
@@ -22,54 +29,85 @@ export const Carousel = () => {
         modules={[Navigation, Pagination, Autoplay]}
         className='mySwiper'
       >
-        <SwiperSlide>
-          <img
-            src='https://blog.corporacionbi.com/hubfs/Blog_ComprasOnLine_Agosto_17/24_JULIO_LAS_MEJORES_TIENDAS_ONLINE_PARA_RENOVAR_TU_ROPA_DEPORTIVA.jpg'
-            // className={style.img}
-            style={{
-              width: '100%',
-              maxHeight: '500px',
-              minHeight: '100px',
-              objectFit: 'fill',
-              marginTop: '65px',
-            }}
-          />
+        <SwiperSlide style={{height: '620px'}}>
+          <picture>
+            <source srcSet={collectionResponsive} media='(max-width: 900px)' />
+            <source srcSet={collection} media='(min-width: 900px)' />
+            <img
+              src={collectionResponsive}
+              alt='MDN'
+              style={{
+                objectFit: 'cover',
+                height: '100%',
+                width: '100%',
+              }}
+            />
+          </picture>
         </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src='https://www.studiof.com.co/arquivos/BANNER-HOME-NOCHE-PARISINA-LG.jpg'
-            style={{
-              width: '100%',
-              maxHeight: '500px',
-              minHeight: '100px',
-              objectFit: 'fill',
-              marginTop: '65px',
-            }}
-          />
+        <SwiperSlide style={{height: '620px'}}>
+          <picture>
+            <source srcSet={fashionResponsive} media='(max-width: 900px)' />
+            <source srcSet={fashion} media='(min-width: 900px)' />
+            <img
+              src={fashionResponsive}
+              alt='MDN'
+              style={{
+                objectFit: 'cover',
+                height: '100%',
+                width: '100%',
+              }}
+            />
+          </picture>
         </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src='https://www.studiof.com.co/arquivos/BANNER-HOME-ADN-JEANS-DITNB-LG.jpg'
-            style={{
-              width: '100%',
-              maxHeight: '500px',
-              minHeight: '100px',
-              objectFit: 'fill',
-              marginTop: '65px',
-            }}
-          />
+        <SwiperSlide style={{height: '620px'}}>
+          <picture>
+            <source
+              srcSet={fashionblackResponsive}
+              media='(max-width: 900px)'
+            />
+            <source srcSet={fashionblack} media='(min-width: 900px)' />
+            <img
+              src={fashionblackResponsive}
+              alt='MDN'
+              style={{
+                objectFit: 'cover',
+                height: '100%',
+                width: '100%',
+              }}
+            />
+          </picture>
         </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src='https://www.studiof.com.co/arquivos/BANNER-HOME-RETRO-TRIANGULAR-LG.jpg'
-            style={{
-              width: '100%',
-              maxHeight: '500px',
-              minHeight: '100px',
-              objectFit: 'fill',
-              marginTop: '65px',
-            }}
-          />
+
+        <SwiperSlide style={{height: '620px'}}>
+          <picture>
+            <source srcSet={vogueResponsive} media='(max-width: 900px)' />
+            <source srcSet={vogue} media='(min-width: 900px)' />
+            <img
+              src={vogueResponsive}
+              alt='MDN'
+              style={{
+                objectFit: 'cover',
+                height: '100%',
+                width: '100%',
+              }}
+            />
+          </picture>
+        </SwiperSlide>
+
+        <SwiperSlide style={{height: '620px'}}>
+          <picture>
+            <source srcSet={blackmodernResponsive} media='(max-width: 900px)' />
+            <source srcSet={blackmodern} media='(min-width: 900px)' />
+            <img
+              src={blackmodernResponsive}
+              alt='MDN'
+              style={{
+                objectFit: 'cover',
+                height: '100%',
+                width: '100%',
+              }}
+            />
+          </picture>
         </SwiperSlide>
       </Swiper>
     </Box>
