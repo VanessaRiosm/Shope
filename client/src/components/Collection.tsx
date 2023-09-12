@@ -11,8 +11,8 @@ import 'react-multi-carousel/lib/styles.css'
 
 const responsive = {
   extraLargeDesktop: {
-    breakpoint: {max: 2300, min: 1891},
-    items: 4,
+    breakpoint: {max: 2200, min: 1800},
+    items: 5,
   },
 
   superLargeDesktop: {

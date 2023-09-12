@@ -26,7 +26,7 @@ export const Home = () => {
       <Collection
         title={'NEW ARRIVALS'}
         badg={'NEW'}
-        products={products && products.slice(9, 17)}
+        products={products && products.slice(9, 16)}
       />
       <Promotion knit={'no'} />
       <Categories siP={'si'} />
