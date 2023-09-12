@@ -6,33 +6,10 @@ import {toast} from 'react-toastify'
 import {Product} from '../types/types'
 import {Link} from 'react-router-dom'
 import {fetchAddToCart} from '../features/cart/cartSlice'
-import Carousel from 'react-multi-carousel'
-import 'react-multi-carousel/lib/styles.css'
-
-const responsive = {
-  extraLargeDesktop: {
-    breakpoint: {max: 2200, min: 1800},
-    items: 5,
-  },
-
-  superLargeDesktop: {
-    breakpoint: {max: 1890, min: 1531},
-    items: 4,
-  },
-
-  desktop: {
-    breakpoint: {max: 1530, min: 1200},
-    items: 3,
-  },
-  tablet: {
-    breakpoint: {max: 1200, min: 700},
-    items: 2,
-  },
-  mobile: {
-    breakpoint: {max: 700, min: 464},
-    items: 1,
-  },
-}
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {useEffect} from 'react'
+import {fetchGetProducts} from '../features/products/productSlice'
+import {Navigation} from 'swiper'
 
 const categoryFont = createTheme({
   typography: {
@@ -116,6 +93,10 @@ export const Collection = ({
     })
   }
 
+  useEffect(() => {
+    dispatch(fetchGetProducts())
+  }, [])
+
   return (
     <Box marginTop='60px'>
       <Box>
@@ -123,17 +104,20 @@ export const Collection = ({
       </Box>
       {products ? (
         <Box>
-          <Carousel
-            swipeable={false}
-            draggable={false}
-            responsive={responsive}
-            additionalTransfrom={3}
-            containerClass={`w-full`}
-            ssr={true}
-            infinite={true}
+          <Swiper
+            loop
+            slidesPerView={1}
+            breakpoints={{
+              560: {slidesPerView: 2},
+              900: {slidesPerView: 3},
+              1200: {slidesPerView: 4},
+              1900: {slidesPerView: 5},
+            }}
+            navigation={true}
+            modules={[Navigation]}
           >
             {products.map((product: Product) => (
-              <div
+              <SwiperSlide
                 key={product.id}
                 style={{
                   position: 'relative',
@@ -203,9 +187,9 @@ export const Collection = ({
                   <Typography>{product.name}</Typography>
                   <Box>${product.price}</Box>
                 </Link>
-              </div>
+              </SwiperSlide>
             ))}
-          </Carousel>
+          </Swiper>
         </Box>
       ) : (
         <Box>
