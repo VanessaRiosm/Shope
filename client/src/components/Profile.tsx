@@ -30,14 +30,14 @@ export const Profile = () => {
         <Box display='grid'>
           <NavBar />
           <Box mt='100px'>
-            <Box>
+            <Box display='grid' justifyItems='center' gap='20px'>
               <FaUserCircle size='60px' />
-              <Typography>Your Profile info</Typography>
-              <p> name: {username}</p>
-              <p> email: {email}</p>
+              <Typography fontWeight='bold'>Your Profile info</Typography>
+              <Typography>Username: {username}</Typography>
+              <Typography>Email: {email}</Typography>
             </Box>
 
-            <Box>
+            <Box display='grid' justifyItems='center' mt='30px'>
               <Accordion sx={{width: '50%', bgcolor: '#F7F7F8'}}>
                 <AccordionSummary
                   expandIcon={<AiFillCaretDown />}
