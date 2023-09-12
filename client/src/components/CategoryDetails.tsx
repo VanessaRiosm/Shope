@@ -26,16 +26,6 @@ export const CategoryDetails = () => {
   return (
     <Box marginTop='80px'>
       <NavBar />
-      {/* <Box
-        display='grid'
-        justifyItems='center'
-        marginTop='20px'
-        marginBottom='20px'
-      >
-        <Typography variant='h6' fontWeight='bold' mt='50px'>
-          hola
-        </Typography>
-      </Box> */}
 
       {products[0] ? (
         <Box>
@@ -66,7 +56,11 @@ export const CategoryDetails = () => {
           </Grid>
         </Box>
       ) : (
-        <Box display='flex' justifyContent='center' gap='3px'>
+        <Box
+          display={{xs: 'grid', md: 'flex'}}
+          justifyContent='center'
+          gap='3px'
+        >
           <Skeleton
             sx={{bgcolor: 'grey.900'}}
             variant='rectangular'

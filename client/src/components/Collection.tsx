@@ -208,19 +208,46 @@ export const Collection = ({
           </Carousel>
         </Box>
       ) : (
-        <Box display='flex' justifyContent='center' gap='3px'>
-          <Skeleton
-            sx={{bgcolor: 'grey.900'}}
-            variant='rectangular'
-            width={295}
-            height={430}
-          />
-          <Skeleton
-            sx={{bgcolor: 'grey.900'}}
-            variant='rectangular'
-            width={295}
-            height={430}
-          />
+        <Box>
+          <Box display={{xs: 'flex', md: 'none'}} justifyContent='center'>
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={370}
+              height={570}
+            />
+          </Box>
+
+          <Box
+            justifyContent='center'
+            gap='3px'
+            display={{xs: 'none', md: 'flex'}}
+          >
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={370}
+              height={570}
+            />
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={370}
+              height={570}
+            />
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={370}
+              height={570}
+            />
+            <Skeleton
+              sx={{bgcolor: 'grey.900'}}
+              variant='rectangular'
+              width={370}
+              height={570}
+            />
+          </Box>
         </Box>
       )}
     </Box>
