@@ -30,6 +30,7 @@ export const Home = () => {
       />
       <Promotion knit={'no'} />
       <Categories siP={'si'} />
+
       <Collection
         title={'TOP SELLER'}
         badg={'TOP'}

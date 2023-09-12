@@ -29,7 +29,7 @@ export const Carousel = () => {
         modules={[Navigation, Pagination, Autoplay]}
         className='mySwiper'
       >
-        <SwiperSlide style={{height: '620px'}}>
+        <SwiperSlide style={{height: '45rem'}}>
           <picture>
             <source srcSet={collectionResponsive} media='(max-width: 900px)' />
             <source srcSet={collection} media='(min-width: 900px)' />
@@ -44,7 +44,7 @@ export const Carousel = () => {
             />
           </picture>
         </SwiperSlide>
-        <SwiperSlide style={{height: '620px'}}>
+        <SwiperSlide style={{height: '45rem'}}>
           <picture>
             <source srcSet={fashionResponsive} media='(max-width: 900px)' />
             <source srcSet={fashion} media='(min-width: 900px)' />
@@ -59,7 +59,7 @@ export const Carousel = () => {
             />
           </picture>
         </SwiperSlide>
-        <SwiperSlide style={{height: '620px'}}>
+        <SwiperSlide style={{height: '45rem'}}>
           <picture>
             <source
               srcSet={fashionblackResponsive}
@@ -78,7 +78,7 @@ export const Carousel = () => {
           </picture>
         </SwiperSlide>
 
-        <SwiperSlide style={{height: '620px'}}>
+        <SwiperSlide style={{height: '45rem'}}>
           <picture>
             <source srcSet={vogueResponsive} media='(max-width: 900px)' />
             <source srcSet={vogue} media='(min-width: 900px)' />
@@ -94,7 +94,7 @@ export const Carousel = () => {
           </picture>
         </SwiperSlide>
 
-        <SwiperSlide style={{height: '620px'}}>
+        <SwiperSlide style={{height: '45rem'}}>
           <picture>
             <source srcSet={blackmodernResponsive} media='(max-width: 900px)' />
             <source srcSet={blackmodern} media='(min-width: 900px)' />
