@@ -1,4 +1,4 @@
-import {Box, Grid, Skeleton} from '@mui/material'
+import {Box, Skeleton, Typography} from '@mui/material'
 import {NavBar} from './NavBar'
 import {Product} from '../types/types'
 import {useAppDispatch, useAppSelector} from '../hooks'
@@ -29,15 +29,22 @@ export const CategoryDetails = () => {
 
       {products[0] ? (
         <Box>
-          <Grid
-            container
-            columnSpacing={0}
-            columns={{xs: 1, sm: 2, md: 3, lg: 4}}
+          <Box
+            display={{xs: 'grid', md: 'flex'}}
             justifyContent='center'
+            justifyItems='center'
+            flexWrap='wrap'
+            gap='30px'
+            maxWidth='200rem'
           >
             {products.map((product: Product) => (
-              <Grid key={product.id} xs={1}>
-                <Box display='flex' flexDirection='column' alignItems='center'>
+              <Box key={product.id}>
+                <Box
+                  display='flex'
+                  flexDirection='column'
+                  alignItems='center'
+                  textAlign='center'
+                >
                   <Link
                     to={`/product/${product.id}`}
                     style={{textDecoration: 'none', color: 'black'}}
@@ -47,13 +54,13 @@ export const CategoryDetails = () => {
                       src={product.image}
                     />
 
-                    <Box>{product.name}</Box>
-                    <Box>{product.price}</Box>
+                    <Typography>{product.name}</Typography>
+                    <Typography>${product.price}</Typography>
                   </Link>
                 </Box>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </Box>
       ) : (
         <Box
