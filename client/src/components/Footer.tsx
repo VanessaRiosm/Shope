@@ -1,15 +1,15 @@
-import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import {Link} from 'react-router-dom'
-import Grid from '@mui/material/Grid'
 import {
   FaFacebookSquare,
   FaInstagramSquare,
   FaTwitterSquare,
+  FaLinkedin,
 } from 'react-icons/fa'
 import {Box, Button} from '@mui/material'
 import {useAppSelector} from '../hooks'
 import {Promotion} from './Promotion'
+import shope from '../../public/shopelogo.png'
 
 export const Footerr = () => {
   const {currentUser} = useAppSelector((state) => state.user)
@@ -55,61 +55,45 @@ export const Footerr = () => {
       <Box>
         <Promotion knit={''} />
       </Box>
-      <Box
-        component='footer'
-        sx={{
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
-          p: 6,
-        }}
-      >
-        <Container maxWidth='lg'>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={4}>
-              <Typography variant='h6' color='text.primary' gutterBottom>
-                About Us
-              </Typography>
-              <Typography variant='body2' color='text.secondary'>
-                We are XYZ company, dedicated to providing the best service to
-                our customers.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Typography variant='h6' color='text.primary' gutterBottom>
-                Contact Us
-              </Typography>
-              <Typography variant='body2' color='text.secondary'>
-                linkedIn: nomeseelenlace.com
-              </Typography>
-              <Typography variant='body2' color='text.secondary'>
-                Email: vanessa.riosm571@gmail.com
-              </Typography>
-              <Typography variant='body2' color='text.secondary'>
-                Phone: +57 3025061093
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Typography variant='h6' color='text.primary' gutterBottom>
-                Follow Us
-              </Typography>
-              <a href='https://www.facebook.com/'>
-                <FaFacebookSquare
-                  style={{color: '#4518D9', fontSize: '30px'}}
-                />
-              </a>
-              <a href='https://www.instagram.com/'>
-                <FaInstagramSquare
-                  style={{color: '#4518D9', fontSize: '30px'}}
-                />
-              </a>
-              <a href='https://www.twitter.com/'>
-                <FaTwitterSquare style={{color: '#4518D9', fontSize: '30px'}} />
-              </a>
-            </Grid>
-          </Grid>
-          <Box mt={5}>
+
+      {/* footer */}
+      <Box component='footer' height='17rem' bgcolor='#EEEEEE'>
+        <Box display='grid' justifyItems='center'>
+          <Box mt='30px' display='flex' alignItems='center' gap='5px'>
+            <img src={shope} height='25px' />{' '}
+            <Typography fontSize='20px' fontWeight='bold'>
+              SHOPE
+            </Typography>
+          </Box>
+
+          <Box display='flex' gap={{xs: '10px', sm: '30px'}} mt='30px'>
+            <Typography>About Shope</Typography>
+            <Typography>Help & FAQs</Typography>
+            <Typography>Ways to Shop</Typography>
+            <Typography>Legal</Typography>
+          </Box>
+
+          <Box display='flex' gap='30px' margin='30px 0 25px 0'>
+            <FaFacebookSquare fontSize='30px' />
+            <FaInstagramSquare fontSize='30px' />
+            <a
+              href='https://twitter.com/varimu14'
+              target='_blank'
+              style={{color: 'black'}}
+            >
+              <FaTwitterSquare fontSize='30px' />{' '}
+            </a>
+            <a
+              href='https://www.linkedin.com/in/vanessa-rios-munoz/'
+              target='_blank'
+              style={{color: 'black'}}
+            >
+              <FaLinkedin fontSize='30px' />{' '}
+            </a>
+          </Box>
+
+          {/* top, right, bottom, left */}
+          <Box>
             <Typography variant='body2' color='text.secondary' align='center'>
               {'Copyright © '}
               <a
@@ -122,7 +106,7 @@ export const Footerr = () => {
               {'.'}
             </Typography>
           </Box>
-        </Container>
+        </Box>
       </Box>
     </Box>
   )
