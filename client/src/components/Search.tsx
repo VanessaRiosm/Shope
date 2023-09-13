@@ -27,9 +27,9 @@ export const Search = () => {
         columns={{xs: 1, sm: 2, md: 3, lg: 4}}
         justifyContent='center'
       >
-        {products.length ? (
+        {products && products.length ? (
           products.map((product: Product) => (
-            <Grid key={product.id} xs={1}>
+            <Box sx={{display: {xs: 'grid', md: 'flex'}}} key={product.id}>
               <Box display='flex' flexDirection='column' alignItems='center'>
                 <Link
                   to={`/product/${product.id}`}
@@ -44,7 +44,7 @@ export const Search = () => {
                   <Box>{product.price}</Box>
                 </Link>
               </Box>
-            </Grid>
+            </Box>
           ))
         ) : (
           <Box>

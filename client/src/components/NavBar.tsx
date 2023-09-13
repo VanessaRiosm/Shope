@@ -97,7 +97,9 @@ export const NavBar = () => {
   const handleSearch = (e: any) => {
     e.preventDefault()
 
-    if (search) history(`/search/${search}`, {replace: true})
+    if (search.trim().length > 0) {
+      history(`/search/${search.trim()}`, {replace: true})
+    }
   }
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
