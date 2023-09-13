@@ -85,6 +85,10 @@ export const removeFromCart = async (req: Request, res: Response) => {
     products.splice(itemIndex, 1)
     cart.products = products
 
+    if (cart.productsQty < 0) {
+      cart.productsQty = 0
+      cart.subTotal = 0
+    }
     await cart.save()
     await user.updateOne({cart}, {cart})
     res.status(200).json(cart)
