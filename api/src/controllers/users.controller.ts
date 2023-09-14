@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
 import {User} from '../models/userSchema'
 import {Cart} from '../models/cartSchema'
+import bcrypt from 'bcrypt'
 
 export const createUser = async (req: Request, res: Response) => {
   try {
@@ -10,7 +11,17 @@ export const createUser = async (req: Request, res: Response) => {
       return res.status(400).json('incomplete data')
     if (password !== confirmPassword) return res.status(400).json('bad data')
 
-    const newUser = await User.create({username, email, password, rol})
+    const hashedPassword = await bcrypt.hash(
+      password,
+      Number(process.env.SALT_ROUNDS)
+    )
+
+    const newUser = await User.create({
+      username,
+      email,
+      password: hashedPassword,
+      rol,
+    })
 
     await Cart.create({userId: newUser.id})
 

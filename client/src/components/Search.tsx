@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from '../hooks'
 import {useEffect} from 'react'
 import {fetchSearchProducts} from '../features/products/productSlice'
 import {Link, useParams} from 'react-router-dom'
-import noproduct from '../images/noproduct.png'
+import gif from '../images/VAyR.gif'
 
 export const Search = () => {
   const products = useAppSelector((state: any) => state.product.productsFilter)
@@ -47,8 +47,8 @@ export const Search = () => {
             </Box>
           ))
         ) : (
-          <Box>
-            <img src={noproduct} alt='No hay productos asi' height={'300rem'} />
+          <Box mt='18rem'>
+            <img src={gif} alt='Loading' height={'70rem'} />
           </Box>
         )}
       </Grid>

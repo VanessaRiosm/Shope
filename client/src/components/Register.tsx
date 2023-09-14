@@ -19,7 +19,7 @@ import loginImage from '../images/loginImage.png'
 const formSchema = Yup.object().shape({
   username: Yup.string()
     .required('required field')
-    .min(5, 'minimum 5 characters')
+    .min(3, 'minimum 3 characters')
     .max(25, 'maximum 15 characters'),
 
   email: Yup.string()
@@ -103,7 +103,7 @@ export const Register = () => {
                 {viewSuccess === 'show' ? (
                   <div>
                     <Alert severity='success' sx={{mt: '10px', width: '100%'}}>
-                      User created successfully
+                      User successfully created
                     </Alert>
                   </div>
                 ) : null}

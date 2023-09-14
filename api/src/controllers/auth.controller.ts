@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
 import jwt from 'jsonwebtoken'
 import {User} from '../models/userSchema'
+import bcrypt from 'bcrypt'
 
 export const login = async (req: Request, res: Response) => {
   try {
@@ -8,7 +9,9 @@ export const login = async (req: Request, res: Response) => {
 
     const findUser = await User.findOne({email: email})
     if (findUser) {
-      if (findUser.password === password) {
+      const pass = await bcrypt.compare(password, findUser.password)
+
+      if (pass) {
         const payload = {
           id: findUser.id,
           email: email,
