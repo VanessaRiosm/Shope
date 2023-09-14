@@ -16,6 +16,14 @@ import collectionResponsive from '../images/carouselBanner/collectionResponsive.
 import blackmodern from '../images/carouselBanner/blackmodern.png'
 import blackmodernResponsive from '../images/carouselBanner/blackmodernResponsive.png'
 
+const carouselImages = [
+  {img1: collection, img2: collectionResponsive},
+  {img1: fashion, img2: fashionResponsive},
+  {img1: fashionblack, img2: fashionblackResponsive},
+  {img1: vogue, img2: vogueResponsive},
+  {img1: blackmodern, img2: blackmodernResponsive},
+]
+
 export const Carousel = () => {
   return (
     <Box marginTop='65px'>
@@ -29,86 +37,23 @@ export const Carousel = () => {
         modules={[Navigation, Pagination, Autoplay]}
         className='mySwiper'
       >
-        <SwiperSlide style={{height: '45rem'}}>
-          <picture>
-            <source srcSet={collectionResponsive} media='(max-width: 900px)' />
-            <source srcSet={collection} media='(min-width: 900px)' />
-            <img
-              src={collectionResponsive}
-              alt='MDN'
-              style={{
-                objectFit: 'cover',
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </picture>
-        </SwiperSlide>
-        <SwiperSlide style={{height: '45rem'}}>
-          <picture>
-            <source srcSet={fashionResponsive} media='(max-width: 900px)' />
-            <source srcSet={fashion} media='(min-width: 900px)' />
-            <img
-              src={fashionResponsive}
-              alt='MDN'
-              style={{
-                objectFit: 'cover',
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </picture>
-        </SwiperSlide>
-        <SwiperSlide style={{height: '45rem'}}>
-          <picture>
-            <source
-              srcSet={fashionblackResponsive}
-              media='(max-width: 900px)'
-            />
-            <source srcSet={fashionblack} media='(min-width: 900px)' />
-            <img
-              src={fashionblackResponsive}
-              alt='MDN'
-              style={{
-                objectFit: 'cover',
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </picture>
-        </SwiperSlide>
-
-        <SwiperSlide style={{height: '45rem'}}>
-          <picture>
-            <source srcSet={vogueResponsive} media='(max-width: 900px)' />
-            <source srcSet={vogue} media='(min-width: 900px)' />
-            <img
-              src={vogueResponsive}
-              alt='MDN'
-              style={{
-                objectFit: 'cover',
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </picture>
-        </SwiperSlide>
-
-        <SwiperSlide style={{height: '45rem'}}>
-          <picture>
-            <source srcSet={blackmodernResponsive} media='(max-width: 900px)' />
-            <source srcSet={blackmodern} media='(min-width: 900px)' />
-            <img
-              src={blackmodernResponsive}
-              alt='MDN'
-              style={{
-                objectFit: 'cover',
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </picture>
-        </SwiperSlide>
+        {carouselImages.map((img) => (
+          <SwiperSlide style={{height: '45rem'}}>
+            <picture>
+              <source srcSet={img.img2} media='(max-width: 900px)' />
+              <source srcSet={img.img1} media='(min-width: 900px)' />
+              <img
+                src={img.img2}
+                alt='MDN'
+                style={{
+                  objectFit: 'cover',
+                  height: '100%',
+                  width: '100%',
+                }}
+              />
+            </picture>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Box>
   )
