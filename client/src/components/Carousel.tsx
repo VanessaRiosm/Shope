@@ -17,11 +17,11 @@ import blackmodern from '../images/carouselBanner/blackmodern.png'
 import blackmodernResponsive from '../images/carouselBanner/blackmodernResponsive.png'
 
 const carouselImages = [
-  {img1: collection, img2: collectionResponsive},
-  {img1: fashion, img2: fashionResponsive},
-  {img1: fashionblack, img2: fashionblackResponsive},
-  {img1: vogue, img2: vogueResponsive},
-  {img1: blackmodern, img2: blackmodernResponsive},
+  {id: 1, img1: collection, img2: collectionResponsive},
+  {id: 2, img1: fashion, img2: fashionResponsive},
+  {id: 3, img1: fashionblack, img2: fashionblackResponsive},
+  {id: 4, img1: vogue, img2: vogueResponsive},
+  {id: 5, img1: blackmodern, img2: blackmodernResponsive},
 ]
 
 export const Carousel = () => {
@@ -38,7 +38,7 @@ export const Carousel = () => {
         className='mySwiper'
       >
         {carouselImages.map((img) => (
-          <SwiperSlide style={{height: '45rem'}}>
+          <SwiperSlide key={img.id} style={{height: '45rem'}}>
             <picture>
               <source srcSet={img.img2} media='(max-width: 900px)' />
               <source srcSet={img.img1} media='(min-width: 900px)' />

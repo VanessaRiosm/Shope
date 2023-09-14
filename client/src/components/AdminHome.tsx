@@ -75,7 +75,7 @@ export const AdminHome = () => {
                   >
                     {pages.map((page) => (
                       <MenuItem
-                        key={page.id}
+                        key={page.name}
                         onClick={() => {
                           handleClick
                           setComponent(page.name)

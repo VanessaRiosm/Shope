@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {useAppSelector, useAppDispatch} from '../hooks'
 import {
   fetchDeleteProduct,
@@ -11,14 +11,31 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Modal,
   Typography,
 } from '@mui/material'
 import {FaPencilAlt} from 'react-icons/fa'
 import {BsTrash3} from 'react-icons/bs'
+import {AdminProductForm} from './AdminProductForm'
+
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+}
 
 export const AdminProducts = () => {
   const {productsList, refresh} = useAppSelector((state: any) => state.product)
   const dispatch = useAppDispatch()
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'smooth'})
@@ -31,9 +48,23 @@ export const AdminProducts = () => {
   return (
     <Box margin='60px 25px 25px 25px'>
       <Box width='94.8%' display='flex' justifyContent='right' padding='30px'>
-        <Button variant='contained' sx={{bgcolor: '#4518D9'}}>
+        <Button
+          variant='contained'
+          sx={{bgcolor: '#4518D9'}}
+          onClick={handleOpen}
+        >
           Add Product
         </Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+        >
+          <Box sx={style}>
+            <AdminProductForm />
+          </Box>
+        </Modal>
       </Box>
       <Box
         sx={{
