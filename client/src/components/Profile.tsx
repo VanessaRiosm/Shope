@@ -41,10 +41,10 @@ export const Profile = () => {
               <Accordion sx={{width: '50%', bgcolor: '#F7F7F8'}}>
                 <AccordionSummary
                   expandIcon={<AiFillCaretDown />}
-                  aria-controls='Historial de compras'
+                  aria-controls='Shopping history'
                   id='panel1a-header'
                 >
-                  <Typography>Historial de compras</Typography>
+                  <Typography>Shopping history</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
@@ -57,7 +57,7 @@ export const Profile = () => {
             </Box>
 
             <Box bottom='0' width='100%'>
-              <Footerr />B
+              <Footerr />
             </Box>
           </Box>
         </Box>

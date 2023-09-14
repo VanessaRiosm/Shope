@@ -101,7 +101,7 @@ export const Footerr = () => {
                 style={{textDecoration: 'none', color: 'gray'}}
               >
                 Vanessa Rios Muñoz
-              </a>{' '}
+              </a>
               {new Date().getFullYear()}
               {'.'}
             </Typography>
