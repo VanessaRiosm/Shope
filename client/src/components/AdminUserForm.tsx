@@ -1,6 +1,8 @@
 import {Button, FormGroup, Box, Typography} from '@mui/material'
 import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
+import {fetchRegister} from '../features/users/userSlice'
+import {useAppDispatch} from '../hooks'
 
 const formSchema = Yup.object().shape({
   username: Yup.string()
@@ -26,6 +28,7 @@ const formSchema = Yup.object().shape({
 })
 
 export const AdminUserForm = () => {
+  const dispatch = useAppDispatch()
   return (
     <Box>
       <Formik
@@ -38,8 +41,11 @@ export const AdminUserForm = () => {
         }}
         validationSchema={formSchema}
         onSubmit={async (values: any, {resetForm}) => {
-          console.log('llega aqui')
-          console.log(values)
+          try {
+            dispatch(fetchRegister(values))
+          } catch (err: any) {
+            console.log(err.message)
+          }
           resetForm()
         }}
       >

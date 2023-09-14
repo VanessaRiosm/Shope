@@ -127,6 +127,7 @@ export const userSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchRegister.fulfilled, (state) => {
+        state.refresh = !state.refresh
         state.status = 'success'
       })
 

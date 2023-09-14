@@ -58,8 +58,21 @@ export const fetchSearchProducts: any = createAsyncThunk(
   }
 )
 
+export const fetchAddProduct: any = createAsyncThunk(
+  'product/fetchAddProduct',
+  async (data: any) => {
+    try {
+      const response = await axios.post(`${URL}/products/`, data)
+
+      return response.data
+    } catch (err: any) {
+      console.log(err.message)
+    }
+  }
+)
+
 export const fetchDeleteProduct: any = createAsyncThunk(
-  'users/fetchDeleteProduct',
+  'product/fetchDeleteProduct',
   async (pid: any) => {
     try {
       const token = window.localStorage.getItem('token')
@@ -114,6 +127,15 @@ export const productSlice = createSlice({
         if (!products) products = 'no products found'
 
         state.productsFilter = action.payload
+        state.status = 'success'
+      })
+
+      //add product
+      .addCase(fetchAddProduct.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchAddProduct.fulfilled, (state) => {
+        state.refresh = !state.refresh
         state.status = 'success'
       })
 

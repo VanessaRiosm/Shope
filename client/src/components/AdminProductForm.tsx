@@ -1,6 +1,8 @@
 import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Box, Button, FormGroup, Typography} from '@mui/material'
+import {fetchAddProduct} from '../features/products/productSlice'
+import {useAppDispatch} from '../hooks'
 
 const formSchema = Yup.object().shape({
   name: Yup.string()
@@ -20,6 +22,7 @@ const formSchema = Yup.object().shape({
 })
 
 export const AdminProductForm = () => {
+  const dispatch = useAppDispatch()
   return (
     <Box>
       <Formik
@@ -31,8 +34,14 @@ export const AdminProductForm = () => {
           description: '',
         }}
         validationSchema={formSchema}
-        onSubmit={(values: any) => {
-          console.log(values)
+        onSubmit={(values: any, {resetForm}) => {
+          try {
+            dispatch(fetchAddProduct(values))
+          } catch (err: any) {
+            console.log(err.message)
+          }
+
+          resetForm()
         }}
       >
         <Form>
