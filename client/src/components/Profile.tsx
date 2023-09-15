@@ -47,11 +47,7 @@ export const Profile = () => {
                   <Typography>Shopping history</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </Typography>
+                  <Typography>Tus compras aqui</Typography>
                 </AccordionDetails>
               </Accordion>
             </Box>
