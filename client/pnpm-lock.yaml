@@ -17,12 +17,15 @@ dependencies:
   '@reduxjs/toolkit':
     specifier: ^1.9.5
     version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
+  '@stripe/react-stripe-js':
+    specifier: ^2.3.0
+    version: 2.3.0(@stripe/stripe-js@2.1.5)(react-dom@18.2.0)(react@18.2.0)
+  '@stripe/stripe-js':
+    specifier: ^2.1.5
+    version: 2.1.5
   '@types/node':
     specifier: ^18.15.13
     version: 18.15.13
-  '@types/yup':
-    specifier: ^0.32.0
-    version: 0.32.0
   axios:
     specifier: ^1.4.0
     version: 1.4.0
@@ -881,6 +884,23 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
+  /@stripe/react-stripe-js@2.3.0(@stripe/stripe-js@2.1.5)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-AOxsvRIXfIh0WkebAfITfCQY6NgnEDg3jOH7KfHGQPjPmcxJ+HFj/EZOEuyflDjlB1iTGPDCqK0MqiQ8LjLbag==}
+    peerDependencies:
+      '@stripe/stripe-js': ^1.44.1 || ^2.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@stripe/stripe-js': 2.1.5
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@stripe/stripe-js@2.1.5:
+    resolution: {integrity: sha512-vKztTjPYeCcX1Y1Ug2sE5+m/Gdm4CVAKGcQiRjLHQd2hDkjkVKClx3RbCStSi9rLRy50xHCiM+/kj4fbCHHA1Q==}
+    dev: false
+
   /@types/hoist-non-react-statics@3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
@@ -927,13 +947,6 @@ packages:
 
   /@types/use-sync-external-store@0.0.3:
     resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
-    dev: false
-
-  /@types/yup@0.32.0:
-    resolution: {integrity: sha512-Gr2lllWTDxGVYHgWfL8szjdedERpNgm44L9BDL2cmcHG7Bfd6taEpiW3ayMFLaYvlJr/6bFXDJdh6L406AGlFg==}
-    deprecated: This is a stub types definition. yup provides its own type definitions, so you do not need this installed.
-    dependencies:
-      yup: 1.2.0
     dev: false
 
   /@vitejs/plugin-react@3.1.0(vite@4.3.2):

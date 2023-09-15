@@ -1,15 +1,36 @@
-import {Box, Button, Typography} from '@mui/material'
+import {Box, Button, Modal, Typography} from '@mui/material'
 import {useAppDispatch, useAppSelector} from '../hooks'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {fetchCurrentUser} from '../features/users/userSlice'
 import {fetchRemoveFromCart} from '../features/cart/cartSlice'
 import {BsTrash3} from 'react-icons/bs'
 import {Link} from 'react-router-dom'
+import {CheckoutForm} from './CheckoutForm'
+import {loadStripe} from '@stripe/stripe-js'
+import {Elements} from '@stripe/react-stripe-js'
+
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+}
+const stripePromise = loadStripe(
+  'pk_test_51NqhokKKnhStKev8133Y6f9ae70Rx3hDKikmOOzHybSitgh2AGdlGTSk8OhMnAcfYzLlo1ouaCFxC2k0wBZTTRfz00epIr74r2'
+)
 
 export const Cart = () => {
   const {currentUser} = useAppSelector((state) => state.user)
   const {refresh} = useAppSelector((state) => state.cart)
   const dispatch = useAppDispatch()
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   useEffect(() => {
     dispatch(fetchCurrentUser())
@@ -41,7 +62,7 @@ export const Cart = () => {
                         style={{width: '120px', height: '170px'}}
                       />
                     </Box>
-                    <Typography
+                    <Box
                       display='flex'
                       flexDirection='column'
                       ml='10px'
@@ -51,7 +72,7 @@ export const Cart = () => {
                       <Typography fontWeight='bold'>{p.name}</Typography>
                       <Typography>${p.price}</Typography>
                       <Typography>Qty: {p.quantity}</Typography>
-                    </Typography>
+                    </Box>
                   </Box>
                 </Link>
 
@@ -89,18 +110,31 @@ export const Cart = () => {
                 {currentUser.cart[0].subTotal}
               </Typography>
 
-              <Button
-                variant='contained'
-                sx={{
-                  bgcolor: '#4518D9',
-                  color: 'white',
-                  height: '30px',
-                  mt: '36px',
-                  ml: '10px',
-                }}
-              >
-                CheckOut
-              </Button>
+              <Elements stripe={stripePromise}>
+                <Button
+                  variant='contained'
+                  sx={{
+                    bgcolor: '#4518D9',
+                    color: 'white',
+                    height: '30px',
+                    mt: '36px',
+                    ml: '10px',
+                  }}
+                  onClick={handleOpen}
+                >
+                  CheckOut
+                </Button>
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby='modal-modal-title'
+                  aria-describedby='modal-modal-description'
+                >
+                  <Box sx={style}>
+                    <CheckoutForm amount={currentUser.cart[0].subTotal} />
+                  </Box>
+                </Modal>
+              </Elements>
             </Box>
           ) : (
             <Box display='flex' justifyContent='center' mt='30%'>
