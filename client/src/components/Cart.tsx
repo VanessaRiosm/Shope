@@ -131,7 +131,7 @@ export const Cart = () => {
                   aria-describedby='modal-modal-description'
                 >
                   <Box sx={style}>
-                    <CheckoutForm amount={currentUser.cart[0].subTotal} />
+                    <CheckoutForm />
                   </Box>
                 </Modal>
               </Elements>

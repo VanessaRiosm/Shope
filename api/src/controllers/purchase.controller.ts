@@ -1,5 +1,6 @@
 import {Request, Response} from 'express'
 import Stripe from 'stripe'
+import {Cart} from '../models/cartSchema'
 
 const stripe = new Stripe(
   'sk_test_51NqhokKKnhStKev8T3INgmNiwPhggzCTozRS8SOXJX8S3GIhBsjBtV26zxhHC8mKDjMQnOh9ER3syC2fhTbGkKzc00T5M3EiiU',
@@ -7,14 +8,16 @@ const stripe = new Stripe(
 )
 
 export const makePurchase = async (req: Request, res: Response) => {
-  const {id, amount} = req.body
+  const {usId} = req.params
+  const {id, totalAmount} = req.body
 
   try {
-    const totalAmount = amount * 100
+    let cart = await Cart.findOne({usId})
+    const val = `${Math.floor(cart.subTotal)}00`
+    const totalVal = Number(val)
 
-    console.log(totalAmount)
     const payment = await stripe.paymentIntents.create({
-      amount: totalAmount,
+      amount: totalVal,
       currency: 'USD',
       description: 'Clothing',
       payment_method: id,

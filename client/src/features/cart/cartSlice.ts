@@ -25,6 +25,10 @@ interface removeIds {
   productId: string
 }
 
+interface purchaseId {
+  id: string
+}
+
 const initialState = {
   cartItems: null,
   cartTotalQuantity: 0,
@@ -68,6 +72,25 @@ export const fetchRemoveFromCart = createAsyncThunk(
       return response.data
     } catch (err: any) {
       console.log(err.message)
+    }
+  }
+)
+
+export const fetchMakePurchase = createAsyncThunk(
+  'cart/fetchMakePurchase',
+
+  async ({id}: purchaseId) => {
+    try {
+      const token = window.localStorage.getItem('token')
+
+      const {data} = await axios.post(
+        `${URL}/purchase/checkout`,
+        {id},
+        {headers: {Authorization: `Bearer ${token}`}}
+      )
+      return data
+    } catch (error) {
+      console.log(error)
     }
   }
 )

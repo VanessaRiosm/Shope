@@ -4,6 +4,6 @@ import verifyToken from '../middlewares/auth.middleware'
 
 const router = Router()
 
-router.post('/checkout', makePurchase)
+router.post('/checkout', [verifyToken], makePurchase)
 
 export default router

@@ -1,16 +1,18 @@
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
 import {Box, Button} from '@mui/material'
-import axios from 'axios'
+import {useAppDispatch} from '../hooks'
 import {useState, FormEvent} from 'react'
+import {fetchMakePurchase} from '../features/cart/cartSlice'
 
-export const CheckoutForm = (props: any) => {
+export const CheckoutForm = () => {
   const stripe = useStripe()
   const elements = useElements()
+  const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('al menos sirve')
+
     const payment = elements?.getElement(CardElement)
 
     if (payment) {
@@ -22,20 +24,8 @@ export const CheckoutForm = (props: any) => {
 
       if (!result.error) {
         const {id} = result.paymentMethod
-        try {
-          const {data} = await axios.post(
-            'http://localhost:3000/purchase/checkout',
-            {
-              id,
-              amount: props.amount,
-            }
-          )
-          console.log(data)
-
-          payment.clear()
-        } catch (error) {
-          console.log(error)
-        }
+        dispatch(fetchMakePurchase({id}))
+        payment.clear()
         setLoading(false)
       }
     }
