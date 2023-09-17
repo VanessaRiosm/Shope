@@ -17,6 +17,8 @@ import {
 import {FaPencilAlt} from 'react-icons/fa'
 import {BsTrash3} from 'react-icons/bs'
 import {AdminProductForm} from './AdminProductForm'
+import {AdminProductEdit} from './AdminProductEdit'
+import {Product} from '../types/types'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -33,9 +35,14 @@ const style = {
 export const AdminProducts = () => {
   const {productsList, refresh} = useAppSelector((state: any) => state.product)
   const dispatch = useAppDispatch()
+  const [currentProduct, setCurrentProduct] = useState<Product>(productsList[0])
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const [openEditModal, setOpenEditModaln] = useState(false)
+  const handleOpenEditModal = () => setOpenEditModaln(true)
+  const handleCloseEditModal = () => setOpenEditModaln(false)
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'smooth'})
@@ -79,7 +86,7 @@ export const AdminProducts = () => {
         }}
       >
         {productsList &&
-          productsList.map((product: any) => (
+          productsList.map((product: Product) => (
             <Box key={product.id}>
               <Card sx={{maxWidth: 320}}>
                 <CardMedia
@@ -100,7 +107,13 @@ export const AdminProducts = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size='medium'>
+                  <Button
+                    size='medium'
+                    onClick={() => {
+                      setCurrentProduct(product)
+                      handleOpenEditModal()
+                    }}
+                  >
                     <FaPencilAlt />
                   </Button>
                   <Button
@@ -113,6 +126,16 @@ export const AdminProducts = () => {
               </Card>
             </Box>
           ))}
+        <Modal
+          open={openEditModal}
+          onClose={handleCloseEditModal}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+        >
+          <Box sx={style}>
+            <AdminProductEdit product={currentProduct} />
+          </Box>
+        </Modal>
       </Box>
     </Box>
   )
