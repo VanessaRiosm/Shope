@@ -9,7 +9,7 @@ import {
 import {Box, Button} from '@mui/material'
 import {useAppSelector} from '../hooks'
 import {Promotion} from './Promotion'
-import shope from '../../public/shopelogo.png'
+import shope from '../images/shopelogo.png'
 
 export const Footerr = () => {
   const {currentUser} = useAppSelector((state) => state.user)
