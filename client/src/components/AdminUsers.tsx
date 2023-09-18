@@ -14,6 +14,7 @@ import {
 import {FaPencilAlt} from 'react-icons/fa'
 import {BsTrash3} from 'react-icons/bs'
 import {AdminUserForm} from './AdminUserForm'
+import {AdminUserEdit} from './AdminUserEdit'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -33,7 +34,10 @@ export const AdminUsers = () => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-
+  const [currentUser, setCurrentUser] = useState(usersList)
+  const [openEditModal, setOpenEditModaln] = useState(false)
+  const handleOpenEditModal = () => setOpenEditModaln(true)
+  const handleCloseEditModal = () => setOpenEditModaln(false)
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'smooth'})
   }, [])
@@ -98,7 +102,13 @@ export const AdminUsers = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size='medium'>
+                  <Button
+                    size='medium'
+                    onClick={() => {
+                      setCurrentUser(user)
+                      handleOpenEditModal()
+                    }}
+                  >
                     <FaPencilAlt />
                   </Button>
                   <Button
@@ -111,6 +121,16 @@ export const AdminUsers = () => {
               </Card>
             </Box>
           ))}
+        <Modal
+          open={openEditModal}
+          onClose={handleCloseEditModal}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+        >
+          <Box sx={style}>
+            <AdminUserEdit user={currentUser} />
+          </Box>
+        </Modal>
       </Box>
     </Box>
   )

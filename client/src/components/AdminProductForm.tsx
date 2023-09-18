@@ -9,8 +9,6 @@ const formSchema = Yup.object().shape({
     .required('required field')
     .max(50, 'maximum 50 characters'),
 
-  image: Yup.string().required('required field'),
-
   price: Yup.string().required('required field').min(1, 'minimum 1 character'),
 
   category: Yup.string().required('required field'),
@@ -67,15 +65,14 @@ export const AdminProductForm = () => {
             </Typography>
           </FormGroup>
 
-          {/* image */}
+          {/* URL imagen */}
           <FormGroup>
             <label htmlFor='image' id='image' style={{marginTop: '10px'}}>
-              Image:
+              image URL:
             </label>
             <Field
               name='image'
-              type='file'
-              accept='image/*'
+              type='text'
               style={{height: '30px', width: '100%'}}
             />
             <Typography color='red'>

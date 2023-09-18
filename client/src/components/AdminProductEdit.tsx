@@ -181,7 +181,7 @@ export const AdminProductEdit = ({
             }}
             sx={{mt: 3, mb: 2}}
           >
-            Edit Product
+            Update Product
           </Button>
         </Form>
       </Formik>
