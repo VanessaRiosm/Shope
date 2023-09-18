@@ -1,16 +1,14 @@
 import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Box, Button, FormGroup, Typography} from '@mui/material'
-import {fetchAddProduct} from '../features/products/productSlice'
-import {useAppDispatch} from '../hooks'
+// import {useAppDispatch} from '../hooks'
 import {Product} from '../types/types'
+import {useState} from 'react'
 
 const formSchema = Yup.object().shape({
   name: Yup.string()
     .required('required field')
     .max(50, 'maximum 50 characters'),
-
-  image: Yup.string().required('required field'),
 
   price: Yup.string().required('required field').min(1, 'minimum 1 character'),
 
@@ -27,7 +25,29 @@ export const AdminProductEdit = ({
 }: {
   product: Product
 }) => {
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
+  const [currentImage, setCurrentImage] = useState(image)
+
+  const uploadImage = async (e: any) => {
+    const files = e.target.files
+    const data = new FormData()
+
+    data.append('file', files[0])
+    data.append('upload_preset', 'jtytvyi1')
+    data.append('cloud_name', 'diljrsea2')
+    data.append('folder', 'Shope')
+    try {
+      const res = await fetch(
+        'https://api.cloudinary.com/v1_1/diljrsea2/image/upload/',
+        {method: 'post', body: data}
+      )
+      const file = await res.json()
+      setCurrentImage(file.secure_url)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <Box>
       <Formik
@@ -41,7 +61,7 @@ export const AdminProductEdit = ({
         validationSchema={formSchema}
         onSubmit={(values: any, {resetForm}) => {
           try {
-            dispatch(fetchAddProduct(values))
+            console.log(values)
           } catch (err: any) {
             console.log(err.message)
           }
@@ -73,7 +93,7 @@ export const AdminProductEdit = ({
           </FormGroup>
 
           <Box display='flex' justifyContent='center' margin='5px 0 5px 0'>
-            <img src={image} height='200px' />
+            <img src={currentImage} height='200px' />
           </Box>
 
           {/* image */}
@@ -84,8 +104,8 @@ export const AdminProductEdit = ({
             <Field
               name='image'
               type='file'
-              accept='image/*'
               style={{height: '30px', width: '100%'}}
+              onChange={(e: any) => uploadImage(e)}
             />
             <Typography color='red'>
               <ErrorMessage name='image' />
@@ -161,7 +181,7 @@ export const AdminProductEdit = ({
             }}
             sx={{mt: 3, mb: 2}}
           >
-            Add Product
+            Edit Product
           </Button>
         </Form>
       </Formik>
