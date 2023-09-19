@@ -98,7 +98,11 @@ export const Footerr = () => {
               {'Copyright © '}
               <a
                 href='https://portfolio-67iu.vercel.app/'
-                style={{textDecoration: 'none', color: 'gray'}}
+                style={{
+                  textDecoration: 'none',
+                  color: 'gray',
+                  marginRight: '5px',
+                }}
               >
                 Vanessa Rios Muñoz
               </a>

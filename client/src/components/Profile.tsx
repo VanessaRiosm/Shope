@@ -15,7 +15,7 @@ import {FaUserCircle} from 'react-icons/fa'
 import {AiFillCaretDown} from 'react-icons/ai'
 
 export const Profile = () => {
-  const {username, email, rol} = useAppSelector(
+  const {username, email, rol, sales} = useAppSelector(
     (state) => state.user.currentUser
   )
   const dispatch = useAppDispatch()
@@ -47,7 +47,12 @@ export const Profile = () => {
                   <Typography>Shopping history</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>Tus compras aqui</Typography>
+                  <Box>
+                    {sales &&
+                      sales.map((s: any) => (
+                        <Typography>{s.orderNum}</Typography>
+                      ))}
+                  </Box>
                 </AccordionDetails>
               </Accordion>
             </Box>

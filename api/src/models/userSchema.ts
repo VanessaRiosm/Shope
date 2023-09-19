@@ -6,6 +6,7 @@ interface user extends Document {
   email: string
   password: string
   rol: string
+  sales: string[]
   cart: Types.ObjectId
 }
 
@@ -26,6 +27,15 @@ const userSchema = new Schema<user>({
     type: String,
     default: 'user',
   },
+  sales: [
+    {
+      id: String,
+      orderNum: String,
+      status: String,
+      date: Date,
+    },
+  ],
+
   cart: [{type: Schema.Types.ObjectId, ref: 'Cart'}],
 })
 

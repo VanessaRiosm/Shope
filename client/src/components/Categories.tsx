@@ -71,7 +71,7 @@ export const Categories = (props: any) => {
                 {/* Primera imagen */}
 
                 <Link
-                  to={`/categories/classical`}
+                  to={`/categories/accessories`}
                   style={{textDecoration: 'none', color: 'black'}}
                 >
                   <ImageIconButton
@@ -113,7 +113,7 @@ export const Categories = (props: any) => {
                         className='imageTitle'
                         sx={{typography: {xs: 'h5', sm: 'h4', md: 'h3'}}}
                       >
-                        Classical
+                        Accessories
                         <div className='imageMarked' />
                       </Typography>
                     </Box>

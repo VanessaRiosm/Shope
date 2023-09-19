@@ -120,6 +120,15 @@ export const cartSlice = createSlice({
         state.refresh = !state.refresh
         state.status = 'success'
       })
+
+      // haciendo compra
+      .addCase(fetchMakePurchase.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchMakePurchase.fulfilled, (state) => {
+        state.refresh = !state.refresh
+        state.status = 'success'
+      })
   },
 })
 
