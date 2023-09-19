@@ -11,42 +11,53 @@ import maestro from '../images/maestro.png'
 import paypal from '../images/paypal.png'
 import american from '../images/american-express.png'
 import mercadopago from '../images/mercadoPago.png'
+import {Link} from 'react-router-dom'
 
 export const Promotion = (props: any) => {
   return (
     <Box>
       {props.knit === 'no' ? (
-        <Box height='700px' mt='40px' style={{cursor: 'pointer'}}>
-          <picture>
-            <source srcSet={responsiveoffer} media='(max-width: 900px)' />
-            <source srcSet={banneroffer} media='(min-width: 900px)' />
-            <img
-              src={responsiveoffer}
-              alt='MDN'
-              style={{
-                objectFit: 'cover',
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </picture>
-        </Box>
+        <Link
+          to={`/categories/bigsale`}
+          style={{textDecoration: 'none', color: 'black'}}
+        >
+          <Box height='700px' mt='40px' style={{cursor: 'pointer'}}>
+            <picture>
+              <source srcSet={responsiveoffer} media='(max-width: 900px)' />
+              <source srcSet={banneroffer} media='(min-width: 900px)' />
+              <img
+                src={responsiveoffer}
+                alt='MDN'
+                style={{
+                  objectFit: 'cover',
+                  height: '100%',
+                  width: '100%',
+                }}
+              />
+            </picture>
+          </Box>
+        </Link>
       ) : props.knit === 'si' ? (
-        <Box height='700px' mt='40px' style={{cursor: 'pointer'}}>
-          <picture>
-            <source srcSet={responsiveknitted} media='(max-width: 900px)' />
-            <source srcSet={bannerknitted} media='(min-width: 900px)' />
-            <img
-              src={responsiveknitted}
-              alt='MDN'
-              style={{
-                objectFit: 'cover',
-                height: '100%',
-                width: '100%',
-              }}
-            />
-          </picture>
-        </Box>
+        <Link
+          to={`/categories/threads`}
+          style={{textDecoration: 'none', color: 'black'}}
+        >
+          <Box height='700px' mt='40px' style={{cursor: 'pointer'}}>
+            <picture>
+              <source srcSet={responsiveknitted} media='(max-width: 900px)' />
+              <source srcSet={bannerknitted} media='(min-width: 900px)' />
+              <img
+                src={responsiveknitted}
+                alt='MDN'
+                style={{
+                  objectFit: 'cover',
+                  height: '100%',
+                  width: '100%',
+                }}
+              />
+            </picture>
+          </Box>
+        </Link>
       ) : (
         <Box>
           <Box
