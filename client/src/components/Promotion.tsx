@@ -13,7 +13,7 @@ import american from '../images/american-express.png'
 import mercadopago from '../images/mercadoPago.png'
 import {Link} from 'react-router-dom'
 
-export const Promotion = (props: any) => {
+export const Promotion = (props: {knit: string}) => {
   return (
     <Box>
       {props.knit === 'no' ? (

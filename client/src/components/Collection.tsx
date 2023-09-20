@@ -52,6 +52,15 @@ const Hr = styled('hr')(({title}: {title: string}) => ({
   },
 }))
 
+interface Data {
+  userId: string
+  productId: string
+  name: string
+  price: number
+  quantity: number
+  image: string
+}
+
 export const Collection = ({
   title,
   badg,
@@ -64,7 +73,7 @@ export const Collection = ({
   const {currentUser, rol} = useAppSelector((state) => state.user)
   const dispatch = useAppDispatch()
 
-  const addToCart = (data: any) => {
+  const addToCart = (data: Data) => {
     if (rol === 'user' || rol === 'admin') {
       dispatch(fetchAddToCart(data))
       notifyAddedToCart()
@@ -169,7 +178,7 @@ export const Collection = ({
                       onClick={() =>
                         addToCart({
                           userId: currentUser.id,
-                          productId: product.id,
+                          productId: product.id!,
                           name: product.name,
                           price: product.price,
                           quantity: 1,

@@ -8,7 +8,7 @@ import {Link, useParams} from 'react-router-dom'
 import gif from '../images/VAyR.gif'
 
 export const Search = () => {
-  const products = useAppSelector((state: any) => state.product.productsFilter)
+  const products = useAppSelector((state) => state.product.productsFilter)
   const dispatch = useAppDispatch()
   const params = useParams()
 

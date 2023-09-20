@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 import {CheckoutForm} from './CheckoutForm'
 import {loadStripe} from '@stripe/stripe-js'
 import {Elements} from '@stripe/react-stripe-js'
+import {Product} from '../types/types'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -42,7 +43,7 @@ export const Cart = () => {
         <Box overflow={'auto'}>
           <Box>
             <hr />
-            {currentUser.cart[0].products.map((p: any) => (
+            {currentUser.cart[0].products.map((p: Product) => (
               <Box
                 key={p.productId}
                 margin='4px 10px'

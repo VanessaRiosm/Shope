@@ -15,6 +15,7 @@ import {FaPencilAlt} from 'react-icons/fa'
 import {BsTrash3} from 'react-icons/bs'
 import {AdminUserForm} from './AdminUserForm'
 import {AdminUserEdit} from './AdminUserEdit'
+import {User} from '../types/types'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -29,7 +30,7 @@ const style = {
 }
 
 export const AdminUsers = () => {
-  const {usersList, refresh} = useAppSelector((state: any) => state.user)
+  const {usersList, refresh} = useAppSelector((state) => state.user)
   const dispatch = useAppDispatch()
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -81,7 +82,7 @@ export const AdminUsers = () => {
         }}
       >
         {usersList &&
-          usersList.map((user: any) => (
+          usersList.map((user: User) => (
             <Box key={user.id}>
               <Card sx={{maxWidth: 320}}>
                 <CardMedia

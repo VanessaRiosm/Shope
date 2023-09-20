@@ -33,7 +33,7 @@ const style = {
 }
 
 export const AdminProducts = () => {
-  const {productsList, refresh} = useAppSelector((state: any) => state.product)
+  const {productsList, refresh} = useAppSelector((state) => state.product)
   const dispatch = useAppDispatch()
   const [currentProduct, setCurrentProduct] = useState<Product>(productsList[0])
   const [open, setOpen] = useState(false)

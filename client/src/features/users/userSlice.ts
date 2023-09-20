@@ -20,53 +20,50 @@ const initialState = {
   rol: '',
 } as UsersState
 
-export const fetchLogin: any = createAsyncThunk(
-  'users/fetchLogin',
-  async (data: any) => {
-    try {
-      const response = await fetch(`${URL}/auth/login`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
+export const fetchLogin = createAsyncThunk('users/fetchLogin', async (data) => {
+  try {
+    const response = await fetch(`${URL}/auth/login`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
 
-      return await response.json()
-    } catch (err: any) {
-      return err.message
-    }
+    return await response.json()
+  } catch (error) {
+    if (error instanceof Error) console.error('Error: ', error.message)
   }
-)
+})
 
-export const fetchRegister: any = createAsyncThunk(
+export const fetchRegister = createAsyncThunk(
   'users/fetchRegister',
-  async (data: any) => {
+  async (data) => {
     try {
       const response = await axios.post(`${URL}/users/`, data)
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
 
-export const fetchGetUsers: any = createAsyncThunk(
+export const fetchGetUsers = createAsyncThunk(
   'users/fetchGetUsers',
   async () => {
     try {
       const response = await axios.get(`${URL}/users/`)
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
 
-export const fetchCurrentUser: any = createAsyncThunk(
+export const fetchCurrentUser = createAsyncThunk(
   'users/fetchCurrentUser',
   async () => {
     try {
@@ -77,19 +74,19 @@ export const fetchCurrentUser: any = createAsyncThunk(
       })
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
 
-export const fetchLogOut: any = createAsyncThunk('users/fetchLogOut', () => {
+export const fetchLogOut = createAsyncThunk('users/fetchLogOut', () => {
   window.localStorage.removeItem('token')
 })
 
-export const fetchDeleteUser: any = createAsyncThunk(
+export const fetchDeleteUser = createAsyncThunk(
   'users/fetchDeleteUser',
-  async (uid: any) => {
+  async (uid) => {
     try {
       const token = window.localStorage.getItem('token')
 
@@ -98,8 +95,8 @@ export const fetchDeleteUser: any = createAsyncThunk(
       })
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )

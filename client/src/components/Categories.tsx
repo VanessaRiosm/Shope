@@ -51,7 +51,7 @@ const ImageIconButton = styled(ButtonBase)(({theme}) => ({
   },
 }))
 
-export const Categories = (props: any) => {
+export const Categories = (props: {siP: string}) => {
   return (
     <Box>
       {props.siP === 'si' ? (

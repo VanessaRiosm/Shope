@@ -37,6 +37,12 @@ const formSchema = Yup.object().shape({
     .oneOf([Yup.ref('password')], 'the password does not match'),
 })
 
+interface Register {
+  username: string
+  email: string
+  password: string
+  confirmPassword: string
+}
 export const Register = () => {
   const history = useNavigate()
   const dispatch = useDispatch()
@@ -117,7 +123,7 @@ export const Register = () => {
                       confirmPassword: '',
                     }}
                     validationSchema={formSchema}
-                    onSubmit={async (values: any, {resetForm}) => {
+                    onSubmit={async (values: Register, {resetForm}) => {
                       resetForm()
                       dispatch(fetchRegister(values))
                       setViewSuccess('show')

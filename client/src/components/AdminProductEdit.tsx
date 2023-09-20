@@ -3,7 +3,7 @@ import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Box, Button, FormGroup, Typography} from '@mui/material'
 // import {useAppDispatch} from '../hooks'
 import {Product} from '../types/types'
-import {useState} from 'react'
+import {ChangeEvent, useState} from 'react'
 
 const formSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,11 +28,12 @@ export const AdminProductEdit = ({
   // const dispatch = useAppDispatch()
   const [currentImage, setCurrentImage] = useState(image)
 
-  const uploadImage = async (e: any) => {
-    const files = e.target.files
+  const uploadImage = async (e: ChangeEvent) => {
+    const target = e.target as HTMLInputElement
+    const file: File = (target.files as FileList)[0]
     const data = new FormData()
 
-    data.append('file', files[0])
+    data.append('file', file)
     data.append('upload_preset', 'jtytvyi1')
     data.append('cloud_name', 'diljrsea2')
     data.append('folder', 'Shope')
@@ -59,11 +60,11 @@ export const AdminProductEdit = ({
           description,
         }}
         validationSchema={formSchema}
-        onSubmit={(values: any, {resetForm}) => {
+        onSubmit={(values: Product, {resetForm}) => {
           try {
             console.log(values)
-          } catch (err: any) {
-            console.log(err.message)
+          } catch (error) {
+            if (error instanceof Error) console.error('Error: ', error.message)
           }
 
           resetForm()
@@ -105,7 +106,7 @@ export const AdminProductEdit = ({
               name='image'
               type='file'
               style={{height: '30px', width: '100%'}}
-              onChange={(e: any) => uploadImage(e)}
+              onChange={(e: ChangeEvent) => uploadImage(e)}
             />
             <Typography color='red'>
               <ErrorMessage name='image' />

@@ -49,7 +49,7 @@ export const Profile = () => {
                 <AccordionDetails>
                   <Box>
                     {sales &&
-                      sales.map((s: any) => (
+                      sales.map((s: {orderNum: number}) => (
                         <Typography>{s.orderNum}</Typography>
                       ))}
                   </Box>

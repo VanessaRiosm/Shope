@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {fetchRegister} from '../features/users/userSlice'
 import {useAppDispatch} from '../hooks'
+// import {User} from '../types/types'
 
 const formSchema = Yup.object().shape({
   username: Yup.string()
@@ -40,11 +41,11 @@ export const AdminUserEdit = ({user}: any) => {
           rol: 'user',
         }}
         validationSchema={formSchema}
-        onSubmit={async (values: any, {resetForm}) => {
+        onSubmit={async (values: User, {resetForm}) => {
           try {
             dispatch(fetchRegister(values))
-          } catch (err: any) {
-            console.log(err.message)
+          } catch (error) {
+            if (error instanceof Error) console.error('Error: ', error.message)
           }
           resetForm()
         }}

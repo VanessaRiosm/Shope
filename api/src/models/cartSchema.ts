@@ -1,19 +1,6 @@
-import {Schema, model, Types, Document} from 'mongoose'
+import {Schema, model} from 'mongoose'
 
-export interface CartSchema {
-  userId: Types.ObjectId
-  products: any
-  subTotal: number
-  productsQty: number
-}
-
-export interface CartSchemaDocument extends CartSchema, Document {
-  createdAt: Date
-  updatedAt: Date
-  _doc?: any
-}
-
-const cartSchema = new Schema<CartSchemaDocument>({
+const cartSchema = new Schema({
   userId: {type: Schema.Types.ObjectId, ref: 'User'},
   products: [
     {
@@ -35,7 +22,7 @@ const cartSchema = new Schema<CartSchemaDocument>({
   },
 })
 
-export const Cart = model<CartSchemaDocument>('Cart', cartSchema)
+export const Cart = model('Cart', cartSchema)
 
 cartSchema.set('toJSON', {
   transform: (document, retunObject) => {

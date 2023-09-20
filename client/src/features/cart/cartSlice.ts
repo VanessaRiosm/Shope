@@ -52,8 +52,8 @@ export const fetchAddToCart = createAsyncThunk(
       })
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
@@ -70,8 +70,8 @@ export const fetchRemoveFromCart = createAsyncThunk(
       })
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )

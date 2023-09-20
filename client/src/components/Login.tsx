@@ -112,7 +112,10 @@ export const Login = () => {
                       password: '',
                     }}
                     validationSchema={formSchema}
-                    onSubmit={async (values: any) => {
+                    onSubmit={async (values: {
+                      email: string
+                      password: string
+                    }) => {
                       try {
                         const resp = await dispatch(fetchLogin(values))
                         await dispatch(fetchCurrentUser())

@@ -15,12 +15,12 @@ const initialState = {
 
 export const fetchGetCategories = createAsyncThunk(
   'category/fetchGetCategories',
-  async (text: any) => {
+  async (text: string) => {
     try {
       const response = await axios.get(`${URL}/categories/?category=${text}`)
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )

@@ -19,61 +19,61 @@ const initialState = {
   productDetails: null,
 } as ProductsState
 
-export const fetchGetProducts: any = createAsyncThunk(
+export const fetchGetProducts = createAsyncThunk(
   'product/fetchGetProducts',
   async () => {
     try {
       const response = await axios.get(`${URL}/products/`)
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
 
-export const fetchGetProduct: any = createAsyncThunk(
+export const fetchGetProduct = createAsyncThunk(
   'product/fetchGetProduct',
   async (id) => {
     try {
       const response = await axios.get(`${URL}/products/details/${id}`)
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
 
-export const fetchSearchProducts: any = createAsyncThunk(
+export const fetchSearchProducts = createAsyncThunk(
   'product/fetchSearchProduct',
   async (text) => {
     try {
       const response = await axios.get(`${URL}/products/search/?param=${text}`)
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
 
-export const fetchAddProduct: any = createAsyncThunk(
+export const fetchAddProduct = createAsyncThunk(
   'product/fetchAddProduct',
-  async (data: any) => {
+  async (data) => {
     try {
       const response = await axios.post(`${URL}/products/`, data)
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
 
-export const fetchDeleteProduct: any = createAsyncThunk(
+export const fetchDeleteProduct = createAsyncThunk(
   'product/fetchDeleteProduct',
-  async (pid: any) => {
+  async (pid) => {
     try {
       const token = window.localStorage.getItem('token')
 
@@ -82,8 +82,8 @@ export const fetchDeleteProduct: any = createAsyncThunk(
       })
 
       return response.data
-    } catch (err: any) {
-      console.log(err.message)
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
     }
   }
 )
