@@ -9,7 +9,9 @@ export const addToCart = async (req: Request, res: Response) => {
   try {
     if (productId && name && quantity && price && image) {
       //buscamos si usuario tiene carrito
-      let cart = await Cart.findOne({usId})
+
+      let cart = await Cart.findOne({userId: usId})
+
       let user = await User.findById(usId)
 
       if (cart) {
@@ -31,7 +33,6 @@ export const addToCart = async (req: Request, res: Response) => {
           cart.productsQty = cart.productsQty + 1
 
           await cart.save()
-          await user.updateOne({cart}, {cart})
 
           //el producto no existe
         } else {
@@ -40,7 +41,6 @@ export const addToCart = async (req: Request, res: Response) => {
           cart.productsQty = cart.productsQty + 1
           cart.products.push({productId, quantity, name, price, image})
           await cart.save()
-          await user.updateOne({cart}, {cart})
         }
 
         return res.status(201).json(cart)
@@ -50,13 +50,13 @@ export const addToCart = async (req: Request, res: Response) => {
         //el usuario no tiene carrito
 
         const newCart = await Cart.create({
-          usId,
+          userId: usId,
           products: [{productId, quantity, name, price, image}],
           subTotal: price,
           productsQty: 1,
         })
 
-        await user.updateOne({cart}, {newCart})
+        await user.updateOne({cart: newCart})
 
         return res.status(201).json(newCart)
       }
@@ -72,7 +72,7 @@ export const removeFromCart = async (req: Request, res: Response) => {
   const {productId} = req.body
 
   try {
-    let cart = await Cart.findOne({usId})
+    let cart = await Cart.findOne({userId: usId})
     let user = await User.findById(usId)
 
     const itemIndex = cart.products.findIndex((p) => p.productId == productId)
@@ -90,7 +90,7 @@ export const removeFromCart = async (req: Request, res: Response) => {
       cart.subTotal = 0
     }
     await cart.save()
-    await user.updateOne({cart}, {cart})
+    await user.updateOne({cart: cart})
     res.status(200).json(cart)
   } catch (err) {
     res.status(400).json(err.message)

@@ -46,10 +46,10 @@ export const makePurchase = async (req: Request, res: Response) => {
     cart.products = []
     cart.subTotal = 0
     cart.productsQty = 0
-    cart.save()
+    await cart.save()
 
     user.sales.push(sale)
-    user.save()
+    await user.save()
 
     res.json({orderNum: sale.orderNum})
   } catch (error) {

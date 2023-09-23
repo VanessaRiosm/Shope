@@ -23,7 +23,9 @@ export const createUser = async (req: Request, res: Response) => {
       rol,
     })
 
-    await Cart.create({userId: newUser.id})
+    const userCart = await Cart.create({userId: newUser.id})
+    newUser.cart = userCart.id
+    await newUser.save()
 
     res.status(200).json(newUser)
   } catch (err) {
