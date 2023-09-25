@@ -2,8 +2,15 @@ import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Box, Button, FormGroup, Typography} from '@mui/material'
 // import {useAppDispatch} from '../hooks'
-import {Product} from '../types/types'
 import {ChangeEvent, useState} from 'react'
+
+interface Product {
+  name: string
+  image: string
+  price: number
+  category: string
+  description: string
+}
 
 const formSchema = Yup.object().shape({
   name: Yup.string()
