@@ -1,5 +1,5 @@
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
-import {Box, Button} from '@mui/material'
+import {Box, Button, Typography} from '@mui/material'
 import {useAppDispatch} from '../hooks'
 import {useState, FormEvent} from 'react'
 import {fetchMakePurchase} from '../features/cart/cartSlice'
@@ -32,17 +32,31 @@ export const CheckoutForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement />
-      <Button type='submit' disabled={!stripe}>
-        {loading ? (
-          <Box>
-            <span>Loading...</span>
-          </Box>
-        ) : (
-          'Pay'
-        )}
-      </Button>
-    </form>
+    <Box>
+      <Box display='flex' justifyContent='center'>
+        <Typography fontSize='18px' mb='25px'>
+          Enter your card information
+        </Typography>
+      </Box>
+      <form onSubmit={handleSubmit}>
+        <CardElement />
+        <Box display='flex' justifyContent='center' mt='30px'>
+          <Button
+            type='submit'
+            disabled={!stripe}
+            variant='contained'
+            sx={{bgcolor: '#4518D9'}}
+          >
+            {loading ? (
+              <Box>
+                <span>Loading...</span>
+              </Box>
+            ) : (
+              'Make Payment'
+            )}
+          </Button>
+        </Box>
+      </form>
+    </Box>
   )
 }
