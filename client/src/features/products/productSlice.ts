@@ -81,7 +81,7 @@ export const fetchAddProduct = createAsyncThunk(
 
 export const fetchDeleteProduct = createAsyncThunk(
   'product/fetchDeleteProduct',
-  async (pid) => {
+  async (pid: string | undefined) => {
     try {
       const token = window.localStorage.getItem('token')
 

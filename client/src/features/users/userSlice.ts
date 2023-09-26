@@ -1,14 +1,8 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
-// import {User} from '../../types/types'
-const URL = import.meta.env.VITE_APP_URL
+import {User} from '../../types/types'
 
-interface Register {
-  username: string
-  email: string
-  password: string
-  confirmPassword: string
-}
+const URL = import.meta.env.VITE_APP_URL
 
 // como se remplaza el any en esta interfaz
 interface UsersState {
@@ -49,7 +43,7 @@ export const fetchLogin = createAsyncThunk(
 
 export const fetchRegister = createAsyncThunk(
   'users/fetchRegister',
-  async (data: Register) => {
+  async (data: User) => {
     try {
       const response = await axios.post(`${URL}/users/`, data)
 
@@ -96,7 +90,7 @@ export const fetchLogOut = createAsyncThunk('users/fetchLogOut', () => {
 
 export const fetchDeleteUser = createAsyncThunk(
   'users/fetchDeleteUser',
-  async (uid) => {
+  async (uid: string | undefined) => {
     try {
       const token = window.localStorage.getItem('token')
 
