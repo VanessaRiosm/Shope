@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {fetchRegister} from '../features/users/userSlice'
 import {useAppDispatch} from '../hooks'
-// import {User} from '../types/types'
+import {User} from '../types/types'
 
 const formSchema = Yup.object().shape({
   username: Yup.string()

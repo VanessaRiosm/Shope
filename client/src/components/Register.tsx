@@ -12,7 +12,7 @@ import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Link, useNavigate} from 'react-router-dom'
 import {fetchRegister} from '../features/users/userSlice'
-import {useDispatch} from 'react-redux'
+import {useAppDispatch} from '../hooks'
 import {useState} from 'react'
 import loginImage from '../images/loginImage.png'
 
@@ -45,7 +45,7 @@ interface Register {
 }
 export const Register = () => {
   const history = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const [viewSuccess, setViewSuccess] = useState('noShow')
 

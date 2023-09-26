@@ -3,7 +3,14 @@ import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Box, Button, FormGroup, Typography} from '@mui/material'
 import {fetchAddProduct} from '../features/products/productSlice'
 import {useAppDispatch} from '../hooks'
-import {Product} from '../types/types'
+
+interface Product {
+  name: string
+  image: string
+  price: number
+  category: string
+  description: string
+}
 
 const formSchema = Yup.object().shape({
   name: Yup.string()

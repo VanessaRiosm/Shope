@@ -3,6 +3,14 @@ import axios from 'axios'
 
 const URL = import.meta.env.VITE_APP_URL
 
+interface Product {
+  name: string
+  image: string
+  price: number
+  category: string
+  description: string
+}
+
 interface ProductsState {
   productsList: any | null
   productsFilter: any | null
@@ -34,7 +42,7 @@ export const fetchGetProducts = createAsyncThunk(
 
 export const fetchGetProduct = createAsyncThunk(
   'product/fetchGetProduct',
-  async (id) => {
+  async (id: string | undefined) => {
     try {
       const response = await axios.get(`${URL}/products/details/${id}`)
 
@@ -47,7 +55,7 @@ export const fetchGetProduct = createAsyncThunk(
 
 export const fetchSearchProducts = createAsyncThunk(
   'product/fetchSearchProduct',
-  async (text) => {
+  async (text: string | undefined) => {
     try {
       const response = await axios.get(`${URL}/products/search/?param=${text}`)
 
@@ -60,7 +68,7 @@ export const fetchSearchProducts = createAsyncThunk(
 
 export const fetchAddProduct = createAsyncThunk(
   'product/fetchAddProduct',
-  async (data) => {
+  async (data: Product) => {
     try {
       const response = await axios.post(`${URL}/products/`, data)
 

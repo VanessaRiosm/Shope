@@ -1,7 +1,14 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
-
+// import {User} from '../../types/types'
 const URL = import.meta.env.VITE_APP_URL
+
+interface Register {
+  username: string
+  email: string
+  password: string
+  confirmPassword: string
+}
 
 // como se remplaza el any en esta interfaz
 interface UsersState {
@@ -20,26 +27,29 @@ const initialState = {
   rol: '',
 } as UsersState
 
-export const fetchLogin = createAsyncThunk('users/fetchLogin', async (data) => {
-  try {
-    const response = await fetch(`${URL}/auth/login`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
+export const fetchLogin = createAsyncThunk(
+  'users/fetchLogin',
+  async (data: {email: string; password: string}) => {
+    try {
+      const response = await fetch(`${URL}/auth/login`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
 
-    return await response.json()
-  } catch (error) {
-    if (error instanceof Error) console.error('Error: ', error.message)
+      return await response.json()
+    } catch (error) {
+      if (error instanceof Error) console.error('Error: ', error.message)
+    }
   }
-})
+)
 
 export const fetchRegister = createAsyncThunk(
   'users/fetchRegister',
-  async (data) => {
+  async (data: Register) => {
     try {
       const response = await axios.post(`${URL}/users/`, data)
 

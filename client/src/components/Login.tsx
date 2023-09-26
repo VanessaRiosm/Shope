@@ -11,7 +11,7 @@ import {
 import * as Yup from 'yup'
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import {Link, useNavigate} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import {useAppDispatch} from '../hooks'
 import {useState} from 'react'
 import {fetchCurrentUser, fetchLogin} from '../features/users/userSlice'
 import loginImage from '../images/loginImage.png'
@@ -30,7 +30,7 @@ const formSchema = Yup.object().shape({
 
 export const Login = () => {
   const history = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const [viewError, setViewError] = useState('noShow')
 
