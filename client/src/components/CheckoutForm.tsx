@@ -16,17 +16,18 @@ export const CheckoutForm = () => {
     const payment = elements?.getElement(CardElement)
 
     if (payment) {
+      setLoading(true)
+
       const result: any = await stripe?.createPaymentMethod({
         type: 'card',
         card: payment,
       })
-      setLoading(true)
 
       if (!result.error) {
         const {id} = result.paymentMethod
         dispatch(fetchMakePurchase({id}))
         payment.clear()
-        setLoading(false)
+        setLoading(true)
       }
     }
   }

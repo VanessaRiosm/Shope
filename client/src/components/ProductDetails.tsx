@@ -64,7 +64,7 @@ export const ProductDetails = () => {
     return () => {
       dispatch(clear())
     }
-  }, [])
+  }, [id])
 
   const [Size, setSize] = useState('')
 
