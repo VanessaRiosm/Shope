@@ -26,7 +26,7 @@ export const Home = () => {
       <Collection
         title={'NEW ARRIVALS'}
         badg={'NEW'}
-        products={products && products.slice(9, 17)}
+        products={products && products.slice(8, 18)}
       />
       <Promotion knit={'no'} />
       <Categories siP={'si'} />
@@ -34,7 +34,7 @@ export const Home = () => {
       <Collection
         title={'TOP SELLER'}
         badg={'TOP'}
-        products={products && products.slice(0, 9)}
+        products={products && products.slice(0, 8)}
       />
       <Promotion knit={'si'} />
       <Categories siP={'no'} />

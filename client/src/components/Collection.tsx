@@ -117,9 +117,9 @@ export const Collection = ({
             loop
             slidesPerView={1}
             breakpoints={{
-              560: {slidesPerView: 2},
-              900: {slidesPerView: 3},
-              1200: {slidesPerView: 4},
+              600: {slidesPerView: 2},
+              1000: {slidesPerView: 3},
+              1400: {slidesPerView: 4},
               1900: {slidesPerView: 5},
             }}
             navigation={true}

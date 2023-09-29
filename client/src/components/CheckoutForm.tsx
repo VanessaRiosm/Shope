@@ -3,6 +3,7 @@ import {Box, Button, Typography} from '@mui/material'
 import {useAppDispatch} from '../hooks'
 import {useState, FormEvent} from 'react'
 import {fetchMakePurchase} from '../features/cart/cartSlice'
+import {toast} from 'react-toastify'
 
 export const CheckoutForm = () => {
   const stripe = useStripe()
@@ -27,9 +28,21 @@ export const CheckoutForm = () => {
         const {id} = result.paymentMethod
         dispatch(fetchMakePurchase({id}))
         payment.clear()
-        setLoading(true)
+        notifyPurchase()
+        setLoading(false)
       }
     }
+  }
+
+  const notifyPurchase = () => {
+    toast.success('Purchase made successfully', {
+      position: 'top-center',
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
   }
 
   return (

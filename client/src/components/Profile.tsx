@@ -50,7 +50,7 @@ export const Profile = () => {
                   <Box>
                     {sales &&
                       sales.map((s: {orderNum: number}) => (
-                        <Typography>{s.orderNum}</Typography>
+                        <Typography key={s.orderNum}>{s.orderNum}</Typography>
                       ))}
                   </Box>
                 </AccordionDetails>
