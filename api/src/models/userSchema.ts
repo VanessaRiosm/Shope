@@ -32,7 +32,9 @@ const userSchema = new Schema<user>({
       id: String,
       orderNum: String,
       status: String,
-      date: Date,
+      date: String,
+      products: [],
+      total: Number,
     },
   ],
 

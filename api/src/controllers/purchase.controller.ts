@@ -32,15 +32,14 @@ export const makePurchase = async (req: Request, res: Response) => {
     const nanoid = customAlphabet('0123456789', 10)
     const orderNum = nanoid()
 
-    const currentDate = new Date().toString().substring(0, 25)
-    const month = currentDate.slice(4, 7)
-    const day = currentDate.slice(8, 10)
-    const newDate = currentDate.replace(month + ' ' + day, day + ' ' + month)
+    const currentDate = new Date().toLocaleString()
 
     const sale = await Sale.create({
       orderNum,
-      date: newDate,
+      date: currentDate,
       status: 'pending',
+      products: cart.products,
+      total: cart.subTotal,
     })
 
     cart.products = []

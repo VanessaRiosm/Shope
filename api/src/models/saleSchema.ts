@@ -12,9 +12,20 @@ const saleSchema = new Schema({
     default: 'pending',
   },
   date: {
-    type: Date,
-    default: now(),
+    type: String,
+    default: new Date().toLocaleString(),
   },
+  products: [
+    {
+      productId: String,
+      quantity: Number,
+      image: String,
+      name: String,
+      price: Number,
+      totalValue: Number,
+    },
+  ],
+  total: {type: Number},
   user: {type: Schema.Types.ObjectId, ref: 'User'},
 })
 
