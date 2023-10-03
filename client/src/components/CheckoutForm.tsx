@@ -57,7 +57,7 @@ export const CheckoutForm = () => {
         <Box display='flex' justifyContent='center' mt='30px'>
           <Button
             type='submit'
-            disabled={!stripe}
+            disabled={loading}
             variant='contained'
             sx={{bgcolor: '#4518D9'}}
           >

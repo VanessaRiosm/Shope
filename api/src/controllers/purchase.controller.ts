@@ -5,12 +5,9 @@ import {Sale} from '../models/saleSchema'
 import {customAlphabet} from 'nanoid'
 import {User} from '../models/userSchema'
 
-const stripe = new Stripe(
-  'sk_test_51NqhokKKnhStKev8T3INgmNiwPhggzCTozRS8SOXJX8S3GIhBsjBtV26zxhHC8mKDjMQnOh9ER3syC2fhTbGkKzc00T5M3EiiU',
-  {apiVersion: '2023-08-16'}
-)
-
 export const makePurchase = async (req: Request, res: Response) => {
+  const stripe = new Stripe(process.env.PRIVATE_KEY, {apiVersion: '2023-08-16'})
+
   const {userId} = req.params
   const {id} = req.body
 

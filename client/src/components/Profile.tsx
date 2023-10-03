@@ -9,10 +9,11 @@ import {
 import {NavBar} from './NavBar'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {Footerr} from './Footer'
-import {Navigate} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import {fetchCurrentUser} from '../features/users/userSlice'
 import {FaUserCircle} from 'react-icons/fa'
 import {AiFillCaretDown} from 'react-icons/ai'
+import {Product} from '../types/types'
 
 export const Profile = () => {
   const {username, email, rol, sales} = useAppSelector(
@@ -47,11 +48,42 @@ export const Profile = () => {
                   <Typography>Shopping history</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Box>
+                  <Box
+                    display='flex'
+                    flexWrap='wrap'
+                    justifyContent='center'
+                    gap='30px'
+                  >
                     {sales &&
-                      sales.map((s: {orderNum: number}) => (
-                        <Typography key={s.orderNum}>{s.orderNum}</Typography>
-                      ))}
+                      sales.map(
+                        (s: {
+                          orderNum: number
+                          products: Product[]
+                          total: number
+                          date: string
+                        }) => (
+                          <Box maxWidth='100%' border='1px solid gray' p='5px'>
+                            <Typography>Date: {s.date.slice(0, 9)}</Typography>
+                            <Typography>Order: {s.orderNum}</Typography>
+                            <Typography mb='10px'>Total: ${s.total}</Typography>
+                            <Box
+                              display='flex'
+                              gap='5px'
+                              flexWrap='wrap'
+                              justifyContent='center'
+                            >
+                              {s.products.map((p) => (
+                                <Box>
+                                  <img
+                                    src={p.image}
+                                    style={{height: '90px', width: '60px'}}
+                                  />
+                                </Box>
+                              ))}
+                            </Box>
+                          </Box>
+                        )
+                      )}
                   </Box>
                 </AccordionDetails>
               </Accordion>
