@@ -114,7 +114,7 @@ export const AdminProductForm = () => {
               type='text'
               style={{height: '40px', width: '100%'}}
             >
-              <option value='classical'>classical</option>
+              <option value='accessories'>accessories</option>
               <option value='dresses'>dresses</option>
               <option value='tops'>tops</option>
               <option value='pants'>pants</option>
