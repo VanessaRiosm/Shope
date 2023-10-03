@@ -63,7 +63,7 @@ export const Profile = () => {
                           date: string
                         }) => (
                           <Box maxWidth='100%' border='1px solid gray' p='5px'>
-                            <Typography>Date: {s.date.slice(0, 9)}</Typography>
+                            <Typography>Date: {s.date}</Typography>
                             <Typography>Order: {s.orderNum}</Typography>
                             <Typography mb='10px'>Total: ${s.total}</Typography>
                             <Box
