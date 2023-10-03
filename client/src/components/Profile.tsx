@@ -9,7 +9,7 @@ import {
 import {NavBar} from './NavBar'
 import {useAppDispatch, useAppSelector} from '../hooks'
 import {Footerr} from './Footer'
-import {Link, Navigate} from 'react-router-dom'
+import {Navigate} from 'react-router-dom'
 import {fetchCurrentUser} from '../features/users/userSlice'
 import {FaUserCircle} from 'react-icons/fa'
 import {AiFillCaretDown} from 'react-icons/ai'
