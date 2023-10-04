@@ -87,6 +87,45 @@ export const Profile = () => {
                   </Box>
                 </AccordionDetails>
               </Accordion>
+              <Accordion sx={{width: '50%', bgcolor: '#F7F7F8'}}>
+                <AccordionSummary
+                  expandIcon={<AiFillCaretDown />}
+                  aria-controls='Your comments'
+                  id='panel1a-header'
+                >
+                  <Typography>Your comments</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Box
+                    display='flex'
+                    flexWrap='wrap'
+                    justifyContent='center'
+                    gap='30px'
+                  >
+                    Coming Soon
+                  </Box>
+                </AccordionDetails>
+              </Accordion>
+
+              <Accordion sx={{width: '50%', bgcolor: '#F7F7F8'}}>
+                <AccordionSummary
+                  expandIcon={<AiFillCaretDown />}
+                  aria-controls='Your califications'
+                  id='panel1a-header'
+                >
+                  <Typography>Your califications</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Box
+                    display='flex'
+                    flexWrap='wrap'
+                    justifyContent='center'
+                    gap='30px'
+                  >
+                    Coming Soon
+                  </Box>
+                </AccordionDetails>
+              </Accordion>
             </Box>
 
             <Box bottom='0' width='100%'>
