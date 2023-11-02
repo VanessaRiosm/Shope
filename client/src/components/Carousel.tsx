@@ -29,7 +29,9 @@ export const Carousel = () => {
     <Box marginTop='65px'>
       <Swiper
         navigation={true}
-        autoplay={true}
+        autoplay={{
+          disableOnInteraction: false,
+        }}
         loop={true}
         pagination={{
           clickable: true,

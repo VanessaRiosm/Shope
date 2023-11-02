@@ -106,8 +106,6 @@ export const Profile = () => {
                   </Box>
                 </AccordionDetails>
               </Accordion>
-
-              
             </Box>
 
             <Box bottom='0' width='100%'>

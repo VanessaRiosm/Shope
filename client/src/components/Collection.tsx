@@ -151,7 +151,7 @@ export const Collection = ({
                       display='flex'
                       justifyContent='center'
                       alignItems='center'
-                      top='3.9%'
+                      top='3.2%'
                       left='9.8%'
                       style={{
                         transform: 'translate(-50%, -50%)',

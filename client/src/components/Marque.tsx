@@ -5,6 +5,7 @@ const anArray: string[] = [
   'SUMMER SALE UP TO 60% SELECTED REF.',
   'SHOPE SAFE BUY',
   'SHOPE FREE SHIPPING FOR PURCHASES EQUAL TO OR OVER $150,000',
+  'FASHION SALE',
 ]
 
 const Marque = () => (
